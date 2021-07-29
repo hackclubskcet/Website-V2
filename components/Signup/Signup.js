@@ -10,40 +10,54 @@ import {
   Stack,
   Image,
   InputGroup,
+  InputLeftAddon,
   InputAddon,
   InputRightAddon,
 } from "@chakra-ui/react";
 
-export default function Login() {
+export default function Signup() {
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
           <Heading paddingBottom="5" color="#ec3750" fontSize={"2xl"}>
-            Sign in to your account
+            Register for Hack Club SKCET
           </Heading>
+
+          <FormControl id="name">
+            <FormLabel>Full name</FormLabel>
+            <InputGroup>
+              <Input placeholder="Your first and last name" type="text" />
+            </InputGroup>
+          </FormControl>
           <FormControl id="email">
             <FormLabel>Register number</FormLabel>
             <InputGroup>
-              <Input type="email" />
+              <Input placeholder="Example: 19EUCS001" type="email" />
               <InputRightAddon children="@skcet.ac.in" />
             </InputGroup>
           </FormControl>
           <FormControl id="password">
             <FormLabel>Password</FormLabel>
-            <Input type="password" />
+            <Input placeholder="Shhh! Keep it secret" type="password" />
+          </FormControl>
+          <FormControl id="phone">
+            <FormLabel>Phone number</FormLabel>
+            <InputGroup>
+              <InputLeftAddon children="+91" />
+              <Input type="tel" placeholder="Phone number" />
+            </InputGroup>
+          </FormControl>
+          <FormControl id="interests">
+            <FormLabel>Interests</FormLabel>
+            <InputGroup>
+              <Input
+                placeholder="Example: data science, web development, cyber security"
+                type="text"
+              />
+            </InputGroup>
           </FormControl>
           <Stack spacing={6}>
-            <Stack
-              direction={{ base: "column", sm: "row" }}
-              align={"start"}
-              justify={"space-between"}
-            >
-              <Checkbox>Remember me</Checkbox>
-              <Link paddingBottom={10} color={"#ec3750"}>
-                Forgot password?
-              </Link>
-            </Stack>
             <Button
               marginTop={15}
               px={6}
@@ -57,7 +71,7 @@ export default function Login() {
                 size: "lg",
               }}
             >
-              SIGN IN
+              REGISTER
             </Button>
           </Stack>
         </Stack>
@@ -67,7 +81,7 @@ export default function Login() {
           alt={"Login Image"}
           objectFit={"cover"}
           src={
-            "https://raw.githubusercontent.com/hackyguru/HostedImages/master/dinoskcet.png"
+            "https://raw.githubusercontent.com/hackyguru/HostedImages/master/login-picture.png"
           }
         />
       </Flex>

@@ -16,7 +16,7 @@ import {
 const Events = () => {
   return (
     <div>
-      <Container maxW={"6xl"} mt={10} textAlign="center">
+      <Container paddingBottom={20} maxW={"6xl"} mt={10} textAlign="center">
         <Heading paddingBottom={10} fontSize={"3xl"}>
           Upcoming Events
         </Heading>

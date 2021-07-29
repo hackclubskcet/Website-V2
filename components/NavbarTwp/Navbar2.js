@@ -17,6 +17,9 @@ import {
   useColorMode,
   SimpleGrid,
   Stack,
+  Avatar,
+  AvatarBadge,
+  AvatarGroup,
 } from "@chakra-ui/react";
 import Banner from "@hackclub/banner";
 
@@ -43,10 +46,10 @@ import { useViewportScroll } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
-import { FaMoon, FaSignInAlt, FaSun, FaUserFriends } from "react-icons/fa";
+import { FaMoon, FaSignOutAlt, FaSun, FaUserFriends } from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
 
-export default function Navbar(props) {
+export default function NavbarTwo(props) {
   const { toggleColorMode: toggleMode } = useColorMode();
   const text = useColorModeValue("dark", "light");
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
@@ -101,20 +104,21 @@ export default function Navbar(props) {
         shadow="sm"
       >
         <CloseButton
-          p={10}
           aria-label="Close menu"
           justifySelf="self-start"
           onClick={mobileNav.onClose}
         />
         <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-          Home
+          Dashboard
         </Button>
-
+        <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+          Discord community
+        </Button>
         <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
           Members
         </Button>
-        <Button w="full" variant="ghost" leftIcon={<FaSignInAlt />}>
-          Login
+        <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt />}>
+          Sign Out
         </Button>
       </VStack>
     </div>
@@ -146,43 +150,7 @@ export default function Navbar(props) {
                 </HStack>
               </Link>
             </Flex>
-            <Flex>
-              <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Abous us
-                </Button>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Members
-                </Button>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Events
-                </Button>
-              </HStack>
-            </Flex>
+            <Flex></Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
               <HStack spacing="5" display={{ base: "none", md: "flex" }}>
                 <IconButton
@@ -195,18 +163,7 @@ export default function Navbar(props) {
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
                 />
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Login
-                </Button>
-                <Register />
+                <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
               </HStack>
               <IconButton
                 display={{ base: "flex", md: "none" }}
@@ -223,31 +180,5 @@ export default function Navbar(props) {
         </chakra.div>
       </chakra.header>
     </React.Fragment>
-  );
-}
-
-// Join Waitlist Modal
-
-function Register() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  return (
-    <>
-      <Button
-        onClick={onOpen}
-        rounded={"full"}
-        px={6}
-        colorScheme="white"
-        fontWeight="extrabold"
-        color="white"
-        bgGradient="linear(to-r, #ff8c37,#ec3750)"
-        _hover={{
-          bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-          bgClip: "text",
-          size: "lg",
-        }}
-      >
-        REGISTER
-      </Button>
-    </>
   );
 }

@@ -33,9 +33,9 @@ export default function Home() {
       <About p={20} />
       <Divider />
       <Events />
-      <Divider p={10} />
+      <Divider />
       <MembersMarquee />
-      <Divider p={5} />
+      <Divider />
       <Sponsors />
       <Footer p={20} />
     </ChakraProvider>

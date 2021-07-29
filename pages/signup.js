@@ -24,12 +24,13 @@ import {
 } from "@chakra-ui/react";
 import Footer from "../components/Footer/Footer";
 import MembersMarquee from "../components/MembersMarquee/MembersMarquee";
+import Signup from "../components/Signup/Signup";
 
-export default function LoginScreen() {
+export default function SignupScreen() {
   return (
     <ChakraProvider>
       <Navbar />
-      <Login />
+      <Signup />
       <Footer p={20} />
     </ChakraProvider>
   );
