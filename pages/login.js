@@ -5,6 +5,7 @@ import Banner from "@hackclub/banner";
 import { ChakraProvider, VStack, Divider } from "@chakra-ui/react";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
+import Login from "../components/Login/Login.js";
 import About from "../components/About/About";
 import Sponsors from "../components/Sponsors/Sponsors";
 import Events from "../components/Events/Events";
@@ -28,15 +29,7 @@ export default function Home() {
   return (
     <ChakraProvider>
       <Navbar />
-      <Hero />
-      <Spacer />
-      <About p={20} />
-      <Divider />
-      <Events />
-      <Divider p={10} />
-      <MembersMarquee />
-      <Divider p={5} />
-      <Sponsors />
+      <Login />
       <Footer p={20} />
     </ChakraProvider>
   );
