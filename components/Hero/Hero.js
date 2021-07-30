@@ -4,16 +4,13 @@ import {
   Box,
   useColorModeValue,
   Flex,
-  IconButton,
   Heading,
   Button,
   Stack,
-  Alert,
   Spacer,
 } from "@chakra-ui/react";
 
 import ReactTypingEffect from "react-typing-effect";
-import { AiOutlineMenu } from "react-icons/ai";
 
 const Hero = () => {
   const bg = useColorModeValue("white", "gray.800");
