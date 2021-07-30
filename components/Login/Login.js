@@ -15,53 +15,53 @@ import {
 } from "@chakra-ui/react";
 
 import Router from "next/router";
-import {useLayoutEffect, useRef, useState} from 'react'
-import {supabase} from "../../../hackclub-site/utils/supabaseClient";
+import { useLayoutEffect, useRef, useState } from "react";
+import { supabase } from "../../utils/supabaseClient";
 
 export default function Login() {
-  const [loading, setLoading] = useState(false)
-  const rollNoRef = useRef('')
-  const passwordRef = useRef('')
+  const [loading, setLoading] = useState(false);
+  const rollNoRef = useRef("");
+  const passwordRef = useRef("");
 
-  const [loggedIn, setLoggedIn] = useState(null)
+  const [loggedIn, setLoggedIn] = useState(null);
 
-  const [logInFailure, setLogInFailure] = useState(false)
+  const [logInFailure, setLogInFailure] = useState(false);
 
   function logInFailed() {
-    setLogInFailure(true)
-    setLoading(false)
+    setLogInFailure(true);
+    setLoading(false);
   }
 
   useLayoutEffect(() => {
-    setLoggedIn(supabase.auth.user() !== null)
+    setLoggedIn(supabase.auth.user() !== null);
 
     if (loggedIn === true && loading === false) {
-      Router.push('/dashboard')
+      Router.push("/dashboard");
     }
-  }, [loading, loggedIn])
+  }, [loading, loggedIn]);
 
-  async function handleLogin () {
+  async function handleLogin() {
     if (!loggedIn) {
       try {
-        setLogInFailure(false)
-        setLoading(true)
+        setLogInFailure(false);
+        setLoading(true);
 
-        const {error} = await supabase.auth.signIn({
-          email: rollNoRef.current.value + '@skcet.ac.in',
+        const { error } = await supabase.auth.signIn({
+          email: rollNoRef.current.value + "@skcet.ac.in",
           password: passwordRef.current.value,
-        })
+        });
 
         if (error) {
-          logInFailed()
-          throw error
+          logInFailed();
+          throw error;
         } else {
-          setLoggedIn(true)
+          setLoggedIn(true);
 
-          await Router.push('/dashboard')
+          await Router.push("/dashboard");
         }
       } catch (error) {
-        logInFailed()
-        alert(error.error_description || error.message)
+        logInFailed();
+        alert(error.error_description || error.message);
       }
     }
   }
@@ -76,13 +76,13 @@ export default function Login() {
           <FormControl id="rollNo">
             <FormLabel>Register number</FormLabel>
             <InputGroup>
-              <Input type="text" ref={rollNoRef} required={true}/>
+              <Input type="text" ref={rollNoRef} required={true} />
               <InputRightAddon children="@skcet.ac.in" />
             </InputGroup>
           </FormControl>
           <FormControl id="password">
             <FormLabel>Password</FormLabel>
-            <Input type="password" ref={passwordRef} required={true}/>
+            <Input type="password" ref={passwordRef} required={true} />
           </FormControl>
           <Stack spacing={6}>
             <Stack
@@ -110,7 +110,7 @@ export default function Login() {
               disabled={loading}
               onClick={handleLogin}
             >
-              {loading ? 'Signing in....' : 'SIGN IN'}
+              {loading ? "Signing in...." : "SIGN IN"}
             </Button>
           </Stack>
         </Stack>
