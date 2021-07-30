@@ -3,6 +3,7 @@ import {
   Checkbox,
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Heading,
   Input,
@@ -28,11 +29,48 @@ export default function Signup() {
   const interestsRef = useRef();
   const passwordRef = useRef();
 
+  let [rollNoError, setrollNoErrorState] = useState(false)
+  let [nameError, setnameErrorState] = useState(false)
+  let [departmentError, setdepartmentErrorState] = useState(false)
+  let [yearError, setyearErrorState] = useState(false)
+  let [interestsError, setinterestsErrorState] = useState(false)
+  let [passwordError, setpasswordErrorState] = useState(false)
+
+  let function_map = {
+    'rollNo': setrollNoErrorState,
+    'name': setnameErrorState,
+    'department': setdepartmentErrorState,
+    'year': setyearErrorState,
+    'interests': setinterestsErrorState,
+    'password': setpasswordErrorState,
+  }
+
+  let hasError = false;
+
   const [loading, setLoading] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(null);
 
   const [signUpFailure, setSignUpFailure] = useState(false);
+
+  function setError(key, value) {
+    hasError = true;
+    function_map[key](value);
+  }
+
+  function resetErrors() {
+    hasError = false;
+    setrollNoErrorState(false);
+    setnameErrorState(false);
+    setdepartmentErrorState(false);
+    setyearErrorState(false);
+    setinterestsErrorState(false);
+    setpasswordErrorState(false);
+  }
+
+  function hasAnyError() {
+    return hasError;
+  }
 
   function signUpFailed() {
     setSignUpFailure(true);
@@ -47,6 +85,60 @@ export default function Signup() {
     }
   }, [loading, loggedIn]);
 
+   function validate() {
+    //Resetting previous errors
+    resetErrors();
+
+    //Roll Number validation
+    var rollNo = rollNoRef.current;
+
+    if (rollNo.value === '') {
+      setError('rollNo', "Please enter your roll number to sign up")
+    } else if (!/\d{2}[a-zA-z]*\d{3,}$/i.test(rollNo.value)) { //TODO do Stronger testing
+      setError('rollNo', "Please enter a valid roll number")
+    }
+
+    //Name validation
+    var name = nameRef.current
+
+    if (name.value === '') {
+      setError('name', "Please enter your name to sign up")
+    }
+
+    // Department validation
+    var department = departmentRef.current
+    var departments = ["cse", "it", "aids", "mtech", "csbs", "ece", "eee", "civil", "mech", "mct"]
+
+    if (department.value === '') {
+      setError('department', "Please choose your department to sign up")
+    } else if (departments.indexOf(department.value) === -1) {
+      setError('department', "Please choose a valid department")
+      console.log("Trying to heck xDDD")
+    }
+
+    //Year validation
+    var year = yearRef.current
+    var years = ["2018", "2019", "2020", "2021"]
+
+    if (year.value === '') {
+      setError('year', "Please choose your joining year to sign up")
+    } else if (years.indexOf(year.value) === -1) {
+      setError('year', "Please choose a valid joining year")
+      console.log("Trying to heck xDDD")
+    }
+
+    //Password validation
+    var password = passwordRef.current
+
+    if (password.value === '') {
+      setError('password', "Please enter a password to sign up")
+    } else if (password.value.length < 8) {
+      setError('password', "Password must be atleast 8 characters long")
+    }
+
+    return
+  }
+
   async function handleSignup(e) {
     e.preventDefault();
 
@@ -55,22 +147,33 @@ export default function Signup() {
         setSignUpFailure(false);
         setLoading(true);
 
-        const { user, session, error } = await supabase.auth.signUp({
-          email: rollNoRef.current.value + "@skcet.ac.in",
-          password: passwordRef.current.value,
-        });
+        validate();
 
-        if (error) {
-          signUpFailed();
-          throw error;
+        var hasError = hasAnyError();
+
+        console.log(hasError)
+
+        if (hasError) {
+          setLoading(false);
+          return;
         } else {
-          await registerUser(user);
+          const {user, session, error} = await supabase.auth.signUp({
+            email: rollNoRef.current.value + "@skcet.ac.in",
+            password: passwordRef.current.value,
+          });
 
-          await updateProfile(user);
+          if (error) {
+            signUpFailed();
+            throw error;
+          } else {
+            await registerUser(user);
 
-          setLoggedIn(true);
+            await updateProfile(user);
 
-          await Router.push("/dashboard");
+            setLoggedIn(true);
+
+            await Router.push("/dashboard");
+          }
         }
       } catch (error) {
         signUpFailed();
@@ -142,7 +245,7 @@ export default function Signup() {
             Register for Hack Club SKCET
           </Heading>
 
-          <FormControl id="name">
+          <FormControl id="name" isInvalid={nameError} isRequired >
             <FormLabel>Full name</FormLabel>
             <InputGroup>
               <Input
@@ -152,8 +255,9 @@ export default function Signup() {
                 required={true}
               />
             </InputGroup>
+            <FormErrorMessage>{nameError}</FormErrorMessage>
           </FormControl>
-          <FormControl id="email">
+          <FormControl id="rollNo" isInvalid={rollNoError} isRequired>
             <FormLabel>Register number</FormLabel>
             <InputGroup>
               <Input
@@ -164,8 +268,9 @@ export default function Signup() {
               />
               <InputRightAddon children="@skcet.ac.in" />
             </InputGroup>
+            <FormErrorMessage>{rollNoError}</FormErrorMessage>
           </FormControl>
-          <FormControl id="password">
+          <FormControl id="password" isInvalid={passwordError} isRequired>
             <FormLabel>Password</FormLabel>
             <Input
               placeholder="Shhh! Keep it secret"
@@ -173,8 +278,9 @@ export default function Signup() {
               ref={passwordRef}
               required={true}
             />
+            <FormErrorMessage>{passwordError}</FormErrorMessage>
           </FormControl>
-          <FormControl id="department">
+          <FormControl id="department" isInvalid={departmentError} isRequired>
             <FormLabel>Department</FormLabel>
             <InputGroup>
               <Select
@@ -183,21 +289,22 @@ export default function Signup() {
                 required={true}
                 placeholder="Select option"
               >
-                <option value="cse">CSE</option>
-                <option value="it">IT</option>
-                <option value="aids">AI/DS</option>
-                <option value="mtech">MTech</option>
-                <option value="csbs">CSBS</option>
-                <option value="ece">ECE</option>
-                <option value="eee">EEE</option>
-                <option value="civil">Civil</option>
-                <option value="mech">Mech</option>
-                <option value="mct">MCT</option>
+                <option value="cse">Computer Science and Engineering</option>
+                <option value="it">Information Technology</option>
+                <option value="aids">Artificial Intelligence and Data Science</option>
+                <option value="mtech">M.Tech. Computer Science and Engineering</option>
+                <option value="csbs">Computer Science and Business Systems</option>
+                <option value="ece">Electronics and Communication Engineering</option>
+                <option value="eee">Electrical and Electronics Engineering</option>
+                <option value="civil">Civil Engineering</option>
+                <option value="mech">Mechanical Engineering</option>
+                <option value="mct">Mechatronics Engineering</option>
               </Select>
             </InputGroup>
+            <FormErrorMessage>{departmentError}</FormErrorMessage>
           </FormControl>
-          <FormControl id="year">
-            <FormLabel>Year of passing out</FormLabel>
+          <FormControl id="year" isInvalid={yearError} isRequired>
+            <FormLabel>Year of joining</FormLabel>
             <InputGroup>
               <Select
                 type="text"
@@ -206,14 +313,15 @@ export default function Signup() {
                 placeholder="Year"
                 ref={yearRef}
               >
-                <option value="2022">2018-22</option>
-                <option value="2023">2019-23</option>
-                <option value="2024">2020-24</option>
-                <option value="2025">2021-25</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
               </Select>
             </InputGroup>
+            <FormErrorMessage>{yearError}</FormErrorMessage>
           </FormControl>
-          <FormControl id="interests">
+          <FormControl id="interests" isInvalid={interestsError}>
             <FormLabel>Interests</FormLabel>
             <InputGroup>
               <Input
@@ -222,6 +330,7 @@ export default function Signup() {
                 ref={interestsRef}
               />
             </InputGroup>
+            <FormErrorMessage>{interestsError}</FormErrorMessage>
           </FormControl>
           <Stack spacing={6}>
             <Button
