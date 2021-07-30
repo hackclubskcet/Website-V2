@@ -14,7 +14,58 @@ import {
   InputRightAddon,
 } from "@chakra-ui/react";
 
+import Router from "next/router";
+import {useLayoutEffect, useRef, useState} from 'react'
+import {supabase} from "../../../hackclub-site/utils/supabaseClient";
+
 export default function Login() {
+  const [loading, setLoading] = useState(false)
+  const rollNoRef = useRef('')
+  const passwordRef = useRef('')
+
+  const [loggedIn, setLoggedIn] = useState(null)
+
+  const [logInFailure, setLogInFailure] = useState(false)
+
+  function logInFailed() {
+    setLogInFailure(true)
+    setLoading(false)
+  }
+
+  useLayoutEffect(() => {
+    setLoggedIn(supabase.auth.user() !== null)
+
+    if (loggedIn === true && loading === false) {
+      Router.push('/dashboard')
+    }
+  }, [loading, loggedIn])
+
+  async function handleLogin () {
+    if (!loggedIn) {
+      try {
+        setLogInFailure(false)
+        setLoading(true)
+
+        const {error} = await supabase.auth.signIn({
+          email: rollNoRef.current.value + '@skcet.ac.in',
+          password: passwordRef.current.value,
+        })
+
+        if (error) {
+          logInFailed()
+          throw error
+        } else {
+          setLoggedIn(true)
+
+          await Router.push('/dashboard')
+        }
+      } catch (error) {
+        logInFailed()
+        alert(error.error_description || error.message)
+      }
+    }
+  }
+
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
@@ -22,16 +73,16 @@ export default function Login() {
           <Heading paddingBottom="5" color="#ec3750" fontSize={"2xl"}>
             Sign in to your account
           </Heading>
-          <FormControl id="email">
+          <FormControl id="rollNo">
             <FormLabel>Register number</FormLabel>
             <InputGroup>
-              <Input type="email" />
+              <Input type="text" ref={rollNoRef} required={true}/>
               <InputRightAddon children="@skcet.ac.in" />
             </InputGroup>
           </FormControl>
           <FormControl id="password">
             <FormLabel>Password</FormLabel>
-            <Input type="password" />
+            <Input type="password" ref={passwordRef} required={true}/>
           </FormControl>
           <Stack spacing={6}>
             <Stack
@@ -56,8 +107,10 @@ export default function Login() {
                 bgClip: "text",
                 size: "lg",
               }}
+              disabled={loading}
+              onClick={handleLogin}
             >
-              SIGN IN
+              {loading ? 'Signing in....' : 'SIGN IN'}
             </Button>
           </Stack>
         </Stack>
