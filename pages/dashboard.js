@@ -28,11 +28,71 @@ import Signup from "../components/Signup/Signup";
 import DashboardMenu from "../components/DashboardMenu/DashboardMenu";
 import NavbarTwo from "../components/NavbarTwp/Navbar2";
 
+import Router from "next/router";
+import {useLayoutEffect, useState} from "react";
+import {supabase} from "../../hackclub-site/utils/supabaseClient";
+
 export default function Dashboard() {
+  const [loggedIn, setLoggedIn] = useState(null)
+  const [user, setUser] = useState(null)
+
+  useLayoutEffect (() => {
+    setLoggedIn(supabase.auth.user() !== null)
+
+    if (loggedIn === false) {
+      Router.push('/login')
+    }
+
+    async function fetchData() {
+      const {data, error} = await supabase
+          .from('profiles')
+          .select('name, department, year, avatar_url')
+          .eq('id', supabase.auth.user().id)
+          .limit(1)
+
+      if (error) {
+        throw error
+      } else {
+        setUser(data[0])
+      }
+    }
+
+    if (loggedIn === true && user === null) {
+      fetchData()
+    }
+
+  }, [loggedIn, user])
+
+  async function handleSignOut() {
+    if (loggedIn) {
+      try {
+        const {error} = await supabase.auth.signOut()
+        if (error) {
+          throw error
+        }
+    else {
+          setLoggedIn(false)
+
+          await Router.push('/login')
+        }
+      } catch (error) {
+        alert(error.message)
+      }
+    }
+  }
+
+  function getUserData(key) {
+    if (user !== undefined && user !== null) {
+      return user[key]
+    }
+
+    return ''
+  }
+
   return (
     <ChakraProvider>
-      <NavbarTwo />
-      <DashboardMenu />
+      <NavbarTwo name={getUserData('name')} avatar_url={getUserData('avatar_url')} handleSignOut={handleSignOut}/>
+      <DashboardMenu name={getUserData('name')} />
     </ChakraProvider>
   );
 }

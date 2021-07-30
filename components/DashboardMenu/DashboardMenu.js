@@ -34,7 +34,7 @@ import React from "react";
 import { Logo } from "@choc-ui/logo";
 import Footer from "../Footer/Footer";
 
-export default function DashboardMenu() {
+export default function DashboardMenu(props) {
   const sidebar = useDisclosure();
   const integrations = useDisclosure();
 
@@ -142,7 +142,7 @@ export default function DashboardMenu() {
       <Box ml={{ base: 0, md: 60 }} transition=".3s ease">
         <Box as="main" p="4">
           {/* Add content here, remove div below  */}
-          <Heading p={10}>Welcome name</Heading>
+          <Heading p={10}>Welcome {props.name}</Heading>
           <Text p={10}>
             Thanks for joining Hack Club SKCET. We are happy to know that you
             wanted to be a part of SKCET's most active community. At Hack Club

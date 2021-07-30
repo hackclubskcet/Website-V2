@@ -163,7 +163,8 @@ export default function NavbarTwo(props) {
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
                 />
-                <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+                <Avatar name={props.name} src={props.avatar_url} alt={props.avatar_url} />
+                <button onClick={props.handleSignOut}>Sign out</button> {/*TODO: GURU BRUH TAKE CARE */}
               </HStack>
               <IconButton
                 display={{ base: "flex", md: "none" }}
