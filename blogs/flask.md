@@ -4,8 +4,7 @@ excerpt: Make a Flask API that allows you to register and log in users.
 coverImage: 'https://cloud-1x9c5m3zh.vercel.app/0screen-capture.gif'
 date: '2020-03-16T05:35:07.322Z'
 author: 
- - name: '@sohamb117'
- - picture: '/assets/blog/authors/tim.jpeg'
+  name: '@sohamb117'
 ogImage:
   url: 'https://cloud-1x9c5m3zh.vercel.app/0screen-capture.gif'
 ---
