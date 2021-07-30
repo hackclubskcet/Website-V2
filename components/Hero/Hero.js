@@ -12,6 +12,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
+import Link from "next/link";
 import ReactTypingEffect from "react-typing-effect";
 import { AiOutlineMenu } from "react-icons/ai";
 
@@ -19,7 +20,7 @@ const Hero = () => {
   const bg = useColorModeValue("white", "gray.800");
 
   return (
-    <chakra.header>
+    <Flex position={"inherit"}>
       <Box
         w="full"
         h="container.sm"
@@ -51,26 +52,30 @@ const Hero = () => {
               }}
             />
             <Spacer />
-            <Button
-              rounded={"full"}
-              marginTop={5}
-              px={6}
-              colorScheme="white"
-              fontWeight="extrabold"
-              color="white"
-              bgGradient="linear(to-r, #ff8c37,#ec3750)"
-              _hover={{
-                bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-                bgClip: "text",
-                size: "lg",
-              }}
-            >
-              REGISTER
-            </Button>
+            <Link href="signup/">
+              <a>
+                <Button
+                  rounded={"full"}
+                  marginTop={5}
+                  px={6}
+                  colorScheme="white"
+                  fontWeight="extrabold"
+                  color="white"
+                  bgGradient="linear(to-r, #ff8c37,#ec3750)"
+                  _hover={{
+                    bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                    bgClip: "text",
+                    size: "lg",
+                  }}
+                >
+                  REGISTER
+                </Button>
+              </a>
+            </Link>
           </Stack>
         </Flex>
       </Box>
-    </chakra.header>
+    </Flex>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import {
   chakra,
   HStack,
-  Link,
+  Link as ChakraLink,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -17,8 +17,10 @@ import {
   useColorMode,
   SimpleGrid,
   Stack,
+  Container,
 } from "@chakra-ui/react";
 import Banner from "@hackclub/banner";
+import Link from "next/link";
 
 import {
   FormControl,
@@ -68,24 +70,30 @@ export default function Navbar(props) {
     const tcl = useColorModeValue("gray.900", "gray.50");
     const dcl = useColorModeValue("gray.500", "gray.50");
     return (
-      <Link
+      <ChakraLink
         m={-3}
         p={3}
         display="flex"
         alignItems="start"
         rounded="lg"
         _hover={{ bg: hbg }}
-      ></Link>
+      ></ChakraLink>
     );
   };
 
   const MobileNavContent = (
-    <div>
-      <Banner
-        year={2021}
-        style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}
-      />
+    <Box minW={"100%"}>
+      <Link href="/">
+        <a>
+          <Banner
+            year={2021}
+            href="/"
+            style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}
+          />
+        </a>
+      </Link>
       <VStack
+        minW="100%"
         pos="absolute"
         top={0}
         left={0}
@@ -106,29 +114,40 @@ export default function Navbar(props) {
           justifySelf="self-start"
           onClick={mobileNav.onClose}
         />
-        <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-          Home
-        </Button>
+        <Link href="/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+              Home
+            </Button>
+          </a>
+        </Link>
 
-        <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-          Members
-        </Button>
-        <Button w="full" variant="ghost" leftIcon={<FaSignInAlt />}>
-          Login
-        </Button>
+        <Link href="members/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+              Members
+            </Button>
+          </a>
+        </Link>
+        <Link href="login/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaSignInAlt />}>
+              Login
+            </Button>
+          </a>
+        </Link>
       </VStack>
-    </div>
+    </Box>
   );
   return (
-    <React.Fragment>
+    <Flex pos="static">
       <chakra.header
         ref={ref}
         shadow={y > height ? "sm" : undefined}
         transition="box-shadow 0.2s"
         bg={bg}
         w="full"
-        overflowY="hidden"
-        borderBottomWidth={2}
+        borderBottomWidth={mobileNav.isOpen ? 200 : 0}
         borderBottomColor={useColorModeValue("gray.200", "gray.900")}
       >
         <chakra.div h="4.5rem" mx="auto" maxW="1200px">
@@ -140,47 +159,57 @@ export default function Navbar(props) {
             justifyContent="space-between"
           >
             <Flex align="flex-start">
-              <Link href="/">
-                <HStack>
-                  <Logo />
-                </HStack>
-              </Link>
+              <HStack>
+                <Logo />
+              </HStack>
             </Flex>
             <Flex>
               <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Abous us
-                </Button>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Members
-                </Button>
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Events
-                </Button>
+                <Link href="/#about">
+                  <a>
+                    <Button
+                      bg={bg}
+                      color="gray.500"
+                      display="inline-flex"
+                      alignItems="center"
+                      fontSize="md"
+                      _hover={{ color: cl }}
+                      _focus={{ boxShadow: "none" }}
+                    >
+                      Abous us
+                    </Button>
+                  </a>
+                </Link>
+                <Link href="members/">
+                  <a>
+                    <Button
+                      bg={bg}
+                      color="gray.500"
+                      display="inline-flex"
+                      alignItems="center"
+                      fontSize="md"
+                      _hover={{ color: cl }}
+                      _focus={{ boxShadow: "none" }}
+                    >
+                      Members
+                    </Button>
+                  </a>
+                </Link>
+                <Link href="/#events">
+                  <a>
+                    <Button
+                      bg={bg}
+                      color="gray.500"
+                      display="inline-flex"
+                      alignItems="center"
+                      fontSize="md"
+                      _hover={{ color: cl }}
+                      _focus={{ boxShadow: "none" }}
+                    >
+                      Events
+                    </Button>
+                  </a>
+                </Link>
               </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
@@ -195,17 +224,21 @@ export default function Navbar(props) {
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
                 />
-                <Button
-                  bg={bg}
-                  color="gray.500"
-                  display="inline-flex"
-                  alignItems="center"
-                  fontSize="md"
-                  _hover={{ color: cl }}
-                  _focus={{ boxShadow: "none" }}
-                >
-                  Login
-                </Button>
+                <Link href="login/">
+                  <a>
+                    <Button
+                      bg={bg}
+                      color="gray.500"
+                      display="inline-flex"
+                      alignItems="center"
+                      fontSize="md"
+                      _hover={{ color: cl }}
+                      _focus={{ boxShadow: "none" }}
+                    >
+                      Login
+                    </Button>
+                  </a>
+                </Link>
                 <Register />
               </HStack>
               <IconButton
@@ -222,32 +255,34 @@ export default function Navbar(props) {
           {MobileNavContent}
         </chakra.div>
       </chakra.header>
-    </React.Fragment>
+    </Flex>
   );
 }
 
 // Join Waitlist Modal
 
 function Register() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button
-        onClick={onOpen}
-        rounded={"full"}
-        px={6}
-        colorScheme="white"
-        fontWeight="extrabold"
-        color="white"
-        bgGradient="linear(to-r, #ff8c37,#ec3750)"
-        _hover={{
-          bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-          bgClip: "text",
-          size: "lg",
-        }}
-      >
-        REGISTER
-      </Button>
+      <Link href="signup/">
+        <a>
+          <Button
+            rounded={"full"}
+            px={6}
+            colorScheme="white"
+            fontWeight="extrabold"
+            color="white"
+            bgGradient="linear(to-r, #ff8c37,#ec3750)"
+            _hover={{
+              bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+              bgClip: "text",
+              size: "lg",
+            }}
+          >
+            REGISTER
+          </Button>
+        </a>
+      </Link>
     </>
   );
 }

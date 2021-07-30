@@ -7,7 +7,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaDiscord, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { ReactNode } from "react";
 
 export default function Footer() {
@@ -28,9 +28,18 @@ export default function Footer() {
         >
           <Text>Made with ❤️ by Hack Club SKCET © 2021</Text>
           <Stack direction={"row"} spacing={6}>
-            <FaTwitter />
-            <FaYoutube />
-            <FaInstagram />
+            <a target="_blank" href="https:/instagram.com/hackclubskcet">
+              <FaInstagram />
+            </a>
+            <a
+              target="_blank"
+              href="https://www.youtube.com/channel/UCQSIUGbWfco4aTDNYTrNd7w"
+            >
+              <FaYoutube />
+            </a>
+            <a target="_blank" href="https://discord.gg/gREKADreg9">
+              <FaDiscord />
+            </a>
           </Stack>
         </Container>
       </Box>
