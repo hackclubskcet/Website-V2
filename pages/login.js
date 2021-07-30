@@ -1,14 +1,6 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Banner from "@hackclub/banner";
-import { ChakraProvider, VStack, Divider } from "@chakra-ui/react";
+import { ChakraProvider} from "@chakra-ui/react";
 import Navbar from "../components/Navbar/Navbar";
-import Hero from "../components/Hero/Hero";
 import Login from "../components/Login/Login.js";
-import About from "../components/About/About";
-import Sponsors from "../components/Sponsors/Sponsors";
-import Events from "../components/Events/Events";
 
 import {
   chakra,
