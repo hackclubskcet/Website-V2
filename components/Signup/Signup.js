@@ -13,68 +13,68 @@ import {
   InputLeftAddon,
   InputAddon,
   InputRightAddon,
+  Select,
 } from "@chakra-ui/react";
 
 import Router from "next/router";
-import {useLayoutEffect, useRef, useState} from "react";
-import {supabase} from "../../../hackclub-site/utils/supabaseClient";
-
+import { useLayoutEffect, useRef, useState } from "react";
+import { supabase } from "../../utils/supabaseClient";
 
 export default function Signup() {
-  const rollNoRef = useRef()
-  const nameRef = useRef()
-  const departmentRef = useRef()
-  const yearRef = useRef()
-  const interestsRef = useRef()
-  const passwordRef = useRef()
+  const rollNoRef = useRef();
+  const nameRef = useRef();
+  const departmentRef = useRef();
+  const yearRef = useRef();
+  const interestsRef = useRef();
+  const passwordRef = useRef();
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-  const [loggedIn, setLoggedIn] = useState(null)
+  const [loggedIn, setLoggedIn] = useState(null);
 
-  const [signUpFailure, setSignUpFailure] = useState(false)
+  const [signUpFailure, setSignUpFailure] = useState(false);
 
   function signUpFailed() {
-    setSignUpFailure(true)
-    setLoading(false)
+    setSignUpFailure(true);
+    setLoading(false);
   }
 
   useLayoutEffect(() => {
-    setLoggedIn(supabase.auth.user() !== null)
-    
+    setLoggedIn(supabase.auth.user() !== null);
+
     if (loggedIn === true && loading === false) {
-      Router.push('/dashboard')
+      Router.push("/dashboard");
     }
-  }, [loading, loggedIn])
+  }, [loading, loggedIn]);
 
   async function handleSignup(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!loggedIn) {
       try {
-        setSignUpFailure(false)
-        setLoading(true)
+        setSignUpFailure(false);
+        setLoading(true);
 
-        const {user, session, error} = await supabase.auth.signUp({
-          email: rollNoRef.current.value + '@skcet.ac.in',
-          password: passwordRef.current.value
-        })
+        const { user, session, error } = await supabase.auth.signUp({
+          email: rollNoRef.current.value + "@skcet.ac.in",
+          password: passwordRef.current.value,
+        });
 
         if (error) {
-          signUpFailed()
-          throw error
+          signUpFailed();
+          throw error;
         } else {
-          await registerUser(user)
+          await registerUser(user);
 
-          await updateProfile(user)
+          await updateProfile(user);
 
-          setLoggedIn(true)
+          setLoggedIn(true);
 
-          await Router.push('/dashboard')
+          await Router.push("/dashboard");
         }
       } catch (error) {
-        signUpFailed()
-        alert(error.message)
+        signUpFailed();
+        alert(error.message);
       }
     }
   }
@@ -84,21 +84,21 @@ export default function Signup() {
       try {
         const updates = {
           id: user.id,
-          email: rollNoRef.current.value + '@skcet.ac.in',
+          email: rollNoRef.current.value + "@skcet.ac.in",
           passcode: passwordRef.current.value,
-        }
+        };
 
-        let {error} = await supabase.from('users').upsert(updates, {
-          returning: 'minimal',
-        })
+        let { error } = await supabase.from("users").upsert(updates, {
+          returning: "minimal",
+        });
 
         if (error) {
-          signUpFailed()
-          throw error
+          signUpFailed();
+          throw error;
         }
       } catch (error) {
-        signUpFailed()
-        alert(error.message)
+        signUpFailed();
+        alert(error.message);
       }
     }
   }
@@ -112,25 +112,27 @@ export default function Signup() {
           department: departmentRef.current.value,
           year: yearRef.current.value,
           interests: interestsRef.current.value,
-          avatar_url: 'http://results.skcet.ac.in:615/assets/StudentImage/' + rollNoRef.current.value + '.jpg',
+          avatar_url:
+            "http://results.skcet.ac.in:615/assets/StudentImage/" +
+            rollNoRef.current.value +
+            ".jpg",
           updated_at: new Date(),
-        }
+        };
 
-        let {error} = await supabase.from('profiles').upsert(updates, {
-          returning: 'minimal',
-        })
+        let { error } = await supabase.from("profiles").upsert(updates, {
+          returning: "minimal",
+        });
 
         if (error) {
-          signUpFailed()
-          throw error
+          signUpFailed();
+          throw error;
         }
       } catch (error) {
-        signUpFailed()
-        alert(error.message)
+        signUpFailed();
+        alert(error.message);
       }
     }
   }
-
 
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
@@ -143,30 +145,72 @@ export default function Signup() {
           <FormControl id="name">
             <FormLabel>Full name</FormLabel>
             <InputGroup>
-              <Input placeholder="Your first and last name" type="text" ref={nameRef} required={true}  />
+              <Input
+                placeholder="Your first and last name"
+                type="text"
+                ref={nameRef}
+                required={true}
+              />
             </InputGroup>
           </FormControl>
           <FormControl id="email">
             <FormLabel>Register number</FormLabel>
             <InputGroup>
-              <Input placeholder="Example: 19EUCS001" type="text" ref={rollNoRef} required={true}  />
+              <Input
+                placeholder="Example: 19EUCS001"
+                type="text"
+                ref={rollNoRef}
+                required={true}
+              />
               <InputRightAddon children="@skcet.ac.in" />
             </InputGroup>
           </FormControl>
           <FormControl id="password">
             <FormLabel>Password</FormLabel>
-            <Input placeholder="Shhh! Keep it secret" type="password" ref={passwordRef} required={true} />
+            <Input
+              placeholder="Shhh! Keep it secret"
+              type="password"
+              ref={passwordRef}
+              required={true}
+            />
           </FormControl>
           <FormControl id="department">
             <FormLabel>Department</FormLabel>
             <InputGroup>
-              <Input placeholder="Your department" type="text" ref={departmentRef} required={true} />
+              <Select
+                type="text"
+                ref={departmentRef}
+                required={true}
+                placeholder="Select option"
+              >
+                <option value="cse">CSE</option>
+                <option value="it">IT</option>
+                <option value="aids">AI/DS</option>
+                <option value="mtech">MTech</option>
+                <option value="csbs">CSBS</option>
+                <option value="ece">ECE</option>
+                <option value="eee">EEE</option>
+                <option value="civil">Civil</option>
+                <option value="mech">Mech</option>
+                <option value="mct">MCT</option>
+              </Select>
             </InputGroup>
           </FormControl>
           <FormControl id="year">
-            <FormLabel>Year</FormLabel>
+            <FormLabel>Year of passing out</FormLabel>
             <InputGroup>
-              <Input type="number" placeholder="Year" min={2017} max={2021} ref={yearRef} required={true} />
+              <Select
+                type="text"
+                ref={departmentRef}
+                required={true}
+                placeholder="Year"
+                ref={yearRef}
+              >
+                <option value="2022">2018-22</option>
+                <option value="2023">2019-23</option>
+                <option value="2024">2020-24</option>
+                <option value="2025">2021-25</option>
+              </Select>
             </InputGroup>
           </FormControl>
           <FormControl id="interests">
@@ -181,21 +225,21 @@ export default function Signup() {
           </FormControl>
           <Stack spacing={6}>
             <Button
-                type={"submit"}
-                marginTop={15}
-                px={6}
-                colorScheme="white"
-                fontWeight="extrabold"
-                color="white"
-                bgGradient="linear(to-r, #ff8c37,#ec3750)"
-                _hover={{
-                  bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-                  bgClip: "text",
-                  size: "lg",
-                }}
-                onClick={handleSignup}
+              type={"submit"}
+              marginTop={15}
+              px={6}
+              colorScheme="white"
+              fontWeight="extrabold"
+              color="white"
+              bgGradient="linear(to-r, #ff8c37,#ec3750)"
+              _hover={{
+                bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                bgClip: "text",
+                size: "lg",
+              }}
+              onClick={handleSignup}
             >
-              {loading ? 'Registering' : 'REGISTER'}
+              {loading ? "Registering" : "REGISTER"}
             </Button>
           </Stack>
         </Stack>
