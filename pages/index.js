@@ -30,9 +30,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Spacer />
-      <About p={20} />
+      <a name="about" id="about">
+        <About p={20} />
+      </a>
       <Divider />
-      <Events />
+      <a name="events" id="events">
+        <Events />
+      </a>
       <Divider />
       <MembersMarquee />
       <Divider />
