@@ -103,7 +103,7 @@ export default function Signup(props) {
 
     // Department validation
     var department = departmentRef.current
-    var departments = ["cse", "it", "aids", "mtech", "csbs", "ece", "eee", "civil", "mech", "mct"]
+    var departments = ["cse", "it", "ai & ds", "mtech cse", "csbs", "ece", "eee", "civil", "mech", "mct"]
 
     if (department.value === '') {
       setError('department', "Please choose your department to sign up")
