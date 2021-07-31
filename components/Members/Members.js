@@ -147,7 +147,7 @@ const MembersSection = (props) => {
           textAlign="center"
         >
           {props.members.map((member, index) => (
-            <TeamCard name={member.name} year={member.year} key={index} department={member.department} avatar={member.avatar_url} />
+            <TeamCard name={member.name} year={member.year} key={index} department={member.department} avatar={member.avatar_url.toLowerCase()} />
           ))}
         </SimpleGrid>
       </Container>

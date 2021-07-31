@@ -189,7 +189,7 @@ export default function NavbarTwo(props) {
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
                 />
-                <Avatar name={props.name} src={props.avatar_url} alt={props.avatar_url} />
+                <Avatar name={props.name} src={props.avatar_url.toLowerCase()} alt={props.avatar_url} />
                 <Link href="signout/">
                   <a>Sign out</a>
                 </Link>
