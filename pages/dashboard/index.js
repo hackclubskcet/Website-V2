@@ -32,58 +32,40 @@ import { useLayoutEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 
 export default function Dashboard() {
-  const [loggedIn, setLoggedIn] = useState(null);
-  const [user, setUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(props.loggedIn)
+  const [user, setUser] = useState(null)
 
-  useLayoutEffect(() => {
-    setLoggedIn(supabase.auth.user() !== null);
-
+  useLayoutEffect (() => {
     if (loggedIn === false) {
-      Router.push("/login");
+      Router.push('/login')
     }
 
     async function fetchData() {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("name, department, year, avatar_url")
-        .eq("id", supabase.auth.user().id)
-        .limit(1);
+      const {data, error} = await supabase
+          .from('profiles')
+          .select('name, department, year, avatar_url')
+          .eq('id', supabase.auth.user().id)
+          .limit(1)
 
       if (error) {
-        throw error;
+        throw error
       } else {
-        setUser(data[0]);
+        setUser(data[0])
       }
     }
 
     if (loggedIn === true && user === null) {
-      fetchData();
+      fetchData()
     }
-  }, [loggedIn, user]);
 
-  async function handleSignOut() {
-    if (loggedIn) {
-      try {
-        const { error } = await supabase.auth.signOut();
-        if (error) {
-          throw error;
-        } else {
-          setLoggedIn(false);
-
-          await Router.push("/login");
-        }
-      } catch (error) {
-        alert(error.message);
-      }
-    }
-  }
+  }, [loggedIn, user])
 
   function getUserData(key) {
     if (user !== undefined && user !== null) {
-      return user[key];
+      return user[key]
     }
 
-    return "";
+    return ''
   }
 
   return (
@@ -98,12 +80,8 @@ export default function Dashboard() {
         />
       </Head>
       <ChakraProvider>
-        <NavbarTwo
-          name={getUserData("name")}
-          avatar_url={getUserData("avatar_url")}
-          handleSignOut={handleSignOut}
-        />
-        <DashboardMenu name={getUserData("name")} />
+        <NavbarTwo name={getUserData('name')} avatar_url={getUserData('avatar_url')} loggedIn={loggedIn}/>
+        <DashboardMenu name={getUserData('name')} />
       </ChakraProvider>
     </>
   );

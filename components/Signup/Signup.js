@@ -21,7 +21,7 @@ import Router from "next/router";
 import { useLayoutEffect, useRef, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 
-export default function Signup() {
+export default function Signup(props) {
   const rollNoRef = useRef();
   const nameRef = useRef();
   const departmentRef = useRef();
@@ -29,29 +29,33 @@ export default function Signup() {
   const interestsRef = useRef();
   const passwordRef = useRef();
 
-  let [rollNoError, setrollNoErrorState] = useState(false)
-  let [nameError, setnameErrorState] = useState(false)
-  let [departmentError, setdepartmentErrorState] = useState(false)
-  let [yearError, setyearErrorState] = useState(false)
-  let [interestsError, setinterestsErrorState] = useState(false)
-  let [passwordError, setpasswordErrorState] = useState(false)
+  let [rollNoError, setRollNoErrorState] = useState(false)
+  let [nameError, setNameErrorState] = useState(false)
+  let [departmentError, setDepartmentErrorState] = useState(false)
+  let [yearError, setYearErrorState] = useState(false)
+  let [interestsError, setInterestsErrorState] = useState(false)
+  let [passwordError, setPasswordErrorState] = useState(false)
+
+  const [loading, setLoading] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(props.loggedIn);
+  const [signUpFailure, setSignUpFailure] = useState(false);
 
   let function_map = {
-    'rollNo': setrollNoErrorState,
-    'name': setnameErrorState,
-    'department': setdepartmentErrorState,
-    'year': setyearErrorState,
-    'interests': setinterestsErrorState,
-    'password': setpasswordErrorState,
+    'rollNo': setRollNoErrorState,
+    'name': setNameErrorState,
+    'department': setDepartmentErrorState,
+    'year': setYearErrorState,
+    'interests': setInterestsErrorState,
+    'password': setPasswordErrorState,
   }
 
   let hasError = false;
 
-  const [loading, setLoading] = useState(false);
-
-  const [loggedIn, setLoggedIn] = useState(null);
-
-  const [signUpFailure, setSignUpFailure] = useState(false);
+  useLayoutEffect(() => {
+    if (loggedIn === true && loading === false) {
+      Router.push("/dashboard");
+    }
+  }, [loading, loggedIn]);
 
   function setError(key, value) {
     hasError = true;
@@ -60,12 +64,12 @@ export default function Signup() {
 
   function resetErrors() {
     hasError = false;
-    setrollNoErrorState(false);
-    setnameErrorState(false);
-    setdepartmentErrorState(false);
-    setyearErrorState(false);
-    setinterestsErrorState(false);
-    setpasswordErrorState(false);
+    setRollNoErrorState(false);
+    setNameErrorState(false);
+    setDepartmentErrorState(false);
+    setYearErrorState(false);
+    setInterestsErrorState(false);
+    setPasswordErrorState(false);
   }
 
   function hasAnyError() {
@@ -76,14 +80,6 @@ export default function Signup() {
     setSignUpFailure(true);
     setLoading(false);
   }
-
-  useLayoutEffect(() => {
-    setLoggedIn(supabase.auth.user() !== null);
-
-    if (loggedIn === true && loading === false) {
-      Router.push("/dashboard");
-    }
-  }, [loading, loggedIn]);
 
    function validate() {
     //Resetting previous errors
@@ -133,7 +129,7 @@ export default function Signup() {
     if (password.value === '') {
       setError('password', "Please enter a password to sign up")
     } else if (password.value.length < 8) {
-      setError('password', "Password must be atleast 8 characters long")
+      setError('password', "Password must be at least 8 characters long")
     }
 
     return
@@ -151,7 +147,6 @@ export default function Signup() {
 
         var hasError = hasAnyError();
 
-        console.log(hasError)
 
         if (hasError) {
           setLoading(false);
@@ -160,7 +155,7 @@ export default function Signup() {
           const {user, session, error} = await supabase.auth.signUp({
             email: rollNoRef.current.value + "@skcet.ac.in",
             password: passwordRef.current.value,
-          });
+          })
 
           if (error) {
             signUpFailed();
@@ -170,9 +165,14 @@ export default function Signup() {
 
             await updateProfile(user);
 
-            setLoggedIn(true);
+            await supabase.auth.signOut();
 
-            await Router.push("/dashboard");
+            await supabase.auth.signIn({
+              email: rollNoRef.current.value + "@skcet.ac.in",
+            })
+
+            alert("An Email has been sent to your email address. Please check your email");
+            setLoading(false)
           }
         }
       } catch (error) {
@@ -212,6 +212,7 @@ export default function Signup() {
         const updates = {
           id: user.id,
           name: nameRef.current.value,
+          email: rollNoRef.current.value + "@skcet.ac.in",
           department: departmentRef.current.value,
           year: yearRef.current.value,
           interests: interestsRef.current.value,
@@ -308,7 +309,6 @@ export default function Signup() {
             <InputGroup>
               <Select
                 type="text"
-                ref={departmentRef}
                 required={true}
                 placeholder="Year"
                 ref={yearRef}

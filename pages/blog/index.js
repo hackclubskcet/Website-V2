@@ -7,7 +7,7 @@ import Head from "next/head";
 import Navbar from "../../components/Navbar/Navbar";
 import { ChakraProvider } from "@chakra-ui/react";
 
-export default function Index({ allPosts }) {
+export default function Index({ allPosts, loggedIn }) {
   return (
     <>
       <Head>
@@ -19,16 +19,16 @@ export default function Index({ allPosts }) {
           key="title"
         />
       </Head>
-      <ChakraProvider>
-        <Navbar />
-        <Layout>
-          <Head>
-            <title>Hackclub blog | Main</title>
-          </Head>
-          <Container>
-            <Intro />
-            <MoreStories posts={allPosts} />
-          </Container>
+    <ChakraProvider>
+    <Navbar loggedIn={loggedIn}/>
+      <Layout>
+        <Head>
+          <title>Hackclub blog | Main</title>
+        </Head>
+        <Container>
+          <Intro />
+          <MoreStories posts={allPosts} />
+        </Container>
         </Layout>
       </ChakraProvider>
     </>

@@ -9,7 +9,6 @@ import Login from "../components/Login/Login.js";
 import About from "../components/About/About";
 import Sponsors from "../components/Sponsors/Sponsors";
 import Events from "../components/Events/Events";
-import Head from "next/head";
 
 import {
   chakra,
@@ -27,7 +26,7 @@ import Footer from "../components/Footer/Footer";
 import MembersMarquee from "../components/MembersMarquee/MembersMarquee";
 import Signup from "../components/Signup/Signup";
 
-export default function SignupScreen() {
+export default function SignupScreen(props) {
   return (
     <div>
       <Head>
@@ -39,11 +38,11 @@ export default function SignupScreen() {
           key="title"
         />
       </Head>
-      <ChakraProvider>
-        <Navbar />
-        <Signup />
-        <Footer p={20} />
-      </ChakraProvider>
+    <ChakraProvider>
+      <Navbar loggedIn={props.loggedIn}/>
+      <Signup loggedIn={props.loggedIn}/>
+      <Footer p={20} />
+    </ChakraProvider>
     </div>
   );
 }

@@ -45,7 +45,7 @@ import { useViewportScroll } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
-import { FaMoon, FaSignInAlt, FaSun, FaUserFriends } from "react-icons/fa";
+import {FaMoon, FaSignInAlt, FaSignOutAlt, FaSun, FaUserFriends, FaUserPlus} from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
 
 export default function Navbar(props) {
@@ -129,13 +129,22 @@ export default function Navbar(props) {
             </Button>
           </a>
         </Link>
-        <Link href="login/">
-          <a>
-            <Button w="full" variant="ghost" leftIcon={<FaSignInAlt />}>
-              Login
-            </Button>
-          </a>
-        </Link>
+        {props.loggedIn ?
+            <Link href="signout/">
+              <a>
+                <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
+                  SignOut
+                </Button>
+              </a>
+            </Link> :
+            <Link href="login/">
+              <a>
+                <Button w="full" variant="ghost" leftIcon={<FaSignInAlt/>}>
+                  Login
+                </Button>
+              </a>
+            </Link>
+        }
       </VStack>
     </Box>
   );
@@ -224,22 +233,34 @@ export default function Navbar(props) {
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
                 />
-                <Link href="login/">
-                  <a>
-                    <Button
-                      bg={bg}
-                      color="gray.500"
-                      display="inline-flex"
-                      alignItems="center"
-                      fontSize="md"
-                      _hover={{ color: cl }}
-                      _focus={{ boxShadow: "none" }}
-                    >
-                      Login
-                    </Button>
-                  </a>
-                </Link>
-                <Register />
+                {props.loggedIn ?
+                    <>
+                      <Link href="signout/">
+                        <a>Sign out</a>
+                      </Link>
+                      <Link href="dashboard/">
+                        <a>Dashboard</a>
+                      </Link>
+                    </> :
+                    <>
+                      <Link href="login/">
+                        <a>
+                          <Button
+                              bg={bg}
+                              color="gray.500"
+                              display="inline-flex"
+                              alignItems="center"
+                              fontSize="md"
+                              _hover={{color: cl}}
+                              _focus={{boxShadow: "none"}}
+                          >
+                            Login
+                          </Button>
+                        </a>
+                      </Link>
+                      <Register/>
+                    </>
+                }
               </HStack>
               <IconButton
                 display={{ base: "flex", md: "none" }}

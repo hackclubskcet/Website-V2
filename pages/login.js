@@ -18,7 +18,7 @@ import Footer from "../components/Footer/Footer";
 import MembersMarquee from "../components/MembersMarquee/MembersMarquee";
 import Head from "next/head";
 
-export default function LoginScreen() {
+export default function LoginScreen(props) {
   return (
     <div>
       <Head>
@@ -30,11 +30,11 @@ export default function LoginScreen() {
           key="title"
         />
       </Head>
-      <ChakraProvider>
-        <Navbar />
-        <Login />
-        <Footer p={20} />
-      </ChakraProvider>
+    <ChakraProvider>
+      <Navbar loggedIn={props.loggedIn} />
+      <Login loggedIn={props.loggedIn}/>
+      <Footer p={20} />
+    </ChakraProvider>
     </div>
   );
 }

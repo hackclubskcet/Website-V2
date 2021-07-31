@@ -9,7 +9,7 @@ import { Spacer } from "@chakra-ui/react";
 import Footer from "../components/Footer/Footer";
 import MembersMarquee from "../components/MembersMarquee/MembersMarquee";
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div>
       <Head>
@@ -21,23 +21,23 @@ export default function Home() {
           key="title"
         />
       </Head>
-      <ChakraProvider>
-        <Navbar />
-        <Hero />
-        <Spacer />
-        <a name="about" id="about">
-          <About p={20} />
-        </a>
-        <Divider />
-        <a name="events" id="events">
-          <Events />
-        </a>
-        <Divider />
-        <MembersMarquee />
-        <Divider />
-        <Sponsors />
-        <Footer p={20} />
-      </ChakraProvider>
+    <ChakraProvider>
+      <Navbar loggedIn={props.loggedIn} />
+      <Hero loggedIn={props.loggedIn}/>
+      <Spacer />
+      <a name="about" id="about">
+        <About p={20} />
+      </a>
+      <Divider />
+      <a name="events" id="events">
+        <Events />
+      </a>
+      <Divider />
+      <MembersMarquee />
+      <Divider />
+      <Sponsors />
+      <Footer p={20} />
+    </ChakraProvider>
     </div>
   );
 }

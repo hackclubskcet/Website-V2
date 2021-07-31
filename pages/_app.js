@@ -1,13 +1,19 @@
-import "../styles/globals.css";
-import "../styles/index.css";
+import '../styles/globals.css'
+import '../styles/index.css'
+import {supabase} from "../utils/supabaseClient";
 
 function MyApp({ Component, pageProps }) {
-  if (typeof window === "object") {
+  function passLoggedIn() {
+    return supabase.auth.user() !== null;
+  }
+
+ if (typeof window === "object") {
     document.addEventListener("contextmenu", (event) => {
       event.preventDefault();
     });
   }
-  return <Component {...pageProps} />;
+
+  return <Component {...pageProps } loggedIn={passLoggedIn()}/>
 }
 
 export default MyApp;

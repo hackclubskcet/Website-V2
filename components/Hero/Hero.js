@@ -13,7 +13,7 @@ import {
 import Link from "next/link";
 import ReactTypingEffect from "react-typing-effect";
 
-const Hero = () => {
+const Hero = (props) => {
   const bg = useColorModeValue("white", "gray.800");
 
   return (
@@ -49,26 +49,26 @@ const Hero = () => {
               }}
             />
             <Spacer />
-            <Link href="signup/">
+            {props.loggedIn ? '' : <Link href="signup/">
               <a>
                 <Button
-                  rounded={"full"}
-                  marginTop={5}
-                  px={6}
-                  colorScheme="white"
-                  fontWeight="extrabold"
-                  color="white"
-                  bgGradient="linear(to-r, #ff8c37,#ec3750)"
-                  _hover={{
-                    bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-                    bgClip: "text",
-                    size: "lg",
-                  }}
+                    rounded={"full"}
+                    marginTop={5}
+                    px={6}
+                    colorScheme="white"
+                    fontWeight="extrabold"
+                    color="white"
+                    bgGradient="linear(to-r, #ff8c37,#ec3750)"
+                    _hover={{
+                      bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                      bgClip: "text",
+                      size: "lg",
+                    }}
                 >
                   REGISTER
                 </Button>
               </a>
-            </Link>
+            </Link>}
           </Stack>
         </Flex>
       </Box>
