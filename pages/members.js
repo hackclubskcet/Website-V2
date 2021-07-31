@@ -41,6 +41,7 @@ export default function MembersScreen(props) {
           .from('profiles')
           .select('name, department, year, avatar_url')
           .eq('priority', priority)
+          .order('updated_at')
 
       if (error) {
         throw error
