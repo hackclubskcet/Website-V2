@@ -109,7 +109,11 @@ export default function DashboardComingSoon(props) {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <NavItem icon={MdHome}>Home</NavItem>
+        <Link href="/">
+          <a>
+          <NavItem icon={MdHome}>Home</NavItem>
+          </a>
+        </Link>
         <Link href="https://discord.gg/gREKADreg9">
           <a>
             <NavItem icon={FaDiscord}>Discord community</NavItem>
