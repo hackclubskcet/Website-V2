@@ -87,13 +87,24 @@ export default function Dashboard() {
   }
 
   return (
-    <ChakraProvider>
-      <NavbarTwo
-        name={getUserData("name")}
-        avatar_url={getUserData("avatar_url")}
-        handleSignOut={handleSignOut}
-      />
-      <DashboardMenu name={getUserData("name")} />
-    </ChakraProvider>
+    <>
+      <Head>
+        <title>Dashboard - Hack Club SKCET</title>
+        <meta
+          property="og:title"
+          title="Hack Club SKCET"
+          content="Hack Club SKCET is the student coding community of Sri Krishna College of Engieering and Technology, Coimbatore."
+          key="title"
+        />
+      </Head>
+      <ChakraProvider>
+        <NavbarTwo
+          name={getUserData("name")}
+          avatar_url={getUserData("avatar_url")}
+          handleSignOut={handleSignOut}
+        />
+        <DashboardMenu name={getUserData("name")} />
+      </ChakraProvider>
+    </>
   );
 }

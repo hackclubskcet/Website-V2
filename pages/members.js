@@ -28,10 +28,21 @@ import MembersSection from "../components/Members/Members";
 
 export default function MembersScreen() {
   return (
-    <ChakraProvider>
-      <Navbar />
-      <MembersSection />
-      <Footer p={20} />
-    </ChakraProvider>
+    <div>
+      <Head>
+        <title>Members - Hack Club SKCET</title>
+        <meta
+          property="og:title"
+          title="Hack Club SKCET"
+          content="Hack Club SKCET is the student coding community of Sri Krishna College of Engieering and Technology, Coimbatore."
+          key="title"
+        />
+      </Head>
+      <ChakraProvider>
+        <Navbar />
+        <MembersSection />
+        <Footer p={20} />
+      </ChakraProvider>
+    </div>
   );
 }

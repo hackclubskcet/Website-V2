@@ -9,6 +9,7 @@ import Login from "../components/Login/Login.js";
 import About from "../components/About/About";
 import Sponsors from "../components/Sponsors/Sponsors";
 import Events from "../components/Events/Events";
+import Head from "next/head";
 
 import {
   chakra,
@@ -28,10 +29,21 @@ import Signup from "../components/Signup/Signup";
 
 export default function SignupScreen() {
   return (
-    <ChakraProvider>
-      <Navbar />
-      <Signup />
-      <Footer p={20} />
-    </ChakraProvider>
+    <div>
+      <Head>
+        <title>Signup - Hack Club SKCET</title>
+        <meta
+          property="og:title"
+          title="Hack Club SKCET"
+          content="Hack Club SKCET is the student coding community of Sri Krishna College of Engieering and Technology, Coimbatore."
+          key="title"
+        />
+      </Head>
+      <ChakraProvider>
+        <Navbar />
+        <Signup />
+        <Footer p={20} />
+      </ChakraProvider>
+    </div>
   );
 }
