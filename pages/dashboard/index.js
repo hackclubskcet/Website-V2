@@ -31,7 +31,7 @@ import Router from "next/router";
 import { useLayoutEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const [loggedIn, setLoggedIn] = useState(props.loggedIn)
   const [user, setUser] = useState(null)
 
