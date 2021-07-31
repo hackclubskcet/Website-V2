@@ -292,8 +292,8 @@ export default function Signup(props) {
               >
                 <option value="cse">Computer Science and Engineering</option>
                 <option value="it">Information Technology</option>
-                <option value="aids">Artificial Intelligence and Data Science</option>
-                <option value="mtech">M.Tech. Computer Science and Engineering</option>
+                <option value="ai & ds">Artificial Intelligence and Data Science</option>
+                <option value="mtech cse">M.Tech. Computer Science and Engineering</option>
                 <option value="csbs">Computer Science and Business Systems</option>
                 <option value="ece">Electronics and Communication Engineering</option>
                 <option value="eee">Electrical and Electronics Engineering</option>
