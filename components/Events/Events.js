@@ -20,8 +20,10 @@ const Events = () => {
         <Heading paddingBottom={10} fontSize={"3xl"}>
           Upcoming Events
         </Heading>
-
-        <SimpleGrid columns={[1, null, 2]} spacing={70} textAlign="center">
+        <Heading color={"#ec3750"} paddingBottom={10} fontSize={"l"}>
+          Coming soon. Stay tuned...
+        </Heading>
+        {/* <SimpleGrid columns={[1, null, 2]} spacing={70} textAlign="center">
           <Image
             src="https://raw.githubusercontent.com/hackclubskcet/Club-Website/master/images/HackFromHomewater.png"
             alt="Segun Adebayo"
@@ -34,7 +36,7 @@ const Events = () => {
             src="https://raw.githubusercontent.com/hackclubskcet/Club-Website/master/images/HackFromHomewater.png"
             alt="Segun Adebayo"
           />
-        </SimpleGrid>
+        </SimpleGrid> */}
       </Container>
     </div>
   );

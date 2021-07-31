@@ -19,6 +19,7 @@ import {
 
 import { CheckIcon } from "@chakra-ui/icons";
 import Icon from "@hackclub/icons";
+import Link from "next/link";
 
 import Marquee from "react-fast-marquee";
 
@@ -146,21 +147,25 @@ export default function MembersMarquee() {
       </Marquee>
 
       <Center paddingTop={10}>
-        <Button
-          rounded={"full"}
-          px={6}
-          colorScheme="white"
-          fontWeight="extrabold"
-          color="white"
-          bgGradient="linear(to-r, #ff8c37,#ec3750)"
-          _hover={{
-            bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-            bgClip: "text",
-            size: "lg",
-          }}
-        >
-          VIEW ALL MEMBERS
-        </Button>
+        <Link href="members/">
+          <a>
+            <Button
+              rounded={"full"}
+              px={6}
+              colorScheme="white"
+              fontWeight="extrabold"
+              color="white"
+              bgGradient="linear(to-r, #ff8c37,#ec3750)"
+              _hover={{
+                bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                bgClip: "text",
+                size: "lg",
+              }}
+            >
+              VIEW ALL MEMBERS
+            </Button>
+          </a>
+        </Link>
       </Center>
     </Box>
   );
