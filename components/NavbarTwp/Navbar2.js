@@ -111,9 +111,13 @@ export default function NavbarTwo(props) {
         <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
           Dashboard
         </Button>
-        <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-          Discord community
-        </Button>
+        <Link href="https://discord.gg/gREKADreg9">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+              Discord community
+            </Button>
+          </a>
+        </Link>
         <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
           Members
         </Button>
@@ -163,8 +167,13 @@ export default function NavbarTwo(props) {
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
                 />
-                <Avatar name={props.name} src={props.avatar_url} alt={props.avatar_url} />
-                <button onClick={props.handleSignOut}>Sign out</button> {/*TODO: GURU BRUH TAKE CARE */}
+                <Avatar
+                  name={props.name}
+                  src={props.avatar_url}
+                  alt={props.avatar_url}
+                />
+                <button onClick={props.handleSignOut}>Sign out</button>{" "}
+                {/*TODO: GURU BRUH TAKE CARE */}
               </HStack>
               <IconButton
                 display={{ base: "flex", md: "none" }}
