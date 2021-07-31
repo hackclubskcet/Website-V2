@@ -217,7 +217,7 @@ export default function Signup(props) {
           year: yearRef.current.value,
           interests: interestsRef.current.value,
           avatar_url:
-            "http://results.skcet.ac.in:615/assets/StudentImage/" +
+            "https://samwyc.codes/images/" +
             rollNoRef.current.value +
             ".jpg",
           updated_at: new Date(),
