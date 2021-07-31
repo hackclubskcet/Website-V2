@@ -8,8 +8,35 @@ import Head from "next/head";
 import { Spacer } from "@chakra-ui/react";
 import Footer from "../components/Footer/Footer";
 import MembersMarquee from "../components/MembersMarquee/MembersMarquee";
+import {useLayoutEffect, useState} from "react";
+import {supabase} from "../utils/supabaseClient";
 
 export default function Home(props) {
+  const [dataFetched, setDataFetched] = useState(false)
+  const [members, setMembers] = useState(null)
+
+  useLayoutEffect (() => {
+    async function fetchData() {
+      const {data, error} = await supabase
+          .from('profiles')
+          .select('name, avatar_url')
+          .order('priority', { ascending: false })
+
+      if (error) {
+        throw error
+      } else {
+          setMembers(data)
+        }
+    }
+
+    if (!dataFetched) {
+      setDataFetched(true)
+      fetchData()
+    }
+
+  }, [dataFetched])
+
+
   return (
     <div>
       <Head>
@@ -33,7 +60,7 @@ export default function Home(props) {
         <Events />
       </a>
       <Divider />
-      <MembersMarquee />
+      {dataFetched === true && members !== null ? <MembersMarquee members={members} /> : ''}
       <Divider />
       <Sponsors />
       <Footer p={20} />

@@ -22,8 +22,9 @@ import Icon from "@hackclub/icons";
 import Link from "next/link";
 
 import Marquee from "react-fast-marquee";
+import React from "react";
 
-export default function MembersMarquee() {
+export default function MembersMarquee(props) {
   return (
     <Box marginTop={10} marginBottom={10} p={4}>
       <Stack
@@ -38,111 +39,15 @@ export default function MembersMarquee() {
 
       <Marquee gradientColor={useColorModeValue([255, 255, 255], [26, 32, 44])}>
         <Wrap height="100">
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Dan Abrahmov"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS001.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Kola Tioluwani"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/18EUCS003.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Kent Dodds"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/18EUCS071.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Ryan Florence"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/18EUCS002.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Prosper Otemuyiwa"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS117.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS071.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS072.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS073.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS074.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS075.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS076.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS077.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS078.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS071.jpg"
-            />
-          </WrapItem>
-          <WrapItem>
-            <Avatar
-              size="xl"
-              name="Christian Nwamba"
-              src="http://results.skcet.ac.in:614/assets/StudentImage/19EUCS071.jpg"
-            />
-          </WrapItem>
+          {props.members.map((member, index) => (
+              <WrapItem key={index}>
+                <Avatar
+                    size="xl"
+                    name={member.name}
+                    src={member.avatar_url}
+                />
+              </WrapItem>
+          ))}
         </Wrap>
       </Marquee>
 
