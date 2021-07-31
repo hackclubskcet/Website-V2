@@ -218,7 +218,7 @@ export default function Signup(props) {
           interests: interestsRef.current.value,
           avatar_url:
             "https://samwyc.codes/images/" +
-            rollNoRef.current.value +
+            rollNoRef.current.value.toLowerCase() +
             ".jpg",
           updated_at: new Date(),
         };
