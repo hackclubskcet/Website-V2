@@ -122,9 +122,9 @@ export default function DashboardComingSoon(props) {
             </NavItem>
           </a>
         </Link>
-        <Link href="/dashboard/comingsoon/">
+        <Link href="/dashboard/giveaways/">
           <a>
-            <NavItem color="" icon={AiFillGift}>
+            <NavItem fontSize="sm" icon={AiFillGift}>
               Giveaways
             </NavItem>
           </a>

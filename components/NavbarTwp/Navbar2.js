@@ -44,7 +44,12 @@ import {
 import { useViewportScroll } from "framer-motion";
 
 import { IoIosArrowDown } from "react-icons/io";
-import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiOutlineInbox,
+  AiOutlineMenu,
+  AiFillGift,
+} from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { FaMoon, FaSignOutAlt, FaSun, FaUserFriends } from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
@@ -108,9 +113,13 @@ export default function NavbarTwo(props) {
           justifySelf="self-start"
           onClick={mobileNav.onClose}
         />
-        <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-          Dashboard
-        </Button>
+        <Link href="/dashboard">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+              Dashboard
+            </Button>
+          </a>
+        </Link>
         <Link href="https://discord.gg/gREKADreg9">
           <a>
             <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
@@ -118,9 +127,22 @@ export default function NavbarTwo(props) {
             </Button>
           </a>
         </Link>
-        <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-          Members
-        </Button>
+        <Link href="/members">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+              Members
+            </Button>
+          </a>
+        </Link>
+
+        <Link href="dashboard/giveaways/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<AiFillGift />}>
+              Giveaways
+            </Button>
+          </a>
+        </Link>
+
         <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt />}>
           Sign Out
         </Button>
