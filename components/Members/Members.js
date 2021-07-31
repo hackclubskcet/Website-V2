@@ -122,7 +122,7 @@ const MembersSection = (props) => {
           textAlign="center"
         >
           {props.teamMembers.map((member, index) => (
-              <TeamCard name={member.name} year={member.year} department={member.department} avatar={member.avatar_url} />
+              <TeamCard name={member.name} key={index} year={member.year} department={member.department} avatar={member.avatar_url} />
           ))}
         </SimpleGrid>
 
@@ -146,8 +146,8 @@ const MembersSection = (props) => {
           spacing={{ base: "10", md: "40", lg: "70" }}
           textAlign="center"
         >
-          {props.members.map((member) => (
-            <TeamCard name={member.name} year={member.year} department={member.department} avatar={member.avatar_url} />
+          {props.members.map((member, index) => (
+            <TeamCard name={member.name} year={member.year} key={index} department={member.department} avatar={member.avatar_url} />
           ))}
         </SimpleGrid>
       </Container>
