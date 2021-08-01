@@ -2,7 +2,6 @@ import React from "react";
 import {
   chakra,
   HStack,
-  Link,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -53,6 +52,7 @@ import {
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { FaMoon, FaSignOutAlt, FaSun, FaUserFriends } from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
+import Link from "next/link";
 
 export default function NavbarTwo(props) {
   const { toggleColorMode: toggleMode } = useColorMode();
@@ -143,9 +143,13 @@ export default function NavbarTwo(props) {
           </a>
         </Link>
 
-        <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt />}>
-          Sign Out
-        </Button>
+        <Link href="dashboard/signout/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
+              Sign Out
+            </Button>
+          </a>
+        </Link>
       </VStack>
     </div>
   );
