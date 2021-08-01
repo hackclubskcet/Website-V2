@@ -2,7 +2,6 @@ import {supabase} from "../utils/supabaseClient";
 import Router from "next/router";
 import {useEffect, useState} from "react";
 import Navbar from "../components/Navbar/Navbar";
-import Signup from "../components/Signup/Signup";
 import Footer from "../components/Footer/Footer";
 import {ChakraProvider} from "@chakra-ui/react";
 
@@ -18,7 +17,7 @@ export default function Signout(props) {
                     setLoading(false)
                     throw error
                 } else {
-                    await Router.push('/login')
+                    await Router.push('/')
                 }
             } catch (error) {
                 alert(error.message)
