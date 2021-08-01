@@ -14,7 +14,7 @@ import {
   Text,
   Avatar,
   AvatarBadge,
-  AvatarGroup,
+  AvatarGroup, useMediaQuery,
 } from "@chakra-ui/react";
 
 const TeamCard = (props) => {
@@ -27,14 +27,14 @@ const TeamCard = (props) => {
         shadow="lg"
         rounded="lg"
         overflow="hidden"
-        mx="auto"
+        mx="center"
       >
         <Avatar
           borderRadius={0}
           w="full"
           h={{ base: "110px", md: "s", lg: "240px" }}
           fit="fill"
-          src={props.avatar}
+          src={props.avatar.toLowerCase()}
           alt="avatar"
         />
 
@@ -59,12 +59,12 @@ const TeamCard = (props) => {
   );
 };
 
-const MemberCard = () => {
+const MemberCard = (props) => {
   return (
     <Center>
       <Box
         w={{ base: "60", md: "s", lg: "s" }}
-        height={{ base: "120", md: "s", lg: "210" }}
+        height={{ base: "150", md: "s", lg: "290" }}
         bg={useColorModeValue("gray.800", "white")}
         shadow="lg"
         rounded="lg"
@@ -73,26 +73,28 @@ const MemberCard = () => {
       >
         <Image
           w="full"
-          h={{ base: "ss", md: "s", lg: "36" }}
+          h={{ base: "110px", md: "s", lg: "210px" }}
           fit="cover"
-          src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          src={props.avatar.toLowerCase()}
           alt="avatar"
         />
 
-        <Box padding={3} py={2} textAlign="center">
+        <Box padding={0} textAlign="center">
           <Link
-            display="block"
-            fontSize={{ base: "9px", md: "12px", lg: "16px" }}
-            color={useColorModeValue("white", "gray.800")}
-            fontWeight="bold"
+              display="block"
+              fontSize={{ base: "9px", md: "12px", lg: "16px" }}
+              color={useColorModeValue("white", "gray.800")}
+              fontWeight="bold"
+              whiteSpace="nowrap"
+              overflow="hidden"
           >
-            Guru Wycliffe
+            {props.name}
           </Link>
           <chakra.span
             fontSize={{ base: "9px", md: "12px", lg: "16px" }}
             color={useColorModeValue("white", "gray.800")}
           >
-            CSE 2023
+            {props.department.toUpperCase()}{props.isNotMobile ? <br/> : ' '}{props.year}
           </chakra.span>
         </Box>
       </Box>
@@ -101,6 +103,8 @@ const MemberCard = () => {
 };
 
 const MembersSection = (props) => {
+  const [isNotMobile] = useMediaQuery("(min-width: 768px)")
+
   return (
     <div>
       <Container paddingBottom={20} maxW={"95%"} mt={10} textAlign="center">
@@ -116,8 +120,7 @@ const MembersSection = (props) => {
 
         <SimpleGrid
           paddingBottom="10"
-          minChildWidth="70px"
-          columns={[3, null, 6]}
+          columns={[3, null, 5]}
           spacing={{ base: "10", md: "40", lg: "70" }}
           textAlign="center"
         >
@@ -141,14 +144,16 @@ const MembersSection = (props) => {
 
         <SimpleGrid
           paddingBottom="10"
-          minChildWidth="70px"
-          columns={[3, null, 6]}
+          columns={[3, null, 8]}
           spacing={{ base: "10", md: "40", lg: "70" }}
           textAlign="center"
         >
           {props.members.map((member, index) => (
-            <TeamCard name={member.name} year={member.year} key={index} department={member.department} avatar={member.avatar_url.toLowerCase()} />
-          ))}
+              <>
+                <MemberCard name={member.name} year={member.year} key={index} department={member.department}
+                            avatar={member.avatar_url.toLowerCase()} isNotMobile={isNotMobile}/>
+              </> )
+          )}
         </SimpleGrid>
       </Container>
     </div>
