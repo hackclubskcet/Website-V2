@@ -10,6 +10,7 @@ import Footer from "../components/Footer/Footer";
 import MembersMarquee from "../components/MembersMarquee/MembersMarquee";
 import {useLayoutEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
+import Router from "next/router";
 
 export default function Home(props) {
   const [dataFetched, setDataFetched] = useState(false)
@@ -35,6 +36,12 @@ export default function Home(props) {
     }
 
   }, [dataFetched])
+
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN') {
+      Router.push('/dashboard')
+    }
+  })
 
 
   return (
