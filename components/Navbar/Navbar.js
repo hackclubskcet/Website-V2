@@ -122,6 +122,15 @@ export default function Navbar(props) {
           </a>
         </Link>
 
+        {props.loggedIn ?
+            <Link href="/dashboard">
+              <a>
+                <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+                  Dashboard
+                </Button>
+              </a>
+            </Link> : ''}
+
         <Link href="members/">
           <a>
             <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
@@ -137,13 +146,22 @@ export default function Navbar(props) {
                 </Button>
               </a>
             </Link> :
-            <Link href="login/">
-              <a>
-                <Button w="full" variant="ghost" leftIcon={<FaSignInAlt/>}>
-                  Login
-                </Button>
-              </a>
-            </Link>
+            <>
+              <Link href="login/">
+                <a>
+                  <Button w="full" variant="ghost" leftIcon={<FaSignInAlt/>}>
+                    Login
+                  </Button>
+                </a>
+              </Link>
+              <Link href="register/">
+                <a>
+                  <Button w="full" variant="ghost" leftIcon={<FaUserPlus/>}>
+                    Register
+                  </Button>
+                </a>
+              </Link>
+           </>
         }
       </VStack>
     </Box>
@@ -158,6 +176,7 @@ export default function Navbar(props) {
         w="full"
         borderBottomWidth={mobileNav.isOpen ? 200 : 0}
         borderBottomColor={useColorModeValue("gray.200", "gray.900")}
+        minH={mobileNav.isOpen ? "320px" : 0}
       >
         <chakra.div h="4.5rem" mx="auto" maxW="1200px">
           <Flex
@@ -262,15 +281,27 @@ export default function Navbar(props) {
                     </>
                 }
               </HStack>
-              <IconButton
-                display={{ base: "flex", md: "none" }}
-                aria-label="Open menu"
-                fontSize="20px"
-                color={useColorModeValue("gray.800", "inherit")}
-                variant="ghost"
-                icon={<AiOutlineMenu />}
-                onClick={mobileNav.onOpen}
-              />
+              <HStack spacing="5" display={{ base: "flex", md: "none" }} justifyContent={"center"}>
+                <IconButton
+                    size="md"
+                    fontSize="lg"
+                    aria-label={`Switch to ${text} mode`}
+                    variant="ghost"
+                    color="current"
+                    ml={{base: "0", md: "3"}}
+                    onClick={toggleMode}
+                    icon={<SwitchIcon/>}
+                />
+                <IconButton
+                    display={{base: "flex", md: "none"}}
+                    aria-label="Open menu"
+                    fontSize="20px"
+                    color={useColorModeValue("gray.800", "inherit")}
+                    variant="ghost"
+                    icon={<AiOutlineMenu/>}
+                    onClick={mobileNav.onOpen}
+                />
+              </HStack>
             </Flex>
           </Flex>
           {MobileNavContent}
