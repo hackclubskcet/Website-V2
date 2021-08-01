@@ -88,71 +88,80 @@ export default function NavbarTwo(props) {
   };
 
   const MobileNavContent = (
-    <div>
-      <Banner
-        year={2021}
-        style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}
-      />
-      <VStack
-        pos="absolute"
-        top={0}
-        left={0}
-        right={0}
-        display={mobileNav.isOpen ? "flex" : "none"}
-        flexDirection="column"
-        p={2}
-        pb={4}
-        m={2}
-        bg={bg}
-        spacing={3}
-        rounded="sm"
-        shadow="sm"
-      >
-        <CloseButton
-          aria-label="Close menu"
-          justifySelf="self-start"
-          onClick={mobileNav.onClose}
-        />
-        <Link href="/dashboard">
+      <Box minW={"100%"}>
+        <Link href="/">
           <a>
-            <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-              Dashboard
-            </Button>
+            <Banner
+                year={2021}
+                href="/"
+                style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}
+            />
           </a>
         </Link>
-        <Link href="https://discord.gg/gREKADreg9">
-          <a>
-            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-              Discord community
-            </Button>
-          </a>
-        </Link>
-        <Link href="/members">
-          <a>
-            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-              Members
-            </Button>
-          </a>
-        </Link>
+        <VStack
+            minW="100%"
+            pos="absolute"
+            top={0}
+            left={0}
+            right={0}
+            display={mobileNav.isOpen ? "flex" : "none"}
+            flexDirection="column"
+            p={2}
+            pb={4}
+            bg={bg}
+            marginY={2}
+            spacing={3}
+            rounded="sm"
+            shadow="sm"
+        >
+          <CloseButton
+              aria-label="Close menu"
+              justifySelf="self-start"
+              onClick={mobileNav.onClose}
+          />
+          <Link href="/">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+                Home
+              </Button>
+            </a>
+          </Link>
 
-        <Link href="dashboard/giveaways/">
-          <a>
-            <Button w="full" variant="ghost" leftIcon={<AiFillGift />}>
-              Giveaways
-            </Button>
-          </a>
-        </Link>
+          <Link href="/dashboard">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+                Dashboard
+              </Button>
+            </a>
+          </Link>
 
-        <Link href="dashboard/signout/">
-          <a>
-            <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
-              Sign Out
-            </Button>
-          </a>
-        </Link>
-      </VStack>
-    </div>
+          <Link href="https://discord.gg/gREKADreg9">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+                Discord community
+              </Button>
+            </a>
+          </Link>
+
+          <Link href="dashboard/giveaways/">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<AiFillGift />}>
+                Giveaways
+              </Button>
+            </a>
+          </Link>
+
+          <Link href="dashboard/signout/">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
+                Sign Out
+              </Button>
+            </a>
+          </Link>
+        </VStack>
+      </Box>
   );
+
   return (
     <React.Fragment>
       <chakra.header
@@ -174,7 +183,7 @@ export default function NavbarTwo(props) {
             justifyContent="space-between"
           >
             <Flex align="flex-start">
-              <Link href="/">
+              <Link href="/" passHref={true}>
                 <HStack>
                   <Logo />
                 </HStack>
