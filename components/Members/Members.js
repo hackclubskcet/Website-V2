@@ -38,7 +38,7 @@ const TeamCard = (props) => {
           alt="avatar"
         />
 
-        <Box padding={0} textAlign="center">
+        <Box padding={1} textAlign="center">
           <Link
             display="block"
             fontSize={{ base: "9px", md: "12px", lg: "16px" }}
@@ -79,7 +79,7 @@ const MemberCard = (props) => {
           alt="avatar"
         />
 
-        <Box padding={0} textAlign="center">
+        <Box padding={1} paddingX={1} textAlign="center">
           <Link
               display="block"
               fontSize={{ base: "9px", md: "12px", lg: "16px" }}
