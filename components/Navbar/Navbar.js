@@ -192,7 +192,7 @@ export default function Navbar(props) {
         borderBottomColor={useColorModeValue("gray.200", "gray.900")}
         minH={mobileNav.isOpen ? "325px" : 0}
       >
-        <chakra.div h="4.5rem" mx="auto" maxW="1200px">
+        <chakra.div h="4.5rem" mx="auto" maxW="1400px">
           <Flex
             w="full"
             h="full"
@@ -214,7 +214,7 @@ export default function Navbar(props) {
                       color="gray.500"
                       display="inline-flex"
                       alignItems="center"
-                      fontSize="md"
+                      fontSize="lg"
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
@@ -229,7 +229,7 @@ export default function Navbar(props) {
                       color="gray.500"
                       display="inline-flex"
                       alignItems="center"
-                      fontSize="md"
+                      fontSize="lg"
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
@@ -244,7 +244,7 @@ export default function Navbar(props) {
                       color="gray.500"
                       display="inline-flex"
                       alignItems="center"
-                      fontSize="md"
+                      fontSize="lg"
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
@@ -255,39 +255,76 @@ export default function Navbar(props) {
               </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
-              <HStack spacing="5" display={{ base: "none", md: "flex" }}>
+              <HStack spacing="5" display={{ base: "none", md: "flex" }} justifyContent={"flex-end"}>
                 <IconButton
                   size="md"
-                  fontSize="lg"
+                  fontSize="25"
                   aria-label={`Switch to ${text} mode`}
                   variant="ghost"
                   color="current"
                   ml={{ base: "0", md: "3" }}
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
+                  marginRight={"5px"}
                 />
                 {props.loggedIn ?
                     <>
-                      <Link href="signout/">
-                        <a>Sign out</a>
-                      </Link>
                       <Link href="dashboard/">
-                        <a>Dashboard</a>
+                        <a>
+                          <Button
+                              rounded={"full"}
+                              px={6}
+                              colorScheme="white"
+                              fontWeight="extrabold"
+                              color="white"
+                              bgGradient="linear(to-r, #ff8c37,#ec3750)"
+                              _hover={{
+                                bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                                bgClip: "text",
+                                size: "lg",
+                              }}
+                          >
+                            DASHBOARD
+                          </Button>
+                        </a>
+                      </Link>
+                      <Link href="signout/">
+                        <a>
+                          <Button
+                              rounded={"full"}
+                              px={6}
+                              colorScheme="white"
+                              fontWeight="extrabold"
+                              color="white"
+                              bgGradient="linear(to-r, #ec3750,#ec3750)"
+                              _hover={{
+                                bgGradient: "linear(to-r, #ec3750,#ec3750)",
+                                bgClip: "text",
+                                size: "lg",
+                              }}
+                          >
+                            SIGNOUT
+                          </Button>
+                        </a>
                       </Link>
                     </> :
                     <>
                       <Link href="login/">
                         <a>
                           <Button
-                              bg={bg}
-                              color="gray.500"
-                              display="inline-flex"
-                              alignItems="center"
-                              fontSize="md"
-                              _hover={{color: cl}}
-                              _focus={{boxShadow: "none"}}
+                              rounded={"full"}
+                              px={6}
+                              colorScheme="white"
+                              fontWeight="extrabold"
+                              color="white"
+                              bgGradient="linear(to-r, #ff8c37,#ec3750)"
+                              _hover={{
+                                bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                                bgClip: "text",
+                                size: "lg",
+                              }}
                           >
-                            Login
+                            LOGIN
                           </Button>
                         </a>
                       </Link>
