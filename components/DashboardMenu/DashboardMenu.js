@@ -36,6 +36,7 @@ import Footer from "../Footer/Footer";
 import DashboardHome from "./DashboardComingSoon";
 
 import Link from "next/link";
+import Banner from "@hackclub/banner";
 
 export default function DashboardMenu(props) {
   const sidebar = useDisclosure();
@@ -94,14 +95,15 @@ export default function DashboardMenu(props) {
     >
       <Flex px="4" py="5" align="center">
         <Logo />
-        <Text
-          fontSize="2xl"
-          ml="2"
-          color={useColorModeValue("white", "white")}
-          fontWeight="semibold"
-        >
-          SKCET
-        </Text>
+        <Link href="/">
+          <a>
+            <Banner
+                year={2021}
+                href="/"
+                style={{width: "170px"} }
+            />
+          </a>
+        </Link>
       </Flex>
       <Flex
         direction="column"
