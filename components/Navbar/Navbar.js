@@ -42,10 +42,18 @@ import {
 
 import { useViewportScroll } from "framer-motion";
 
-import { IoIosArrowDown } from "react-icons/io";
 import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
-import {FaMoon, FaSignInAlt, FaSignOutAlt, FaSun, FaUserFriends, FaUserPlus} from "react-icons/fa";
+import {
+  FaInfoCircle,
+  FaMoon,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaSun,
+  FaTable,
+  FaUserFriends,
+  FaUserPlus
+} from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
 
 export default function Navbar(props) {
@@ -82,89 +90,96 @@ export default function Navbar(props) {
   };
 
   const MobileNavContent = (
-    <Box minW={"100%"}>
-      <Link href="/">
-        <a>
-          <Banner
-            year={2021}
-            href="/"
-            style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}
-          />
-        </a>
-      </Link>
-      <VStack
-        minW="100%"
-        pos="absolute"
-        top={0}
-        left={0}
-        right={0}
-        display={mobileNav.isOpen ? "flex" : "none"}
-        flexDirection="column"
-        p={2}
-        pb={4}
-        m={2}
-        bg={bg}
-        spacing={3}
-        rounded="sm"
-        shadow="sm"
-      >
-        <CloseButton
-          p={10}
-          aria-label="Close menu"
-          justifySelf="self-start"
-          onClick={mobileNav.onClose}
-        />
+      <Box minW={"100%"}>
         <Link href="/">
           <a>
-            <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-              Home
-            </Button>
+            <Banner
+                year={2021}
+                href="/"
+                style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}
+            />
           </a>
         </Link>
+        <VStack
+            minW="100%"
+            pos="absolute"
+            top={0}
+            left={0}
+            right={0}
+            display={mobileNav.isOpen ? "flex" : "none"}
+            flexDirection="column"
+            p={2}
+            pb={4}
+            bg={bg}
+            marginY={2}
+            spacing={3}
+            rounded="sm"
+            shadow="sm"
+        >
+          <CloseButton
+              aria-label="Close menu"
+              justifySelf="self-start"
+              onClick={mobileNav.onClose}
+          />
+          <Link href="/">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+                Home
+              </Button>
+            </a>
+          </Link>
 
-        {props.loggedIn ?
-            <Link href="/dashboard">
-              <a>
-                <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-                  Dashboard
-                </Button>
-              </a>
-            </Link> : ''}
-
-        <Link href="members/">
-          <a>
-            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-              Members
-            </Button>
-          </a>
-        </Link>
-        {props.loggedIn ?
-            <Link href="signout/">
-              <a>
-                <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
-                  SignOut
-                </Button>
-              </a>
-            </Link> :
-            <>
-              <Link href="login/">
+          {props.loggedIn ?
+              <Link href="/dashboard">
                 <a>
-                  <Button w="full" variant="ghost" leftIcon={<FaSignInAlt/>}>
-                    Login
+                  <Button w="full" variant="ghost" leftIcon={<FaTable />}>
+                    Dashboard
                   </Button>
                 </a>
-              </Link>
-              <Link href="register/">
+              </Link> : ''}
+
+          <Link href="/#about">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<FaInfoCircle />}>
+                About us
+              </Button>
+            </a>
+          </Link>
+
+          <Link href="members/">
+            <a>
+              <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+                Members
+              </Button>
+            </a>
+          </Link>
+          {props.loggedIn ?
+              <Link href="signout/">
                 <a>
-                  <Button w="full" variant="ghost" leftIcon={<FaUserPlus/>}>
-                    Register
+                  <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
+                    SignOut
                   </Button>
                 </a>
-              </Link>
-           </>
-        }
-      </VStack>
-    </Box>
+              </Link> :
+              <>
+                <Link href="login/">
+                  <a>
+                    <Button w="full" variant="ghost" leftIcon={<FaSignInAlt/>}>
+                      Login
+                    </Button>
+                  </a>
+                </Link>
+                <Link href="register/">
+                  <a>
+                    <Button w="full" variant="ghost" leftIcon={<FaUserPlus/>}>
+                      Register
+                    </Button>
+                  </a>
+                </Link>
+              </>
+          }
+        </VStack>
+      </Box>
   );
   return (
     <Flex pos="static">
@@ -176,7 +191,7 @@ export default function Navbar(props) {
         w="full"
         borderBottomWidth={mobileNav.isOpen ? 200 : 0}
         borderBottomColor={useColorModeValue("gray.200", "gray.900")}
-        minH={mobileNav.isOpen ? "320px" : 0}
+        minH={mobileNav.isOpen ? "325px" : 0}
       >
         <chakra.div h="4.5rem" mx="auto" maxW="1200px">
           <Flex
@@ -204,7 +219,7 @@ export default function Navbar(props) {
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
-                      Abous us
+                      About us
                     </Button>
                   </a>
                 </Link>
