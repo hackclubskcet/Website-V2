@@ -50,7 +50,7 @@ import {
   AiFillGift,
 } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
-import { FaMoon, FaSignOutAlt, FaSun, FaUserFriends } from "react-icons/fa";
+import {FaMoon, FaSignOutAlt, FaSun, FaTable, FaUserFriends} from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
 import Link from "next/link";
 
@@ -77,13 +77,13 @@ export default function NavbarTwo(props) {
     const dcl = useColorModeValue("gray.500", "gray.50");
     return (
       <Link
-        m={-3}
-        p={3}
-        display="flex"
-        alignItems="start"
-        rounded="lg"
-        _hover={{ bg: hbg }}
-      ></Link>
+    m={-3}
+    p={3}
+    display="flex"
+    alignItems="start"
+    rounded="lg"
+    _hover={{bg: hbg}}
+    />
     );
   };
 
@@ -129,7 +129,7 @@ export default function NavbarTwo(props) {
 
           <Link href="/dashboard">
             <a>
-              <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+              <Button w="full" variant="ghost" leftIcon={<FaTable />}>
                 Dashboard
               </Button>
             </a>
@@ -207,15 +207,28 @@ export default function NavbarTwo(props) {
                   <a>Sign out</a>
                 </Link>
               </HStack>
-              <IconButton
-                display={{ base: "flex", md: "none" }}
-                aria-label="Open menu"
-                fontSize="20px"
-                color={useColorModeValue("gray.800", "inherit")}
-                variant="ghost"
-                icon={<AiOutlineMenu />}
-                onClick={mobileNav.onOpen}
-              />
+              <HStack spacing="5" display={{ base: "flex", md: "none" }} justifyContent={"center"}>
+                <IconButton
+                    size="md"
+                    fontSize="lg"
+                    aria-label={`Switch to ${text} mode`}
+                    variant="ghost"
+                    color="current"
+                    ml={{base: "0", md: "3"}}
+                    onClick={toggleMode}
+                    icon={<SwitchIcon/>}
+                />
+
+                <IconButton
+                    display={{ base: "flex", md: "none" }}
+                    aria-label="Open menu"
+                    fontSize="20px"
+                    color={useColorModeValue("gray.800", "inherit")}
+                    variant="ghost"
+                    icon={<AiOutlineMenu />}
+                    onClick={mobileNav.onOpen}
+                />
+              </HStack>
             </Flex>
           </Flex>
           {MobileNavContent}
