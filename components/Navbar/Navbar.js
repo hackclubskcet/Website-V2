@@ -42,7 +42,7 @@ import {
 
 import { useViewportScroll } from "framer-motion";
 
-import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
+import {AiFillHome, AiOutlineMenu} from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import {
   FaInfoCircle,
@@ -129,15 +129,6 @@ export default function Navbar(props) {
             </a>
           </Link>
 
-          {props.loggedIn ?
-              <Link href="/dashboard">
-                <a>
-                  <Button w="full" variant="ghost" leftIcon={<FaTable />}>
-                    Dashboard
-                  </Button>
-                </a>
-              </Link> : ''}
-
           <Link href="/#about">
             <a>
               <Button w="full" variant="ghost" leftIcon={<FaInfoCircle />}>
@@ -153,14 +144,22 @@ export default function Navbar(props) {
               </Button>
             </a>
           </Link>
+
           {props.loggedIn ?
-              <Link href="signout/">
+              <>           <Link href="/dashboard">
                 <a>
-                  <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
-                    SignOut
+                  <Button w="full" variant="ghost">
+                    <div style={{marginRight: "8px"}}>{<FaTable/>}</div> Dashboard
                   </Button>
                 </a>
-              </Link> :
+              </Link>
+                <Link href="signout/">
+                  <a>
+                    <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
+                      SignOut
+                    </Button>
+                  </a>
+                </Link></> :
               <>
                 <Link href="login/">
                   <a>
