@@ -174,7 +174,7 @@ export default function NavbarTwo(props) {
         borderBottomWidth={2}
         borderBottomColor={useColorModeValue("gray.200", "gray.900")}
       >
-        <chakra.div h="4.5rem" mx="auto" maxW="1200px">
+        <chakra.div h="4.5rem" mx="auto" maxW="1400px">
           <Flex
             w="full"
             h="full"
@@ -194,7 +194,7 @@ export default function NavbarTwo(props) {
               <HStack spacing="5" display={{ base: "none", md: "flex" }}>
                 <IconButton
                   size="md"
-                  fontSize="lg"
+                  fontSize="25"
                   aria-label={`Switch to ${text} mode`}
                   variant="ghost"
                   color="current"
@@ -204,7 +204,23 @@ export default function NavbarTwo(props) {
                 />
                 <Avatar name={props.name} src={props.avatar_url.toLowerCase()} alt={props.avatar_url} />
                 <Link href="signout/">
-                  <a>Sign out</a>
+                  <a>
+                    <Button
+                        rounded={"full"}
+                        px={6}
+                        colorScheme="white"
+                        fontWeight="extrabold"
+                        color="white"
+                        bgGradient="linear(to-r, #ec3750,#ec3750)"
+                        _hover={{
+                          bgGradient: "linear(to-r, #ec3750,#ec3750)",
+                          bgClip: "text",
+                          size: "lg",
+                        }}
+                    >
+                      SIGNOUT
+                    </Button>
+                  </a>
                 </Link>
               </HStack>
               <HStack spacing="5" display={{ base: "flex", md: "none" }} justifyContent={"center"}>
