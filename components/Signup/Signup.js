@@ -221,7 +221,7 @@ export default function Signup(props) {
           year: yearRef.current.value,
           interests: interestsRef.current.value,
           avatar_url:
-            "https://samwyc.codes/images/" +
+            "https://samwyc.codes/images/small/" +
             rollNoRef.current.value.toLowerCase() +
             ".jpg",
           updated_at: new Date(),
