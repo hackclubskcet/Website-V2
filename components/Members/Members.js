@@ -19,26 +19,27 @@ import {
 
 const TeamCard = (props) => {
   return (
-    <Center>
+    <Center w={{ md: "200px"}}>
       <Box
         w={{ base: "60", md: "s", lg: "s" }}
-        height={{ base: "150", md: "s", lg: "290" }}
+        height={{ base: "150", md: "290", lg: "290" }}
         bg={useColorModeValue("gray.800", "white")}
         shadow="lg"
         rounded="lg"
+        whiteSpace="nowrap"
         overflow="hidden"
         mx="center"
       >
         <Avatar
           borderRadius={0}
           w="full"
-          h={{ base: "110px", md: "s", lg: "240px" }}
+          h={{ base: "110px", md: "240px", lg: "240px" }}
           fit="fill"
           src={props.avatar.toLowerCase()}
           alt="avatar"
         />
 
-        <Box padding={1} textAlign="center">
+        <Box padding={0.5} textAlign="center">
           <Link
             display="block"
             fontSize={{ base: "9px", md: "12px", lg: "16px" }}
@@ -61,10 +62,10 @@ const TeamCard = (props) => {
 
 const MemberCard = (props) => {
   return (
-    <Center>
+    <Center  w={{ md: "130px"}}>
       <Box
         w={{ base: "60", md: "s", lg: "s" }}
-        height={{ base: "150", md: "s", lg: "290" }}
+        height={{ base: "150", md: "290", lg: "290" }}
         bg={useColorModeValue("gray.800", "white")}
         shadow="lg"
         rounded="lg"
@@ -73,7 +74,7 @@ const MemberCard = (props) => {
       >
         <Image
           w="full"
-          h={{ base: "110px", md: "s", lg: "210px" }}
+          h={{ base: "110px", md: "210px", lg: "210px" }}
           fit="cover"
            // TODO UNCOMMENT WHEN PICS NEEDED
           // src={props.avatar.toLowerCase()}
@@ -124,7 +125,7 @@ const MembersSection = (props) => {
 
         <SimpleGrid
           paddingBottom="10"
-          columns={[3, null, 5]}
+          columns={[3, 4, 5]}
           spacing={{ base: "10", md: "40", lg: "70" }}
           textAlign="center"
         >
@@ -149,7 +150,7 @@ const MembersSection = (props) => {
 
         <SimpleGrid
           paddingBottom="10"
-          columns={[3, null, 8]}
+          columns={[3, 5, 8]}
           spacing={{ base: "10", md: "40", lg: "70" }}
           textAlign="center"
         >
