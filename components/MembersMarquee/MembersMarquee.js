@@ -44,7 +44,8 @@ export default function MembersMarquee(props) {
                 <Avatar
                     size="xl"
                     name={member.name}
-                    src={member.avatar_url}
+                    //TODO change it to simply member.avatar_url when pics allowed
+                    src={member.priority == 1 ? member.avatar_url : ''}
                 />
               </WrapItem>
           ))}
