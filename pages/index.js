@@ -20,7 +20,7 @@ export default function Home(props) {
     async function fetchData() {
       const {data, error} = await supabase
           .from('profiles')
-          .select('name, avatar_url, priority')
+          .select('name, avatar_url')
           .order('priority', { ascending: false })
 
       if (error) {

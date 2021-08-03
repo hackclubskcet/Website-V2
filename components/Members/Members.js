@@ -76,13 +76,9 @@ const MemberCard = (props) => {
           w="full"
           h={{ base: "110px", md: "210px", lg: "210px" }}
           fit="cover"
-           // TODO UNCOMMENT WHEN PICS NEEDED
-          // src={props.avatar.toLowerCase()}
-            src={'https://ra.ac.ae/wp-content/uploads/2017/02/user-icon-placeholder.png'}
-          name={props.name}
+          src={props.avatar.toLowerCase()}
           alt="avatar"
         />
-
 
         <Box padding={1} paddingX={1} textAlign="center">
           <Link
@@ -130,8 +126,7 @@ const MembersSection = (props) => {
           textAlign="center"
         >
           {props.teamMembers.map((member, index) => (
-              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
-                        avatar={member.avatar_url} />
+              <TeamCard name={member.name} key={index} year={member.year} department={member.department} avatar={member.avatar_url} />
           ))}
         </SimpleGrid>
 
@@ -155,8 +150,10 @@ const MembersSection = (props) => {
           textAlign="center"
         >
           {props.members.map((member, index) => (
+              <>
                 <MemberCard name={member.name} year={member.year} key={index} department={member.department}
-                            avatar={member.avatar_url.toLowerCase()} isNotMobile={isNotMobile}/>)
+                            avatar={member.avatar_url.toLowerCase()} isNotMobile={isNotMobile}/>
+              </> )
           )}
         </SimpleGrid>
       </Container>
