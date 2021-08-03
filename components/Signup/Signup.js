@@ -149,7 +149,6 @@ export default function Signup(props) {
 
         var hasError = hasAnyError();
 
-
         if (hasError) {
           setLoading(false);
           return;
@@ -165,18 +164,15 @@ export default function Signup(props) {
           } else {
             await registerUser(user);
 
-            await updateProfile(user);
-
-            setTimeout(async () => {
+            await updateProfile(user).then(async () => {
               await supabase.auth.signOut();
 
               await supabase.auth.signIn({
                 email: rollNoRef.current.value + "@skcet.ac.in",
               })
 
-              alert("An Email has been sent to your email address. Please check your email");
               setLoading(false)
-            }, 5000)
+            });
           }
         }
       } catch (error) {
