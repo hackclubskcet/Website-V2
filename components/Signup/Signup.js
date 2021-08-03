@@ -167,14 +167,16 @@ export default function Signup(props) {
 
             await updateProfile(user);
 
-            await supabase.auth.signOut();
+            setTimeout(async () => {
+              await supabase.auth.signOut();
 
-            await supabase.auth.signIn({
-              email: rollNoRef.current.value + "@skcet.ac.in",
-            })
+              await supabase.auth.signIn({
+                email: rollNoRef.current.value + "@skcet.ac.in",
+              })
 
-            alert("An Email has been sent to your email address. Please check your email");
-            setLoading(false)
+              alert("An Email has been sent to your email address. Please check your email");
+              setLoading(false)
+            }, 5000)
           }
         }
       } catch (error) {
