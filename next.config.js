@@ -14,6 +14,11 @@ module.exports = {
                 permanent: true,
             },
             {
+                source: '/dashboard/dashboard/signout',
+                destination: '/signout',
+                permanent: true,
+            },
+            {
                 source: '/register',
                 destination: '/signup',
                 permanent: true,
