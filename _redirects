@@ -1,0 +1,4 @@
+#NETLIFY REDIRECTS
+/dashboard/signout /signout
+/register          /signup
+/signin            /login
