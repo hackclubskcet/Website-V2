@@ -13,6 +13,16 @@ module.exports = {
                 destination: '/signout',
                 permanent: true,
             },
+            {
+                source: '/register',
+                destination: '/signup',
+                permanent: true,
+            },
+            {
+                source: '/signin',
+                destination: '/login',
+                permanent: true,
+            },
         ]
     },
 }
