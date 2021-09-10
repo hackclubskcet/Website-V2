@@ -91,11 +91,22 @@ export default function NavbarTwo(props) {
       <Box minW={"100%"}>
         <Link href="/">
           <a>
-            <Banner
-                year={2021}
-                href="/"
-                style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}
-            />
+            {/*<Banner*/}
+            {/*    year={2021}*/}
+            {/*    href="/"*/}
+            {/*    style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}*/}
+            {/*/>*/}
+
+            <img
+                src="https://assets.hackclub.com/banners/2021.svg" alt="Hack Club"
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  left: "0px",
+                  border: "0px",
+                  "z-index": "999"}}
+                width={"200px"}>
+            </img>
           </a>
         </Link>
         <VStack
