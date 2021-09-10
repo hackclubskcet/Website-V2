@@ -116,6 +116,7 @@ const MembersSection = (props) => {
         <Heading paddingBottom={20} fontSize={"3xl"}>
           The Club Members
         </Heading>
+
         <Heading color={"#ec3750"} paddingBottom={5} fontSize={"xl"}>
           Core Team
         </Heading>
@@ -136,6 +137,95 @@ const MembersSection = (props) => {
         </SimpleGrid>
 
         <Divider />
+
+        { /*OPERATIONS TEAM */}
+        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
+          Operations Team
+        </Heading>
+        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
+        {/*  The most active contributors of Hack Club SKCET*/}
+        {/*</Text>*/}
+
+        <SimpleGrid
+            paddingBottom="10"
+            columns={[3, 4, 5]}
+            spacing={{ base: "10", md: "40", lg: "70" }}
+            textAlign="center"
+        >
+          {props.operationsTeam.map((member, index) => (
+              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
+                        avatar={member.avatar_url} />
+          ))}
+        </SimpleGrid>
+
+        <Divider />
+
+        { /*Design TEAM */}
+        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
+          Design Team
+        </Heading>
+        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
+        {/*  The most active contributors of Hack Club SKCET*/}
+        {/*</Text>*/}
+
+        <SimpleGrid
+            paddingBottom="10"
+            columns={[3, 4, 5]}
+            spacing={{ base: "10", md: "40", lg: "70" }}
+            textAlign="center"
+        >
+          {props.designTeam.map((member, index) => (
+              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
+                        avatar={member.avatar_url} />
+          ))}
+        </SimpleGrid>
+
+        <Divider />
+
+        { /*Outreach TEAM */}
+        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
+          Outreach Team
+        </Heading>
+        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
+        {/*  The most active contributors of Hack Club SKCET*/}
+        {/*</Text>*/}
+
+        <SimpleGrid
+            paddingBottom="10"
+            columns={[3, 4, 5]}
+            spacing={{ base: "10", md: "40", lg: "70" }}
+            textAlign="center"
+        >
+          {props.outReachTeam.map((member, index) => (
+              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
+                        avatar={member.avatar_url} />
+          ))}
+        </SimpleGrid>
+
+        <Divider />
+
+        { /*Tech TEAM */}
+        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
+          Tech Team
+        </Heading>
+        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
+        {/*  The most active contributors of Hack Club SKCET*/}
+        {/*</Text>*/}
+
+        <SimpleGrid
+            paddingBottom="10"
+            columns={[3, 4, 5]}
+            spacing={{ base: "10", md: "40", lg: "70" }}
+            textAlign="center"
+        >
+          {props.techTeam.map((member, index) => (
+              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
+                        avatar={member.avatar_url} />
+          ))}
+        </SimpleGrid>
+
+        <Divider />
+
         <Heading
           color={"#ec3750"}
           paddingBottom={5}

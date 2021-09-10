@@ -34,6 +34,10 @@ export default function MembersScreen(props) {
   const [dataFetched, setDataFetched] = useState(false)
   const [members, setMembers] = useState(null)
   const [coreTeam, setCoreTeam] = useState(null)
+  const [operationsTeam, setOperationsTeam] = useState(null)
+  const [designTeam, setDesignTeam] = useState(null)
+  const [outReachTeam, setOutReachTeam] = useState(null)
+  const [techTeam, setTechTeam] = useState(null)
 
   useLayoutEffect (() => {
     async function fetchData(priority) {
@@ -50,6 +54,14 @@ export default function MembersScreen(props) {
           setMembers(data)
         } else if (priority === 1) {
           setCoreTeam(data)
+        } else if (priority === 2) {
+          setOperationsTeam(data)
+        } else if (priority === 3) {
+          setDesignTeam(data)
+        } else if (priority === 4) {
+          setOutReachTeam(data)
+        } else if (priority === 5) {
+          setTechTeam(data)
         }
       }
     }
@@ -58,13 +70,17 @@ export default function MembersScreen(props) {
       setDataFetched(true)
       fetchData(0)
       fetchData(1)
+      fetchData(2)
+      fetchData(3)
+      fetchData(4)
+      fetchData(5)
     }
 
   }, [dataFetched, loggedIn])
 
   function renderCards() {
     if(dataFetched === true && coreTeam !== null && members !== null){
-      return <MembersSection teamMembers={coreTeam} members={members}/>
+      return <MembersSection teamMembers={coreTeam} operationsTeam={operationsTeam} designTeam={designTeam} outReachTeam={outReachTeam} techTeam={techTeam} members={members}/>
     }
 
     return ''
