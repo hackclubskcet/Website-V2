@@ -152,7 +152,7 @@ const MembersSection = (props) => {
             spacing={{ base: "10", md: "40", lg: "70" }}
             textAlign="center"
         >
-          {props.operationsTeam.map((member, index) => (
+          {props.operationsTeam?.map((member, index) => (
               <TeamCard name={member.name} key={index} year={member.year} department={member.department}
                         avatar={member.avatar_url} />
           ))}
@@ -174,7 +174,7 @@ const MembersSection = (props) => {
             spacing={{ base: "10", md: "40", lg: "70" }}
             textAlign="center"
         >
-          {props.designTeam.map((member, index) => (
+          {props.designTeam?.map((member, index) => (
               <TeamCard name={member.name} key={index} year={member.year} department={member.department}
                         avatar={member.avatar_url} />
           ))}
@@ -196,7 +196,7 @@ const MembersSection = (props) => {
             spacing={{ base: "10", md: "40", lg: "70" }}
             textAlign="center"
         >
-          {props.outReachTeam.map((member, index) => (
+          {props.outReachTeam?.map((member, index) => (
               <TeamCard name={member.name} key={index} year={member.year} department={member.department}
                         avatar={member.avatar_url} />
           ))}
@@ -218,7 +218,7 @@ const MembersSection = (props) => {
             spacing={{ base: "10", md: "40", lg: "70" }}
             textAlign="center"
         >
-          {props.techTeam.map((member, index) => (
+          {props.techTeam?.map((member, index) => (
               <TeamCard name={member.name} key={index} year={member.year} department={member.department}
                         avatar={member.avatar_url} />
           ))}
