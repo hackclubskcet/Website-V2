@@ -98,7 +98,7 @@ export default function Login(props) {
 
           //TODO ADD    NEW YEARS         NEW DEPARTMENT CODES                               ADDITIONAL ROLL NO PATTERNS           HERE WHEN NEEDED
         } else if (!/^(18|19|20|21)(euai|eucb|eucs|eucv|euec|euee|euit|eumc|eumt|epci)([0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9])$/i.test(rollNo.value)&&
-            (!/^21\w{4,8}[0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9]$/i.test(rollNo.value.toLowerCase()))) {
+            (!/^21\w{1,8}[0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9]$/i.test(rollNo.value.toLowerCase()))) {
             setError('rollNo', "Please enter a valid roll number")
         } else {
             var isRegistered = false;
