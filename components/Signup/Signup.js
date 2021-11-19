@@ -54,21 +54,21 @@ export default function Signup(props) {
 
   let hasError = false;
 
+  async function fetchData() {
+    const {data, error} = await supabase
+        .from('profiles')
+        .select('email')
+
+    if (error) {
+      throw error
+    } else {
+      setEmails(data)
+    }
+  }
+
   useLayoutEffect(() => {
     if (loggedIn === true && loading === false) {
       Router.push("/dashboard");
-    }
-
-    async function fetchData() {
-      const {data, error} = await supabase
-          .from('profiles')
-          .select('email')
-
-      if (error) {
-        throw error
-      } else {
-        setEmails(data)
-      }
     }
 
     if (!dataFetched) {
@@ -101,76 +101,77 @@ export default function Signup(props) {
     setLoading(false);
   }
 
-   function validate() {
-    //Resetting previous errors
-    resetErrors();
+   async function validate() {
+     //Resetting previous errors
+     resetErrors();
 
-    //Roll Number validation
-    var rollNo = rollNoRef.current;
+     //Roll Number validation
+     var rollNo = rollNoRef.current;
 
-    if (rollNo.value === '') {
-      setError('rollNo', "Please enter your roll number to sign up")
+     if (rollNo.value === '') {
+       await fetchData();
+       setError('rollNo', "Please enter your roll number to sign up")
 
-      //TODO ADD    NEW YEARS        NEW DEPARTMENT CODES                              ADDITIONAL ROLL NO PATTERNS           HERE WHEN NEEDED
-    } else if (!/^(18|19|20|21)(euai|eucb|eucs|eucv|euec|euee|euit|eumc|eumt|epci)([0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9])$/i.test(rollNo.value.toLowerCase()) &&
-        (!/^21\w{4,8}[0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9]$/i.test(rollNo.value.toLowerCase())) ) {
-      setError('rollNo', "Please enter a valid roll number")
-    } else {
-      var isRegistered = false;
+       //TODO ADD    NEW YEARS        NEW DEPARTMENT CODES                              ADDITIONAL ROLL NO PATTERNS           HERE WHEN NEEDED
+     } else if (!/^(18|19|20|21)(euai|eucb|eucs|eucv|euec|euee|euit|eumc|eumt|epci)([0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9])$/i.test(rollNo.value.toLowerCase()) &&
+         (!/^21\w{4,8}[0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9]$/i.test(rollNo.value.toLowerCase()))) {
+       setError('rollNo', "Please enter a valid roll number")
+     } else {
+       var isRegistered = false;
 
-      emails.forEach((user) => {
-        if (user.email !== null && (user.email.toLowerCase() === rollNo.value.toLowerCase() + "@skcet.ac.in")){
-          isRegistered = true;
-          return false;
-        }
-      } )
+       emails.forEach((user) => {
+         if (user.email !== null && (user.email.toLowerCase() === rollNo.value.toLowerCase() + "@skcet.ac.in")) {
+           isRegistered = true;
+           return false;
+         }
+       })
 
 
-      if (isRegistered) {
-        setError('rollNo', "You have already registered. Please login to access your account");
-      }
-    }
+       if (isRegistered) {
+         setError('rollNo', "You have already registered. Please login to access your account");
+       }
+     }
 
-    //Name validation
-    var name = nameRef.current
+     //Name validation
+     var name = nameRef.current
 
-    if (name.value === '') {
-      setError('name', "Please enter your name to sign up")
-    }
+     if (name.value === '') {
+       setError('name', "Please enter your name to sign up")
+     }
 
-    // Department validation
-    var department = departmentRef.current
-    var departments = ["cse", "it", "ai & ds", "mtech cse", "csbs", "ece", "eee", "civil", "mech", "mct"]
+     // Department validation
+     var department = departmentRef.current
+     var departments = ["cse", "it", "ai & ds", "mtech cse", "csbs", "ece", "eee", "civil", "mech", "mct"]
 
-    if (department.value === '') {
-      setError('department', "Please choose your department to sign up")
-    } else if (departments.indexOf(department.value) === -1) {
-      setError('department', "Please choose a valid department")
-      console.log("Trying to heck xDDD")
-    }
+     if (department.value === '') {
+       setError('department', "Please choose your department to sign up")
+     } else if (departments.indexOf(department.value) === -1) {
+       setError('department', "Please choose a valid department")
+       console.log("Trying to heck xDDD")
+     }
 
-    //Year validation
-    var year = yearRef.current
-    var years = ["2018", "2019", "2020", "2021"]
+     //Year validation
+     var year = yearRef.current
+     var years = ["2018", "2019", "2020", "2021"]
 
-    if (year.value === '') {
-      setError('year', "Please choose your joining year to sign up")
-    } else if (years.indexOf(year.value) === -1) {
-      setError('year', "Please choose a valid joining year")
-      console.log("Trying to heck xDDD")
-    }
+     if (year.value === '') {
+       setError('year', "Please choose your joining year to sign up")
+     } else if (years.indexOf(year.value) === -1) {
+       setError('year', "Please choose a valid joining year")
+       console.log("Trying to heck xDDD")
+     }
 
-    //Password validation
-    var password = passwordRef.current
+     //Password validation
+     var password = passwordRef.current
 
-    if (password.value === '') {
-      setError('password', "Please enter a password to sign up")
-    } else if (password.value.length < 8) {
-      setError('password', "Password must be at least 8 characters long")
-    }
+     if (password.value === '') {
+       setError('password', "Please enter a password to sign up")
+     } else if (password.value.length < 8) {
+       setError('password', "Password must be at least 8 characters long")
+     }
 
-    return
-  }
+     return
+   }
 
   async function handleSignup(e) {
     e.preventDefault();
@@ -180,7 +181,7 @@ export default function Signup(props) {
         setSignUpFailure(false);
         setLoading(true);
 
-        validate();
+        await validate();
 
         var hasError = hasAnyError();
 
@@ -209,6 +210,8 @@ export default function Signup(props) {
               })
 
               setLoading(false)
+
+              await Router.push('/');
             });
           }
         }
