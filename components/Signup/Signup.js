@@ -40,6 +40,9 @@ export default function Signup(props) {
   const [loggedIn, setLoggedIn] = useState(props.loggedIn);
   const [signUpFailure, setSignUpFailure] = useState(false);
 
+  const [dataFetched, setDataFetched] = useState(false)
+  const [emails, setEmails] = useState([])
+
   let function_map = {
     'rollNo': setRollNoErrorState,
     'name': setNameErrorState,
@@ -55,7 +58,24 @@ export default function Signup(props) {
     if (loggedIn === true && loading === false) {
       Router.push("/dashboard");
     }
-  }, [loading, loggedIn]);
+
+    async function fetchData() {
+      const {data, error} = await supabase
+          .from('profiles')
+          .select('email')
+
+      if (error) {
+        throw error
+      } else {
+        setEmails(data)
+      }
+    }
+
+    if (!dataFetched) {
+      setDataFetched(true)
+      fetchData()
+    }
+  }, [dataFetched, loading, loggedIn]);
 
   function setError(key, value) {
     hasError = true;
@@ -92,8 +112,22 @@ export default function Signup(props) {
       setError('rollNo', "Please enter your roll number to sign up")
 
       //TODO ADD    NEW YEARS        NEW DEPARTMENT CODES                              ADDITIONAL ROLL NO PATTERNS           HERE WHEN NEEDED
-    } else if (!/^(18|19|20|21)(euai|eucb|eucs|eucv|euec|euee|euit|eumc|eumt|epci)([0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9])$/i.test(rollNo.value.toLowerCase())) {
+    } else if (!/^(18|19|20|21)(euai|eucb|eucs|eucv|euec|euee|euit|eumc|eumt|epci)([0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9])$/i.test(rollNo.value.toLowerCase()) && (!/^21\w{4,6}[0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9]$/i.test(rollNo.value.toLowerCase())) ) {
       setError('rollNo', "Please enter a valid roll number")
+    } else {
+      var isRegistered = false;
+
+      emails.forEach((user) => {
+        if (user.email !== null && (user.email.toLowerCase() === rollNo.value.toLowerCase() + "@skcet.ac.in")){
+          isRegistered = true;
+          return false;
+        }
+      } )
+
+
+      if (isRegistered) {
+        setError('rollNo', "You have already registered. Please login to access your account");
+      }
     }
 
     //Name validation
@@ -165,6 +199,8 @@ export default function Signup(props) {
             await registerUser(user);
 
             await updateProfile(user).then(async () => {
+              alert("Sign up successful. Please check your email for logging in (Check spam folder too!)");
+
               await supabase.auth.signOut();
 
               await supabase.auth.signIn({

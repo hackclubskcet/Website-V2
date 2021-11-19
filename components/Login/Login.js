@@ -31,7 +31,7 @@ export default function Login(props) {
     let [passwordError, setPasswordErrorState] = useState(false)
 
     const [dataFetched, setDataFetched] = useState(false)
-    const [emails, setEmails] = useState(null)
+    const [emails, setEmails] = useState([])
 
     let function_map = {
         'rollNo': setRollNoErrorState,
@@ -111,7 +111,7 @@ export default function Login(props) {
 
 
             if (!isRegistered) {
-                setError('rollNo', "You did not register yet. Please register to login")
+                setError('rollNo', "You did not register yet. Please register to login");
             }
         }
 
@@ -150,7 +150,7 @@ export default function Login(props) {
                         logInFailed();
                         throw error;
                     } else {
-                        alert("An Email has been sent to your email address. Please check your email");
+                        alert("An Email has been sent to your email address. Please check your email for logging in (Check spam folder too!)");
                         setLoading(false)
                     }
                 }
