@@ -200,19 +200,19 @@ export default function Signup(props) {
           } else {
             await registerUser(user);
 
-            await updateProfile(user).then(async () => {
-              alert("Sign up successful. Please check your email for logging in (Check spam folder too!)");
+            await updateProfile(user);
 
-              await supabase.auth.signOut();
+            await supabase.auth.signOut();
 
-              await supabase.auth.signIn({
-                email: rollNoRef.current.value + "@skcet.ac.in",
-              })
+            await supabase.auth.signIn({
+              email: rollNoRef.current.value + "@skcet.ac.in",
+            })
 
-              setLoading(false)
+            alert("Sign up successful. Please check your email for logging in (Check spam folder too!)");
 
-              await Router.push('/');
-            });
+            setLoading(false)
+
+            await Router.push('/');
           }
         }
       } catch (error) {
