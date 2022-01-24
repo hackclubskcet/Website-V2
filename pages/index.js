@@ -31,7 +31,7 @@ export default function Home(props) {
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_IN") {
+      if (event === "SIGNED_IN" && Router.router.pathname !== '/signup') {
         Router.push("/dashboard");
       }
     });
