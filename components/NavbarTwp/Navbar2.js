@@ -50,7 +50,13 @@ import {
   AiFillGift,
 } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
-import {FaMoon, FaSignOutAlt, FaSun, FaTable, FaUserFriends} from "react-icons/fa";
+import {
+  FaMoon,
+  FaSignOutAlt,
+  FaSun,
+  FaTable,
+  FaUserFriends,
+} from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
 import Link from "next/link";
 
@@ -77,100 +83,102 @@ export default function NavbarTwo(props) {
     const dcl = useColorModeValue("gray.500", "gray.50");
     return (
       <Link
-    m={-3}
-    p={3}
-    display="flex"
-    alignItems="start"
-    rounded="lg"
-    _hover={{bg: hbg}}
-    />
+        m={-3}
+        p={3}
+        display="flex"
+        alignItems="start"
+        rounded="lg"
+        _hover={{ bg: hbg }}
+      />
     );
   };
 
   const MobileNavContent = (
-      <Box minW={"100%"}>
+    <Box minW={"100%"}>
+      <Link href="/">
+        <a>
+          {/*<Banner*/}
+          {/*    year={2021}*/}
+          {/*    href="/"*/}
+          {/*    style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}*/}
+          {/*/>*/}
+
+          <img
+            src="https://assets.hackclub.com/banners/2021.svg"
+            alt="Hack Club"
+            style={{
+              position: "absolute",
+              top: "10px",
+              left: "0px",
+              border: "0px",
+              "z-index": "999",
+            }}
+            width={"200px"}
+          ></img>
+        </a>
+      </Link>
+      <VStack
+        minW="100%"
+        pos="absolute"
+        top={0}
+        left={0}
+        right={0}
+        display={mobileNav.isOpen ? "flex" : "none"}
+        flexDirection="column"
+        p={2}
+        pb={4}
+        bg={bg}
+        marginY={2}
+        spacing={3}
+        rounded="sm"
+        shadow="sm"
+      >
+        <CloseButton
+          aria-label="Close menu"
+          justifySelf="self-start"
+          onClick={mobileNav.onClose}
+        />
         <Link href="/">
           <a>
-            {/*<Banner*/}
-            {/*    year={2021}*/}
-            {/*    href="/"*/}
-            {/*    style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}*/}
-            {/*/>*/}
-
-            <img
-                src="https://assets.hackclub.com/banners/2021.svg" alt="Hack Club"
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "0px",
-                  border: "0px",
-                  "z-index": "999"}}
-                width={"200px"}>
-            </img>
+            <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+              Home
+            </Button>
           </a>
         </Link>
-        <VStack
-            minW="100%"
-            pos="absolute"
-            top={0}
-            left={0}
-            right={0}
-            display={mobileNav.isOpen ? "flex" : "none"}
-            flexDirection="column"
-            p={2}
-            pb={4}
-            bg={bg}
-            marginY={2}
-            spacing={3}
-            rounded="sm"
-            shadow="sm"
-        >
-          <CloseButton
-              aria-label="Close menu"
-              justifySelf="self-start"
-              onClick={mobileNav.onClose}
-          />
-          <Link href="/">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-                Home
-              </Button>
-            </a>
-          </Link>
 
-          <Link href="/dashboard">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<FaTable />}>
-                Dashboard
-              </Button>
-            </a>
-          </Link>
+        <Link href="/dashboard">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaTable />}>
+              Dashboard
+            </Button>
+          </a>
+        </Link>
 
-          <Link href="https://discord.gg/gREKADreg9">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-                Discord community
-              </Button>
-            </a>
-          </Link>
+        <Link href="https://discord.gg/gREKADreg9">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+              Discord community
+            </Button>
+          </a>
+        </Link>
 
-          <Link href="dashboard/giveaways/">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<AiFillGift />}>
-                Giveaways
-              </Button>
-            </a>
-          </Link>
+        <Link href="dashboard/giveaways/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<AiFillGift />}>
+              Giveaways
+            </Button>
+          </a>
+        </Link>
 
-          <Link href="dashboard/signout/">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
-                Sign Out
-              </Button>
-            </a>
-          </Link>
-        </VStack>
-      </Box>
+        <Link href="dashboard/signout/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt />}>
+              Sign Out
+            </Button>
+          </a>
+        </Link>
+      </VStack>
+    </Box>
   );
 
   return (
@@ -213,47 +221,55 @@ export default function NavbarTwo(props) {
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
                 />
-                <Avatar name={props.name} src={props.avatar_url.toLowerCase()} alt={props.avatar_url} />
+                <Avatar
+                  name={props.name}
+                  src={props.avatar_url.toLowerCase()}
+                  alt={props.avatar_url}
+                />
                 <Link href="signout/">
                   <a>
                     <Button
-                        rounded={"full"}
-                        px={6}
-                        colorScheme="white"
-                        fontWeight="extrabold"
-                        color="white"
-                        bgGradient="linear(to-r, #ec3750,#ec3750)"
-                        _hover={{
-                          bgGradient: "linear(to-r, #ec3750,#ec3750)",
-                          bgClip: "text",
-                          size: "lg",
-                        }}
+                      rounded={"full"}
+                      px={6}
+                      colorScheme="white"
+                      fontWeight="extrabold"
+                      color="white"
+                      bgGradient="linear(to-r, #ec3750,#ec3750)"
+                      _hover={{
+                        bgGradient: "linear(to-r, #ec3750,#ec3750)",
+                        bgClip: "text",
+                        size: "lg",
+                      }}
                     >
                       SIGNOUT
                     </Button>
                   </a>
                 </Link>
               </HStack>
-              <HStack spacing="5" display={{ base: "flex", md: "none" }} justifyContent={"center"}>
+              <HStack
+                spacing="5"
+                display={{ base: "flex", md: "none" }}
+                justifyContent={"center"}
+              >
                 <IconButton
-                    size="md"
-                    fontSize="lg"
-                    aria-label={`Switch to ${text} mode`}
-                    variant="ghost"
-                    color="current"
-                    ml={{base: "0", md: "3"}}
-                    onClick={toggleMode}
-                    icon={<SwitchIcon/>}
+                  size="md"
+                  fontSize="lg"
+                  aria-label={`Switch to ${text} mode`}
+                  variant="ghost"
+                  color="current"
+                  ml={{ base: "0", md: "3" }}
+                  onClick={toggleMode}
+                  icon={<SwitchIcon />}
                 />
 
                 <IconButton
-                    display={{ base: "flex", md: "none" }}
-                    aria-label="Open menu"
-                    fontSize="20px"
-                    color={useColorModeValue("gray.800", "inherit")}
-                    variant="ghost"
-                    icon={<AiOutlineMenu />}
-                    onClick={mobileNav.onOpen}
+                  display={{ base: "flex", md: "none" }}
+                  aria-label="Open menu"
+                  fontSize="20px"
+                  color={useColorModeValue("gray.800", "inherit")}
+                  variant="ghost"
+                  icon={<AiOutlineMenu />}
+                  onClick={mobileNav.onOpen}
                 />
               </HStack>
             </Flex>
