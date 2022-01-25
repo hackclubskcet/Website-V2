@@ -111,7 +111,7 @@ export default function NavbarTwo(props) {
               top: "10px",
               left: "0px",
               border: "0px",
-              "z-index": "999",
+              zIndex: `${mobileNav.isOpen ? "0" : "1"}`,
             }}
             width={"200px"}
           ></img>
