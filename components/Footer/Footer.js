@@ -28,16 +28,25 @@ export default function Footer() {
         >
           <Text>Made with ❤️ by Hack Club SKCET © 2021</Text>
           <Stack direction={"row"} spacing={6}>
-            <a target="_blank" href="https:/instagram.com/hackclubskcet">
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://instagram.com/hackclubskcet"
+            >
               <FaInstagram />
             </a>
             <a
+              rel="noreferrer"
               target="_blank"
               href="https://www.youtube.com/channel/UCQSIUGbWfco4aTDNYTrNd7w"
             >
               <FaYoutube />
             </a>
-            <a target="_blank" href="https://discord.gg/gREKADreg9">
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://discord.gg/gREKADreg9"
+            >
               <FaDiscord />
             </a>
           </Stack>
