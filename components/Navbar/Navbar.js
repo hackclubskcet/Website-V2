@@ -42,7 +42,7 @@ import {
 
 import { useViewportScroll } from "framer-motion";
 
-import {AiFillHome, AiOutlineMenu} from "react-icons/ai";
+import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import {
   FaInfoCircle,
@@ -52,7 +52,7 @@ import {
   FaSun,
   FaTable,
   FaUserFriends,
-  FaUserPlus
+  FaUserPlus,
 } from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
 
@@ -90,106 +90,113 @@ export default function Navbar(props) {
   };
 
   const MobileNavContent = (
-      <Box minW={"100%"}>
+    <Box minW={"100%"}>
+      <Link href="/">
+        <a>
+          {/*<Banner*/}
+          {/*    year={2021}*/}
+          {/*    href="/"*/}
+          {/*    style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}*/}
+          {/*/>*/}
+
+          <img
+            src="https://assets.hackclub.com/banners/2021.svg"
+            alt="Hack Club"
+            style={{
+              position: "absolute",
+              top: "10px",
+              left: "0px",
+              border: "0px",
+              zIndex: `${mobileNav.isOpen ? "0" : "1"}`,
+            }}
+            width={"200px"}
+          ></img>
+        </a>
+      </Link>
+      <VStack
+        minW="100%"
+        pos="absolute"
+        top={0}
+        left={0}
+        right={0}
+        display={mobileNav.isOpen ? "flex" : "none"}
+        flexDirection="column"
+        p={2}
+        pb={4}
+        bg={bg}
+        marginY={2}
+        spacing={3}
+        rounded="sm"
+        shadow="sm"
+      >
+        <CloseButton
+          aria-label="Close menu"
+          justifySelf="self-start"
+          onClick={mobileNav.onClose}
+        />
         <Link href="/">
           <a>
-            {/*<Banner*/}
-            {/*    year={2021}*/}
-            {/*    href="/"*/}
-            {/*    style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}*/}
-            {/*/>*/}
-
-            <img
-                src="https://assets.hackclub.com/banners/2021.svg" alt="Hack Club"
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "0px",
-                  border: "0px",
-                  "z-index": "999"}}
-                width={"200px"}>
-            </img>
+            <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+              Home
+            </Button>
           </a>
         </Link>
-        <VStack
-            minW="100%"
-            pos="absolute"
-            top={0}
-            left={0}
-            right={0}
-            display={mobileNav.isOpen ? "flex" : "none"}
-            flexDirection="column"
-            p={2}
-            pb={4}
-            bg={bg}
-            marginY={2}
-            spacing={3}
-            rounded="sm"
-            shadow="sm"
-        >
-          <CloseButton
-              aria-label="Close menu"
-              justifySelf="self-start"
-              onClick={mobileNav.onClose}
-          />
-          <Link href="/">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-                Home
-              </Button>
-            </a>
-          </Link>
 
-          <Link href="/#about">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<FaInfoCircle />}>
-                About us
-              </Button>
-            </a>
-          </Link>
+        <Link href="/#about">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaInfoCircle />}>
+              About us
+            </Button>
+          </a>
+        </Link>
 
-          <Link href="members/">
-            <a>
-              <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
-                Members
-              </Button>
-            </a>
-          </Link>
+        <Link href="members/">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
+              Members
+            </Button>
+          </a>
+        </Link>
 
-          {props.loggedIn ?
-              <>           <Link href="/dashboard">
-                <a>
-                  <Button w="full" variant="ghost">
-                    <div style={{marginRight: "8px"}}>{<FaTable/>}</div> Dashboard
-                  </Button>
-                </a>
-              </Link>
-                <Link href="signout/">
-                  <a>
-                    <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt/>}>
-                      SignOut
-                    </Button>
-                  </a>
-                </Link></> :
-              <>
-                <Link href="login/">
-                  <a>
-                    <Button w="full" variant="ghost" leftIcon={<FaSignInAlt/>}>
-                      Login
-                    </Button>
-                  </a>
-                </Link>
-                <Link href="register/">
-                  <a>
-                    <Button w="full" variant="ghost" leftIcon={<FaUserPlus/>}>
-                      Register
-                    </Button>
-                  </a>
-                </Link>
-              </>
-          }
-        </VStack>
-      </Box>
+        {props.loggedIn ? (
+          <>
+            {" "}
+            <Link href="/dashboard">
+              <a>
+                <Button w="full" variant="ghost">
+                  <div style={{ marginRight: "8px" }}>{<FaTable />}</div>{" "}
+                  Dashboard
+                </Button>
+              </a>
+            </Link>
+            <Link href="signout/">
+              <a>
+                <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt />}>
+                  SignOut
+                </Button>
+              </a>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="login/">
+              <a>
+                <Button w="full" variant="ghost" leftIcon={<FaSignInAlt />}>
+                  Login
+                </Button>
+              </a>
+            </Link>
+            <Link href="register/">
+              <a>
+                <Button w="full" variant="ghost" leftIcon={<FaUserPlus />}>
+                  Register
+                </Button>
+              </a>
+            </Link>
+          </>
+        )}
+      </VStack>
+    </Box>
   );
   return (
     <Flex pos="static">
@@ -266,7 +273,11 @@ export default function Navbar(props) {
               </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
-              <HStack spacing="5" display={{ base: "none", md: "flex" }} justifyContent={"flex-end"}>
+              <HStack
+                spacing="5"
+                display={{ base: "none", md: "flex" }}
+                justifyContent={"flex-end"}
+              >
                 <IconButton
                   size="md"
                   fontSize="25"
@@ -278,90 +289,95 @@ export default function Navbar(props) {
                   icon={<SwitchIcon />}
                   marginRight={"5px"}
                 />
-                {props.loggedIn ?
-                    <>
-                      <Link href="dashboard/">
-                        <a>
-                          <Button
-                              rounded={"full"}
-                              px={6}
-                              colorScheme="white"
-                              fontWeight="extrabold"
-                              color="white"
-                              bgGradient="linear(to-r, #ff8c37,#ec3750)"
-                              _hover={{
-                                bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-                                bgClip: "text",
-                                size: "lg",
-                              }}
-                          >
-                            DASHBOARD
-                          </Button>
-                        </a>
-                      </Link>
-                      <Link href="signout/">
-                        <a>
-                          <Button
-                              rounded={"full"}
-                              px={6}
-                              colorScheme="white"
-                              fontWeight="extrabold"
-                              color="white"
-                              bgGradient="linear(to-r, #ec3750,#ec3750)"
-                              _hover={{
-                                bgGradient: "linear(to-r, #ec3750,#ec3750)",
-                                bgClip: "text",
-                                size: "lg",
-                              }}
-                          >
-                            SIGNOUT
-                          </Button>
-                        </a>
-                      </Link>
-                    </> :
-                    <>
-                      <Link href="login/">
-                        <a>
-                          <Button
-                              rounded={"full"}
-                              px={6}
-                              colorScheme="white"
-                              fontWeight="extrabold"
-                              color="white"
-                              bgGradient="linear(to-r, #ff8c37,#ec3750)"
-                              _hover={{
-                                bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-                                bgClip: "text",
-                                size: "lg",
-                              }}
-                          >
-                            LOGIN
-                          </Button>
-                        </a>
-                      </Link>
-                      <Register/>
-                    </>
-                }
+                {props.loggedIn ? (
+                  <>
+                    <Link href="dashboard/">
+                      <a>
+                        <Button
+                          rounded={"full"}
+                          px={6}
+                          colorScheme="white"
+                          fontWeight="extrabold"
+                          color="white"
+                          bgGradient="linear(to-r, #ff8c37,#ec3750)"
+                          _hover={{
+                            bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                            bgClip: "text",
+                            size: "lg",
+                          }}
+                        >
+                          DASHBOARD
+                        </Button>
+                      </a>
+                    </Link>
+                    <Link href="signout/">
+                      <a>
+                        <Button
+                          rounded={"full"}
+                          px={6}
+                          colorScheme="white"
+                          fontWeight="extrabold"
+                          color="white"
+                          bgGradient="linear(to-r, #ec3750,#ec3750)"
+                          _hover={{
+                            bgGradient: "linear(to-r, #ec3750,#ec3750)",
+                            bgClip: "text",
+                            size: "lg",
+                          }}
+                        >
+                          SIGNOUT
+                        </Button>
+                      </a>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="login/">
+                      <a>
+                        <Button
+                          rounded={"full"}
+                          px={6}
+                          colorScheme="white"
+                          fontWeight="extrabold"
+                          color="white"
+                          bgGradient="linear(to-r, #ff8c37,#ec3750)"
+                          _hover={{
+                            bgGradient: "linear(to-r, #ff8c37,#ec3750)",
+                            bgClip: "text",
+                            size: "lg",
+                          }}
+                        >
+                          LOGIN
+                        </Button>
+                      </a>
+                    </Link>
+                    <Register />
+                  </>
+                )}
               </HStack>
-              <HStack spacing="5" display={{ base: "flex", md: "none" }} justifyContent={"center"}>
+              <HStack
+                spacing="5"
+                display={{ base: "flex", md: "none" }}
+                justifyContent={"center"}
+              >
                 <IconButton
-                    size="md"
-                    fontSize="lg"
-                    aria-label={`Switch to ${text} mode`}
-                    variant="ghost"
-                    color="current"
-                    ml={{base: "0", md: "3"}}
-                    onClick={toggleMode}
-                    icon={<SwitchIcon/>}
+                  size="md"
+                  fontSize="lg"
+                  aria-label={`Switch to ${text} mode`}
+                  variant="ghost"
+                  color="current"
+                  ml={{ base: "0", md: "3" }}
+                  onClick={toggleMode}
+                  icon={<SwitchIcon />}
                 />
                 <IconButton
-                    display={{base: "flex", md: "none"}}
-                    aria-label="Open menu"
-                    fontSize="20px"
-                    color={useColorModeValue("gray.800", "inherit")}
-                    variant="ghost"
-                    icon={<AiOutlineMenu/>}
-                    onClick={mobileNav.onOpen}
+                  display={{ base: "flex", md: "none" }}
+                  aria-label="Open menu"
+                  fontSize="20px"
+                  color={useColorModeValue("gray.800", "inherit")}
+                  variant="ghost"
+                  icon={<AiOutlineMenu />}
+                  onClick={mobileNav.onOpen}
                 />
               </HStack>
             </Flex>
