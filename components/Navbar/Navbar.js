@@ -42,7 +42,7 @@ import {
 
 import { useViewportScroll } from "framer-motion";
 
-import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
+import { AiFillHome, AiOutlineMenu, AiFillCalendar } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import {
   FaInfoCircle,
@@ -128,6 +128,7 @@ export default function Navbar(props) {
         spacing={3}
         rounded="sm"
         shadow="sm"
+        zIndex={1}
       >
         <CloseButton
           aria-label="Close menu"
@@ -149,7 +150,13 @@ export default function Navbar(props) {
             </Button>
           </a>
         </Link>
-
+        <Link href="/#events">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<AiFillCalendar />}>
+              Events
+            </Button>
+          </a>
+        </Link>
         <Link href="members/">
           <a>
             <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
