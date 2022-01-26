@@ -7,7 +7,13 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FaDiscord, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+  FaGithub,
+} from "react-icons/fa";
 import { ReactNode } from "react";
 
 export default function Footer() {
@@ -28,6 +34,13 @@ export default function Footer() {
         >
           <Text>Made with ❤️ by Hack Club SKCET © 2021</Text>
           <Stack direction={"row"} spacing={6}>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://github.com/hackclubskcet"
+            >
+              <FaGithub />
+            </a>
             <a
               rel="noreferrer"
               target="_blank"
