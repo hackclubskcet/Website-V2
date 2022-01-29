@@ -100,7 +100,7 @@ export default function Navbar(props) {
           {/*/>*/}
 
           <img
-            src="https://assets.hackclub.com/banners/2021.svg"
+            src="https://assets.hackclub.com/banners/2022.svg"
             alt="Hack Club"
             style={{
               position: "absolute",

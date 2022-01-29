@@ -62,7 +62,18 @@ const SidebarContent = (props) => (
       <Logo />
       <Link href="/">
         <a>
-          <Banner year={2021} href="/" style={{ width: "170px" }} />
+          {/* <Banner year={2021} href="/" style={{ width: "170px" }} /> */}
+          <img
+            src="https://assets.hackclub.com/banners/2022.svg"
+            alt="Hack Club"
+            style={{
+              position: "absolute",
+              top: "10px",
+              left: "0px",
+              border: "0px",
+            }}
+            width={"200px"}
+          ></img>
         </a>
       </Link>
     </Flex>
