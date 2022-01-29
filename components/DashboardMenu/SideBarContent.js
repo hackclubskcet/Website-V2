@@ -1,9 +1,13 @@
 import { Box, Flex, useColorModeValue, Icon } from "@chakra-ui/react";
 import { Logo } from "@choc-ui/logo";
-import Banner from "@hackclub/banner";
 import Link from "next/link";
 import { MdHome } from "react-icons/md";
-import { FaDiscord, FaClipboardCheck, FaUserFriends } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaClipboardCheck,
+  FaUserFriends,
+  FaTable,
+} from "react-icons/fa";
 import { AiFillGift } from "react-icons/ai";
 import { BsGearFill } from "react-icons/bs";
 
@@ -87,6 +91,11 @@ const SidebarContent = (props) => (
       <Link href="/">
         <a>
           <NavItem icon={MdHome}>Home</NavItem>
+        </a>
+      </Link>
+      <Link href="/dashboard">
+        <a>
+          <NavItem icon={FaTable}>Dashboard</NavItem>
         </a>
       </Link>
       <Link href="https://discord.gg/gREKADreg9">
