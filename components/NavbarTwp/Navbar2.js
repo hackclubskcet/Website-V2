@@ -49,13 +49,14 @@ import {
   AiOutlineMenu,
   AiFillGift,
 } from "react-icons/ai";
-import { BsFillCameraVideoFill } from "react-icons/bs";
+import { BsGearFill } from "react-icons/bs";
 import {
   FaMoon,
   FaSignOutAlt,
   FaSun,
   FaTable,
   FaUserFriends,
+  FaClipboardCheck,
 } from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
 import Link from "next/link";
@@ -104,7 +105,7 @@ export default function NavbarTwo(props) {
           {/*/>*/}
 
           <img
-            src="https://assets.hackclub.com/banners/2021.svg"
+            src="https://assets.hackclub.com/banners/2022.svg"
             alt="Hack Club"
             style={{
               position: "absolute",
@@ -162,10 +163,26 @@ export default function NavbarTwo(props) {
           </a>
         </Link>
 
+        <Link href="/dashboard/comingsoon">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<FaClipboardCheck />}>
+              Resources
+            </Button>
+          </a>
+        </Link>
+
         <Link href="dashboard/giveaways/">
           <a>
             <Button w="full" variant="ghost" leftIcon={<AiFillGift />}>
               Giveaways
+            </Button>
+          </a>
+        </Link>
+
+        <Link href="/dashboard/comingsoon">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<BsGearFill />}>
+              Settings
             </Button>
           </a>
         </Link>
