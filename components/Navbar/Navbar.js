@@ -142,7 +142,16 @@ export default function Navbar(props) {
             </Button>
           </a>
         </Link>
-
+        {props.loggedIn && (
+          <Link href="/dashboard">
+            <a>
+              <Button w="full" variant="ghost">
+                <div style={{ marginRight: "8px" }}>{<FaTable />}</div>{" "}
+                Dashboard
+              </Button>
+            </a>
+          </Link>
+        )}
         <Link href="/#about">
           <a>
             <Button w="full" variant="ghost" leftIcon={<FaInfoCircle />}>
@@ -167,15 +176,6 @@ export default function Navbar(props) {
 
         {props.loggedIn ? (
           <>
-            {" "}
-            <Link href="/dashboard">
-              <a>
-                <Button w="full" variant="ghost">
-                  <div style={{ marginRight: "8px" }}>{<FaTable />}</div>{" "}
-                  Dashboard
-                </Button>
-              </a>
-            </Link>
             <Link href="signout/">
               <a>
                 <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt />}>
