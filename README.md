@@ -1,9 +1,9 @@
-# Welcome to Hackclubskcet Website 👋
+# Welcome to Hack Club SKCET Website 👋
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
-> This is the main website for hackclubskcet
+> This is the main website for Hack Club SKCET
 
 ### 🏠 [Homepage](https://github.com/hackclubskcet/Website-V2/#readme)
 
@@ -23,7 +23,7 @@ npm run dev
 
 ## Author
 
-👤 **hackclubskcet**
+👤 **Hack Club SKCET**
 
 - Github: [@hackclubskcet](https://github.com/hackclubskcet)
 
