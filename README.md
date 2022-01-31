@@ -5,8 +5,6 @@
 
 > This is the main website for Hack Club SKCET
 
-### 🏠 [Homepage](https://github.com/hackclubskcet/Website-V2/#readme)
-
 ### ✨ [Live Site](https://skcet.hackclub.com)
 
 ## Install
@@ -24,8 +22,6 @@ npm run dev
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
-
-Feel free to check [issues page](https://github.com/hackclubskcet/Website-V2/issues).
 
 ## Show your support
 
