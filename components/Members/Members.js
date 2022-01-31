@@ -29,6 +29,7 @@ const TeamCard = (props) => {
         whiteSpace="nowrap"
         overflow="hidden"
         mx="center"
+        className="student-box"
       >
         <Avatar
           borderRadius={0}
@@ -71,6 +72,7 @@ const MemberCard = (props) => {
         rounded="lg"
         overflow="hidden"
         mx="auto"
+        className="student-box"
       >
         <Image
           w="full"

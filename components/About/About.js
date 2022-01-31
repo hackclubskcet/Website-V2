@@ -25,10 +25,11 @@ export default function About() {
       </Stack>
 
       <Container paddingTop={10} maxW={"6xl"} mt={10}>
-        <SimpleGrid columns={[2, null, 4]} spacing={70}>
-          <HStack align={"top"}>
+        <SimpleGrid columns={[2, null, 4]} spacing={45}>
+
+          <HStack align={"top"} className="about-box">
             <Box color={"green.400"} px={2}>
-              <Icon color="#ec3750" glyph="channels" size={32} />
+              <Icon className="icon" color="#ec3750" glyph="channels" size={32} />
             </Box>
             <VStack align={"start"}>
               <Text fontWeight={600}>Discord community</Text>
@@ -40,9 +41,10 @@ export default function About() {
               </Text>
             </VStack>
           </HStack>
-          <HStack align={"top"}>
+
+          <HStack align={"top"} className="about-box">
             <Box color={"green.400"} px={2}>
-              <Icon color="#ec3750" glyph="event-code" size={32} />
+              <Icon className="icon" color="#ec3750" glyph="event-code" size={32} />
             </Box>
             <VStack align={"start"}>
               <Text fontWeight={600}>Regular events</Text>
@@ -54,9 +56,10 @@ export default function About() {
               </Text>
             </VStack>
           </HStack>
-          <HStack align={"top"}>
+
+          <HStack align={"top"} className="about-box">
             <Box color={"green.400"} px={2}>
-              <Icon color="#ec3750" glyph="everything" size={32} />
+              <Icon className="icon" color="#ec3750" glyph="everything" size={32} />
             </Box>
             <VStack align={"start"}>
               <Text fontWeight={600}>Resources</Text>
@@ -68,9 +71,10 @@ export default function About() {
               </Text>
             </VStack>
           </HStack>
-          <HStack align={"top"}>
+
+          <HStack align={"top"} className="about-box">
             <Box color={"green.400"} px={2}>
-              <Icon color="#ec3750" glyph="sticker" size={32} />
+              <Icon className="icon" color="#ec3750" glyph="sticker" size={32} />
             </Box>
             <VStack align={"start"}>
               <Text fontWeight={600}>Swags</Text>
@@ -82,6 +86,7 @@ export default function About() {
               </Text>
             </VStack>
           </HStack>
+
         </SimpleGrid>
       </Container>
     </Box>
