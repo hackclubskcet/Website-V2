@@ -21,12 +21,6 @@ npm install
 npm run dev
 ```
 
-## Author
-
-👤 **Hack Club SKCET**
-
-- Github: [@hackclubskcet](https://github.com/hackclubskcet)
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
