@@ -63,7 +63,7 @@ const TeamCard = (props) => {
 
 const MemberCard = (props) => {
   return (
-    <Center  w={{ md: "130px"}}>
+    <Center  w={{ md: "165px"}}>
       <Box
         w={{ base: "60", md: "s", lg: "s" }}
         height={{ base: "150", md: "290", lg: "290" }}
@@ -242,8 +242,8 @@ const MembersSection = (props) => {
 
         <SimpleGrid
           paddingBottom="10"
-          columns={[3, 5, 8]}
-          spacing={{ base: "10", md: "40", lg: "70" }}
+          columns={[3, 5, 7]}
+          spacing={{ base: "10", md: "40", lg: "65" }}
           textAlign="center"
         >
           {props.members.map((member, index) => (

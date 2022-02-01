@@ -15,7 +15,7 @@ export default function About() {
   return (
     <Box marginTop={10} marginBottom={10} p={4}>
       <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
-        <Heading fontSize={"3xl"}>About Hack Club SKCET</Heading>
+        <Heading fontSize={"3xl"} className="title-text">About Hack Club SKCET</Heading>
         <Text color={"gray.600"} fontSize={"xl"}>
           Hack Club SKCET is the student coding club of Sri Krishna College of
           Engineering and Technology. We are a community of coders, hackers and
