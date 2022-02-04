@@ -231,7 +231,7 @@ export default function Navbar(props) {
               </HStack>
             </Flex>
             <Flex>
-              <HStack spacing="5" display={{ base: "none", md: "flex" }}>
+              <HStack spacing="5" display={{ base: "none", md: "flex" }} className="navbar">
                 <Link href="/#about">
                   <a>
                     <Button
@@ -243,7 +243,7 @@ export default function Navbar(props) {
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
-                      About us
+                      <a>About us</a>
                     </Button>
                   </a>
                 </Link>
@@ -258,7 +258,7 @@ export default function Navbar(props) {
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
-                      Members
+                      <a>Members</a>
                     </Button>
                   </a>
                 </Link>
@@ -273,7 +273,7 @@ export default function Navbar(props) {
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
-                      Events
+                      <a>Events</a>
                     </Button>
                   </a>
                 </Link>
