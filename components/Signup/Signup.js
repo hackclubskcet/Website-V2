@@ -112,6 +112,7 @@ export default function Signup(props) {
        await fetchData();
        setError('rollNo', "Please enter your roll number to sign up")
 
+       //TODO CHANGE IN LOGIN TOO
        //TODO ADD    NEW YEARS        NEW DEPARTMENT CODES                              ADDITIONAL ROLL NO PATTERNS           HERE WHEN NEEDED
      } else if (!/^(18|19|20|727721)(euai|eucb|eucs|eucv|euec|euee|euit|eumc|eumt|epci)([0][0-9][0-9]|[1][0-8][0-9]|[5][0-5][0-9])$/i.test(rollNo.value.toLowerCase())) {
        setError('rollNo', "Please enter a valid roll number")
