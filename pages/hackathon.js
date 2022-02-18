@@ -84,7 +84,7 @@ export default function Hackathon(props) {
                     color={"gray.600"}
                     fontSize={{ base: "9px", md: "40px", lg: "16px" }}
                   >
-                    ends on 21.02.2022 (Monday)
+                    ends on 24.02.2022 (Thursday)
                   </Text>
                 </VStack>
               </HStack>
@@ -103,7 +103,7 @@ export default function Hackathon(props) {
                     color={"gray.600"}
                     fontSize={{ base: "9px", md: "40px", lg: "16px" }}
                   >
-                    25.02.2022 and 26.02.2022
+                    28.02.2022 and 1.03.2022
                   </Text>
                 </VStack>
               </HStack>
