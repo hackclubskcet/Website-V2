@@ -49,9 +49,12 @@ const Hero = (props) => {
               }}
             />
             <Spacer />
-            {props.loggedIn ? '' : <Link href="signup/">
-              <a>
-                <Button
+            {props.loggedIn ? (
+              ""
+            ) : (
+              <Link href="signup/">
+                <a>
+                  <Button
                     rounded={"full"}
                     marginTop={5}
                     px={6}
@@ -64,11 +67,12 @@ const Hero = (props) => {
                       bgClip: "text",
                       size: "lg",
                     }}
-                >
-                  REGISTER
-                </Button>
-              </a>
-            </Link>}
+                  >
+                    REGISTER
+                  </Button>
+                </a>
+              </Link>
+            )}
           </Stack>
         </Flex>
       </Box>
