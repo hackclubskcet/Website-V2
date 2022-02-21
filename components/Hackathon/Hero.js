@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Hero(props) {
   useEffect(() => {
-    let countDownDate = new Date("Feb 24, 2022 23:59:59").getTime();
+    let countDownDate = new Date("Feb 23, 2022 23:59:59").getTime();
 
     let x = setInterval(function () {
       let now = new Date().getTime();

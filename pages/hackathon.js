@@ -14,6 +14,7 @@ import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hackathon/Hero";
 import Icon from "@hackclub/icons";
 import { faqs } from "../components/Hackathon/faqs";
+import Sponsors from "../components/Hackathon/Sponsors";
 
 export default function Hackathon(props) {
   return (
@@ -36,7 +37,7 @@ export default function Hackathon(props) {
               About Hack @ SKCET
             </Heading>
             <Text color={"gray.600"} fontSize={"xl"}>
-              A 2 day in-person hackathon exclusively for SKCETians.
+              A 2 day in-person hackathon exclusively organized by SKCETians.
             </Text>
           </Stack>
         </Box>
@@ -84,7 +85,7 @@ export default function Hackathon(props) {
                     color={"gray.600"}
                     fontSize={{ base: "9px", md: "40px", lg: "16px" }}
                   >
-                    ends on 24.02.2022 (Thursday)
+                    ends on 23.02.2022 (Wednesday)
                   </Text>
                 </VStack>
               </HStack>
@@ -103,14 +104,14 @@ export default function Hackathon(props) {
                     color={"gray.600"}
                     fontSize={{ base: "9px", md: "40px", lg: "16px" }}
                   >
-                    28.02.2022 and 1.03.2022
+                    February 26, 27 and 28 (2022)
                   </Text>
                 </VStack>
               </HStack>
             </div>
           </Stack>
         </Box>
-
+        <Sponsors />
         <Box marginTop={10} marginBottom={10} p={4}>
           <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
             <Heading fontSize={"3xl"} className="title-text">

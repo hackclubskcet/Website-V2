@@ -17,6 +17,6 @@ export const faqs = [
   {
     id: 3,
     question: "Who all can participate in the hackathon?",
-    ans: "Students from first years from any department within SKCET can participate in the hackathon.",
+    ans: "Either you are a beginner or a skilled coder you can participate in the hackathon and learn with us!",
   },
 ];
