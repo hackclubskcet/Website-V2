@@ -36,7 +36,7 @@ export default function Hero(props) {
         document.querySelector(".timer").innerHTML = "EXPIRED";
       }
     }, 1000);
-  });
+  }, []);
   const bg = useColorModeValue("white", "gray.800");
 
   return (
