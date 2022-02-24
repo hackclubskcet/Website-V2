@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Hero(props) {
   useEffect(() => {
-    let countDownDate = new Date("Feb 23, 2022 23:59:59").getTime();
+    let countDownDate = new Date("Feb 26, 2022 10:00:00").getTime();
 
     let x = setInterval(function () {
       let now = new Date().getTime();
@@ -64,7 +64,7 @@ export default function Hero(props) {
               Hack @ SKCET
             </Heading>
             <Text fontSize={["3xl"]} color="white" fontWeight="black">
-              Registration ends in
+              Hackthon begins in
             </Text>
             <Text
               className="timer"
