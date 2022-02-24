@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import {
   Box,
   useColorModeValue,
@@ -12,31 +12,40 @@ import {
 
 import Link from "next/link";
 
-export default function Hero(props) {
-  useEffect(() => {
-    let countDownDate = new Date("Feb 26, 2022 10:00:00").getTime();
+function neat_time(distance)
+{
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+  return days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+  
+}
+
+export default function Hero(props) {
+  const endTime = new Date("Feb 26, 2022 10:00:00").getTime()
+  const [countDownDate, setDate] = useState(neat_time(endTime - Date.now()));
+  useEffect(() => {
+ 
+   
     let x = setInterval(function () {
       let now = new Date().getTime();
 
-      let distance = countDownDate - now;
+      let distance = endTime - now;
 
-      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      let hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+      setDate(neat_time(distance));
 
-      document.querySelector(".timer").innerHTML =
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
+        
       if (distance < 0) {
         clearInterval(x);
-        document.querySelector(".timer").innerHTML = "EXPIRED";
+        setDate("EXPIRED");
       }
     }, 1000);
-  }, []);
+  }, [countDownDate]);
   const bg = useColorModeValue("white", "gray.800");
 
   return (
@@ -71,30 +80,10 @@ export default function Hero(props) {
               fontSize={["2xl"]}
               color="white"
               fontWeight="black"
-            ></Text>
+            >{countDownDate}</Text>
             <Spacer />
 
-            <Link href="https://forms.gle/LTzXv15fzEetoqAa8">
-              <a>
-                <Button
-                  rounded={"full"}
-                  marginTop={5}
-                  px={6}
-                  colorScheme="white"
-                  fontWeight="extrabold"
-                  color="white"
-                  bgGradient="linear(to-r, #ff8c37,#ec3750)"
-                  _hover={{
-                    bgGradient: "linear(to-r, #ff8c37,#ec3750)",
-                    bgClip: "text",
-                    size: "lg",
-                  }}
-                >
-                  IDEA SUBMISSION
-                </Button>
-              </a>
-            </Link>
-          </Stack>
+            </Stack>
         </Flex>
       </Box>
     </Flex>
