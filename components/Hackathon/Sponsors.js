@@ -6,9 +6,12 @@ import {
   Stack,
   HStack,
   Image,
+  useColorMode,
 } from "@chakra-ui/react";
 
 export default function Sponsors() {
+  const { colorMode } = useColorMode();
+
   return (
     <Box marginTop={10} marginBottom={10} p={4}>
       <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
@@ -17,7 +20,7 @@ export default function Sponsors() {
 
       <Container paddingTop={10} maxW={"xl"} mt={10}>
         <SimpleGrid columns={2} spacing={70}>
-        <HStack align={"center"}>
+          <HStack align={"center"}>
             {" "}
             <Image
               src="https://cdn.discordapp.com/attachments/832949239457906718/946266082094751824/skcet-removebg-preview.png"
@@ -27,6 +30,7 @@ export default function Sponsors() {
           <HStack align={"center"}>
             {" "}
             <Image
+              className={colorMode === "light" ? "light" : ""}
               src="https://fossunited.org/files/logo618eee.svg"
               alt="Foss United"
             />

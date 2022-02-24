@@ -149,3 +149,7 @@
   border-radius: 12px;
   text-align: left;
 }
+
+.light {
+  filter: invert(1);
+}
