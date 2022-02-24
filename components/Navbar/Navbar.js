@@ -42,7 +42,12 @@ import {
 
 import { useViewportScroll } from "framer-motion";
 
-import { AiFillHome, AiOutlineMenu, AiFillCalendar } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiOutlineMenu,
+  AiFillCalendar,
+  AiFillTrophy,
+} from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import {
   FaInfoCircle,
@@ -161,7 +166,7 @@ export default function Navbar(props) {
         </Link>
         <Link href="/hackathon">
           <a>
-            <Button w="full" variant="ghost" leftIcon={<AiFillCalendar />}>
+            <Button w="full" variant="ghost" leftIcon={<AiFillTrophy />}>
               hack@skcet
             </Button>
           </a>
@@ -238,7 +243,11 @@ export default function Navbar(props) {
               </HStack>
             </Flex>
             <Flex>
-              <HStack spacing="5" display={{ base: "none", md: "flex" }} className="navbar">
+              <HStack
+                spacing="5"
+                display={{ base: "none", md: "flex" }}
+                className="navbar"
+              >
                 <Link href="/#about">
                   <a>
                     <Button
@@ -284,7 +293,7 @@ export default function Navbar(props) {
                     </Button>
                   </a>
                 </Link>
-                <a href="/hackathon">
+                <Link href="/hackathon">
                   <a>
                     <Button
                       bg={bg}
@@ -298,7 +307,7 @@ export default function Navbar(props) {
                       <a>Hack@skcet</a>
                     </Button>
                   </a>
-                </a>
+                </Link>
               </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
