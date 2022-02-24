@@ -159,6 +159,13 @@ export default function Navbar(props) {
             </Button>
           </a>
         </Link>
+        <Link href="/hackathon">
+          <a>
+            <Button w="full" variant="ghost" leftIcon={<AiFillCalendar />}>
+              hack@skcet
+            </Button>
+          </a>
+        </Link>
         <Link href="/#events">
           <a>
             <Button w="full" variant="ghost" leftIcon={<AiFillCalendar />}>
@@ -166,7 +173,7 @@ export default function Navbar(props) {
             </Button>
           </a>
         </Link>
-        <Link href="members/">
+        <Link href="/members">
           <a>
             <Button w="full" variant="ghost" leftIcon={<FaUserFriends />}>
               Members
@@ -176,7 +183,7 @@ export default function Navbar(props) {
 
         {props.loggedIn ? (
           <>
-            <Link href="signout/">
+            <Link href="/signout">
               <a>
                 <Button w="full" variant="ghost" leftIcon={<FaSignOutAlt />}>
                   SignOut
@@ -186,14 +193,14 @@ export default function Navbar(props) {
           </>
         ) : (
           <>
-            <Link href="login/">
+            <Link href="/login">
               <a>
                 <Button w="full" variant="ghost" leftIcon={<FaSignInAlt />}>
                   Login
                 </Button>
               </a>
             </Link>
-            <Link href="register/">
+            <Link href="/register">
               <a>
                 <Button w="full" variant="ghost" leftIcon={<FaUserPlus />}>
                   Register
@@ -247,7 +254,7 @@ export default function Navbar(props) {
                     </Button>
                   </a>
                 </Link>
-                <Link href="members/">
+                <Link href="/members">
                   <a>
                     <Button
                       bg={bg}
@@ -277,6 +284,21 @@ export default function Navbar(props) {
                     </Button>
                   </a>
                 </Link>
+                <a href="/hackathon">
+                  <a>
+                    <Button
+                      bg={bg}
+                      color="gray.500"
+                      display="inline-flex"
+                      alignItems="center"
+                      fontSize="lg"
+                      _hover={{ color: cl }}
+                      _focus={{ boxShadow: "none" }}
+                    >
+                      <a>Hack@skcet</a>
+                    </Button>
+                  </a>
+                </a>
               </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400">
@@ -298,7 +320,7 @@ export default function Navbar(props) {
                 />
                 {props.loggedIn ? (
                   <>
-                    <Link href="dashboard/">
+                    <Link href="/dashboard">
                       <a>
                         <Button
                           rounded={"full"}
@@ -317,7 +339,7 @@ export default function Navbar(props) {
                         </Button>
                       </a>
                     </Link>
-                    <Link href="signout/">
+                    <Link href="/signout">
                       <a>
                         <Button
                           rounded={"full"}
@@ -339,7 +361,7 @@ export default function Navbar(props) {
                   </>
                 ) : (
                   <>
-                    <Link href="login/">
+                    <Link href="/login">
                       <a>
                         <Button
                           rounded={"full"}

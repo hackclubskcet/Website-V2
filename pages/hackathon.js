@@ -85,7 +85,7 @@ export default function Hackathon(props) {
                     color={"gray.600"}
                     fontSize={{ base: "9px", md: "40px", lg: "16px" }}
                   >
-                    ends on 23.02.2022 (Wednesday)
+                    ended on 23.02.2022 (Wednesday)
                   </Text>
                 </VStack>
               </HStack>

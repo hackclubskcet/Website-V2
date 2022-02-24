@@ -17,6 +17,20 @@ export default function Sponsors() {
 
       <Container paddingTop={10} maxW={"xl"} mt={10}>
         <SimpleGrid columns={2} spacing={70}>
+        <HStack align={"center"}>
+            {" "}
+            <Image
+              src="https://cdn.discordapp.com/attachments/832949239457906718/946266082094751824/skcet-removebg-preview.png"
+              alt="Sri Krishna Institutions"
+            />
+          </HStack>
+          <HStack align={"center"}>
+            {" "}
+            <Image
+              src="https://fossunited.org/files/logo618eee.svg"
+              alt="Foss United"
+            />
+          </HStack>
           <HStack align={"center"}>
             {" "}
             <Image
@@ -29,13 +43,6 @@ export default function Sponsors() {
             <Image
               src="https://i0.wp.com/softwareengineeringdaily.com/wp-content/uploads/2019/09/replit-logo.png?resize=730%2C389&ssl=1"
               alt="Repl.it"
-            />
-          </HStack>
-          <HStack align={"center"}>
-            {" "}
-            <Image
-              src="https://fossunited.org/files/logo618eee.svg"
-              alt="Foss United"
             />
           </HStack>
           <HStack align={"center"}>
