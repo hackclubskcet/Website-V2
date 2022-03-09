@@ -14,6 +14,7 @@
 
 /* Your own custom utilities */
 
+
 .navbar a,
 .navbar a:focus {
   display: flex;
@@ -152,4 +153,11 @@
 
 .light {
   filter: invert(1);
+}
+
+.carousel-item{
+  height: 30%;
+} 
+.carousel-item img{
+  height: 30%;
 }

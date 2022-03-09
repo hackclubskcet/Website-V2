@@ -19,7 +19,7 @@ export default function Sponsors() {
       </Stack>
 
       <Container paddingTop={10} maxW={"xl"} mt={10}>
-        <SimpleGrid columns={2} spacing={70}>
+        <SimpleGrid columns={3} spacing={70}>
           <HStack align={"center"}>
             {" "}
             <Image

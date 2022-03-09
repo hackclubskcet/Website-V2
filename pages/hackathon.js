@@ -1,3 +1,4 @@
+import React,{useState} from 'react';
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/provider";
 import {
@@ -9,14 +10,25 @@ import {
   HStack,
   VStack,
 } from "@chakra-ui/react";
+
+import { Carousel } from "react-bootstrap";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hackathon/Hero";
 import Icon from "@hackclub/icons";
 import { faqs } from "../components/Hackathon/faqs";
 import Sponsors from "../components/Hackathon/Sponsors";
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 export default function Hackathon(props) {
+  
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
   return (
     <>
       <Head>
@@ -42,8 +54,100 @@ export default function Hackathon(props) {
           </Stack>
         </Box>
 
+        <Box marginTop={10} marginBottom={10} p={4}>
+          <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
+            <Heading fontSize={"3xl"} className="title-text">
+              Gallery
+            </Heading>
+          </Stack>
+        </Box>
+
+        <Carousel fade className="carousel">
+
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Team.jpg"
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Team-1.jpg"
+              alt="First slide"
+            />
+          </Carousel.Item>
+          
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Team-2.jpg"
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Team Speech.jpg"
+              alt="First slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Hackers.jpg"
+              alt="Second slide"
+            />
+          </Carousel.Item>
+          
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Hackers-2.jpg"
+              alt="Third slide"
+            />
+          </Carousel.Item>
+          
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Conference.jpg"
+              alt="Third slide"
+            />
+          </Carousel.Item>
+          
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Speech.jpg"
+              alt="Third slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item className="item">
+            <img
+              className="carousel-pics d-block w-100"
+              src="images/Certificate.jpg"
+              alt="Third slide"
+            />
+          </Carousel.Item>
+        
+        </Carousel>
+
+        <Box marginTop={10} marginBottom={10} p={4}>
+          <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
+            <Heading fontSize={"3xl"} className="title-text">
+              Winners
+            </Heading>
+          </Stack>
+        </Box>
+
         <div className="hack-flex-container">
-          <div className="child">
+          {/* <div className="child">
             <h1>RULES</h1>
             <li>Max 5 members in a team.</li>
             <li>All coding should be done only during the event.</li>
@@ -52,7 +156,7 @@ export default function Hackathon(props) {
               Top 15 teams in the idea submission round are selected to
               participate in the finals.
             </li>
-          </div>
+          </div> */}
           <div className="child">
             <h1>BENEFITS</h1>
             <li>Swags and merit certificates for all finalists.</li>
@@ -64,53 +168,7 @@ export default function Hackathon(props) {
             </li>
           </div>
         </div>
-        <Box marginTop={10} marginBottom={10} p={4}>
-          <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
-            <Heading fontSize={"3xl"} className="title-text">
-              Important Dates
-            </Heading>
-            <div className="hack-flex-container jcsa">
-              <HStack align={"top"} className="about-box">
-                <Box color={"green.400"} px={2}>
-                  <Icon
-                    className="icon"
-                    color="#ec3750"
-                    glyph="idea"
-                    size={32}
-                  />
-                </Box>
-                <VStack align={"start"}>
-                  <Text fontWeight={600}>Idea Submission</Text>
-                  <Text
-                    color={"gray.600"}
-                    fontSize={{ base: "9px", md: "40px", lg: "16px" }}
-                  >
-                    ended on 23.02.2022 (Wednesday)
-                  </Text>
-                </VStack>
-              </HStack>
-              <HStack align={"top"} className="about-box">
-                <Box color={"green.400"} px={2}>
-                  <Icon
-                    className="icon"
-                    color="#ec3750"
-                    glyph="flag"
-                    size={32}
-                  />
-                </Box>
-                <VStack align={"start"}>
-                  <Text fontWeight={600}>Finals</Text>
-                  <Text
-                    color={"gray.600"}
-                    fontSize={{ base: "9px", md: "40px", lg: "16px" }}
-                  >
-                    February 26, 27 and 28 (2022)
-                  </Text>
-                </VStack>
-              </HStack>
-            </div>
-          </Stack>
-        </Box>
+
         <Sponsors />
         <Box marginTop={10} marginBottom={10} p={4}>
           <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
