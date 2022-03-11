@@ -17,6 +17,8 @@ import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hackathon/Hero";
 import Icon from "@hackclub/icons";
 import { faqs } from "../components/Hackathon/faqs";
+import { galleries } from "../components/Hackathon/gallery";
+import { winners } from "../components/Hackathon/winners";
 import Sponsors from "../components/Hackathon/Sponsors";
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -63,79 +65,15 @@ export default function Hackathon(props) {
         </Box>
 
         <Carousel fade className="carousel">
-
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Team.jpg"
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Team-1.jpg"
-              alt="First slide"
-            />
-          </Carousel.Item>
-          
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Team-2.jpg"
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Team Speech.jpg"
-              alt="First slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Hackers.jpg"
-              alt="Second slide"
-            />
-          </Carousel.Item>
-          
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Hackers-2.jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-          
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Conference.jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-          
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Speech.jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-
-          <Carousel.Item className="item">
-            <img
-              className="carousel-pics d-block w-100"
-              src="images/Certificate.jpg"
-              alt="Third slide"
-            />
-          </Carousel.Item>
-        
+          {galleries.map((gallery) => (
+              <Carousel.Item className="citem">
+                <img
+                  className="carousel-pics d-block w-100"
+                  src={gallery.img}
+                  alt="slide"
+                />
+              </Carousel.Item>
+          ))}
         </Carousel>
 
         <Box marginTop={10} marginBottom={10} p={4}>
@@ -145,6 +83,23 @@ export default function Hackathon(props) {
             </Heading>
           </Stack>
         </Box>
+
+        <Carousel fade className="carousel">
+          {winners.map((winner)=>(
+                <Carousel.Item className="citem">
+                  <div className="container">
+                      <div className="row">
+                        <div className="images">
+                        
+                        </div>
+                        <div className="data">
+                        
+                        </div>
+                      </div>
+                  </div>
+                </Carousel.Item>
+          ))}
+        </Carousel>
 
         <div className="hack-flex-container">
           {/* <div className="child">
