@@ -93,20 +93,23 @@ export default function Hackathon(props) {
                           <img src={winner.img} alt=""></img>
                         </div>
                         <div className="data col-12 col-sm-5">
-                        <Heading fontSize={"3xl"} className="title-text">
+                        <Heading fontSize={"2xl"} className="title-text">
                             {winner.team_name}
                         </Heading>
-                        <Text color={"gray.600"} fontSize={"xl"}>
-                          Team Members : <br/>
+                        <div className="splitter"/>
+                        <Heading fontSize={"1xl"} className="title-text">Team Members :</Heading>
+                        <Text color={"gray.600"} fontSize={"m"}>
                           {winner.Team_Members_1} <br/>
                           {winner.Team_Members_2} <br/>
                           {winner.Team_Members_3} <br/>
                           {winner.Team_Members_4} <br/>
                           {winner.Team_Members_5} <br/>
-                          Prize Category : {winner.prize_category}<br/>
-                          Department : {winner.dept}<br/>
-                          {/* Year : {winner.year} */}
                         </Text>
+                        <Heading fontSize={"1xl"} className="title-text">Prize Category : </Heading>
+                        <Text color={"gray.600"} fontSize={"m"}>{winner.prize_category}<br/></Text>
+                        <Heading fontSize={"1xl"} className="title-text">Department : </Heading>
+                        <Text color={"gray.600"} fontSize={"m"}>{winner.dept}<br/></Text>
+                        {/* Year : {winner.year} */}
                         </div>
                       </div>
                   </div>
