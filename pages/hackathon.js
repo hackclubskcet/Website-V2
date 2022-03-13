@@ -84,16 +84,29 @@ export default function Hackathon(props) {
           </Stack>
         </Box>
 
-        <Carousel fade className="carousel">
+        <Carousel  className="carousel">
           {winners.map((winner)=>(
                 <Carousel.Item className="citem">
                   <div className="container">
                       <div className="row">
-                        <div className="images">
-                        
+                        <div className="col-12 col-sm-5 images winners_img">
+                          <img src={winner.img} alt=""></img>
                         </div>
-                        <div className="data">
-                        
+                        <div className="data col-12 col-sm-5">
+                        <Heading fontSize={"3xl"} className="title-text">
+                            {winner.team_name}
+                        </Heading>
+                        <Text color={"gray.600"} fontSize={"xl"}>
+                          Team Members : <br/>
+                          {winner.Team_Members_1} <br/>
+                          {winner.Team_Members_2} <br/>
+                          {winner.Team_Members_3} <br/>
+                          {winner.Team_Members_4} <br/>
+                          {winner.Team_Members_5} <br/>
+                          Prize Category : {winner.prize_category}<br/>
+                          Department : {winner.dept}<br/>
+                          {/* Year : {winner.year} */}
+                        </Text>
                         </div>
                       </div>
                   </div>
