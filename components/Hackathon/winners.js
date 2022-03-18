@@ -71,11 +71,11 @@ export const winners = [
         year : "2",
         img : "images/Technocrats.jpg",
         prize_category : "EDUCATIONAL GAMES",
-        Team_Members_1 : "PRABITHA P",
-        Team_Members_2 : "SAPARNA K",
-        Team_Members_3 : "SANTHIYA A",
-        Team_Members_4 : "ANU KIRUTHIGA R",
-        Team_Members_5 : "DEEPA SHARANYA S",
+        Team_Members_1 : "Prabitha P",
+        Team_Members_2 : "Saparna K",
+        Team_Members_3 : "Santhiya A",
+        Team_Members_4 : "Anu Kiruthiga R",
+        Team_Members_5 : "Deepa Sharanya S"
     },
     {
         id: 6,

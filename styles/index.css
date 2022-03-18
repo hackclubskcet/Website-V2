@@ -168,15 +168,17 @@
   padding-left:10px;
 }
 .carousel .data{
-  align-items: center;
   padding-bottom:30px;
-  padding-left: 20px;
+  padding-left: 25px;
 }
-
+.carousel .title-text{
+  padding-top:5px;
+  padding-bottom:5px;
+}
 .carousel{
   padding-bottom: 20px;
 }
 
 .splitter{
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
