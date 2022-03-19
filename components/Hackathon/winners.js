@@ -2,8 +2,6 @@ export const winners = [
     {
         id: 0,
         team_name : "The System Squads",
-        dept : "CSE",
-        year : "2",
         img : "images/System Squads.jpg",
         prize_category : "OPEN INNOVATION CATEGORY",
         Team_Members_1 : "Sharath P",
@@ -15,8 +13,6 @@ export const winners = [
     {
         id: 1,
         team_name : "USBee",
-        dept : "CSE",
-        year : "1",
         img : "images/Usbee.jpg",
         prize_category : "CROP DISEASE IDENTIFICATION",
         Team_Members_1 : "Sneha Janarthanan",
@@ -28,8 +24,6 @@ export const winners = [
     {
         id: 2,
         team_name : "HackHers",
-        dept : "CSE",
-        year : "1",
         img : "images/HackHers.jpg",
         prize_category : "EDUCATIONAL GAMES",
         Team_Members_1 : "Prithika Andrea Angelina",
@@ -41,8 +35,6 @@ export const winners = [
     {
         id: 3,
         team_name : "Crew X",
-        dept : "ECE",
-        year : "1",
         img : "images/CrewX.jpg",
         prize_category : "OPEN INNOVATION CATEGORY",
         Team_Members_1 : "Arvind S",
@@ -54,8 +46,6 @@ export const winners = [
     {
         id: 4,
         team_name : "Mechatronz",
-        dept : "MCT",
-        year : "1",
         img : "images/Mechartanz.jpg",
         prize_category : "SUSTAINABILITY",
         Team_Members_1 : "Amrit Balaji",
@@ -67,8 +57,6 @@ export const winners = [
     {
         id: 5,
         team_name : "TECHNOCRATS",
-        dept : "AI&DS CSE",
-        year : "2",
         img : "images/Technocrats.jpg",
         prize_category : "EDUCATIONAL GAMES",
         Team_Members_1 : "Prabitha P",
@@ -80,10 +68,8 @@ export const winners = [
     {
         id: 6,
         team_name : "A2Z Techvalley",
-        dept : "CSBS",
-        year : "1",
         img : "images/A2Z Tech Valley.jpg",
-        prize_category : "OPEN INNOVATION CATEGOR",
+        prize_category : "OPEN INNOVATION CATEGORY",
         Team_Members_1 : "Vishal Chinnasamy",
         Team_Members_2 : "Sasidharan Ramachandran",
         Team_Members_3 : "Rathi Raguraman",
@@ -93,8 +79,6 @@ export const winners = [
     {
         id: 7,
         team_name : "Broskis",
-        dept : "IT",
-        year : "1",
         img : "images/Brosikis.jpg",
         prize_category : "OPEN INNOVATION CATEGORY",
         Team_Members_1 : "Rishikesh S",
@@ -106,8 +90,6 @@ export const winners = [
     {
         id: 8,
         team_name : "HACK SQUAD HA^3",
-        dept : "IT",
-        year : "1",
         img : "images/Hacksquad.jpg",
         prize_category : "OPEN INNOVATION CATEGORY",
         Team_Members_1 : "Harini P",

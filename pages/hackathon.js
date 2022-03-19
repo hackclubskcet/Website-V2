@@ -8,28 +8,23 @@ import {
   Text,
   Container,
   HStack,
-  VStack,
+  VStack, useMediaQuery,
 } from "@chakra-ui/react";
 
 import { Carousel } from "react-bootstrap";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Hero from "../components/Hackathon/Hero";
-import Icon from "@hackclub/icons";
 import { faqs } from "../components/Hackathon/faqs";
 import { galleries } from "../components/Hackathon/gallery";
 import { winners } from "../components/Hackathon/winners";
 import Sponsors from "../components/Hackathon/Sponsors";
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 export default function Hackathon(props) {
   
-  const [index, setIndex] = useState(0);
+  const [checker] = useMediaQuery("(max-width: 768px)");
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
 
   return (
     <>
@@ -45,18 +40,18 @@ export default function Hackathon(props) {
       <ChakraProvider>
         <Navbar loggedIn={props.loggedIn} />
         <Hero />
-        <Box marginTop={10} marginBottom={10} p={4}>
-          <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
-            <Heading fontSize={"3xl"} className="title-text">
-              About Hack @ SKCET
-            </Heading>
-            <Text color={"gray.600"} fontSize={"xl"}>
-              A 2 day in-person hackathon exclusively organized by SKCETians.
-            </Text>
-          </Stack>
-        </Box>
+        {/*<Box marginTop={10} marginBottom={10} p={4}>*/}
+        {/*  <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>*/}
+        {/*    <Heading fontSize={"3xl"} className="title-text">*/}
+        {/*      About Hack @ SKCET*/}
+        {/*    </Heading>*/}
+        {/*    <Text color={"gray.600"} fontSize={"xl"}>*/}
+        {/*      A 2 day in-person hackathon organized by Hack Club SKCET.*/}
+        {/*    </Text>*/}
+        {/*  </Stack>*/}
+        {/*</Box>*/}
 
-        <Box marginTop={10} marginBottom={10} p={4}>
+        <Box marginTop={10} p={4}>
           <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
             <Heading fontSize={"3xl"} className="title-text">
               Gallery
@@ -64,19 +59,23 @@ export default function Hackathon(props) {
           </Stack>
         </Box>
 
-        <Carousel fade className="carousel">
-          {galleries.map((gallery) => (
-              <Carousel.Item className="citem">
+        <div className={"row justify-center mt-1 " + (checker ? 'px-3' : '')} style={{maxWidth: 1520, maxHeight: (checker ? 268 : 700)}}>
+          <Carousel fade className="carousel" style={{maxWidth: 1100, paddingRight: 0}}>
+          {galleries.map((image, index) => (
+              <Carousel.Item className="citem" key={index} style={{ maxHeight: (checker ? 268 : 700)}}>
                 <img
-                  className="carousel-pics d-block w-100"
-                  src={gallery.img}
-                  alt="slide"
+                    width={1300}
+                    height={600}
+                    className="carousel-pics d-block w-100"
+                    src={image}
+                    alt="slide"
                 />
               </Carousel.Item>
           ))}
-        </Carousel>
+        </Carousel
+        ></div>
 
-        <Box marginTop={10} marginBottom={10} p={4}>
+        <Box marginTop={16} marginBotton={10} p={4}>
           <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
             <Heading fontSize={"3xl"} className="title-text">
               Winners
@@ -84,64 +83,64 @@ export default function Hackathon(props) {
           </Stack>
         </Box>
 
-        <Carousel  className="carousel">
-          {winners.map((winner)=>(
-                <Carousel.Item className="citem">
-                  <div className="container">
-                      <div className="row">
-                        <div className="col-12 col-sm-5 images winners_img">
-                          <img src={winner.img} alt=""></img>
-                        </div>
-                        <div className="data col-12 col-sm-5">
-                        <Heading fontSize={"2xl"} className="title-text">
-                            {winner.team_name}
-                        </Heading>
-                        <div className="splitter"/>
-                        <Heading fontSize={"1xl"} className="title-text">Team Members :</Heading>
-                        <Text color={"gray.600"} fontSize={"m"}>
-                          {winner.Team_Members_1} <br/>
-                          {winner.Team_Members_2} <br/>
-                          {winner.Team_Members_3} <br/>
-                          {winner.Team_Members_4} <br/>
-                          {winner.Team_Members_5} <br/>
-                        </Text>
-                        <Heading fontSize={"1xl"} className="title-text">Prize Category : </Heading>
-                        <Text color={"gray.600"} fontSize={"m"}>{winner.prize_category}<br/></Text>
-                        <Heading fontSize={"1xl"} className="title-text">Department : </Heading>
-                        <Text color={"gray.600"} fontSize={"m"}>{winner.dept}<br/></Text>
-                        {/* Year : {winner.year} */}
-                        </div>
-                      </div>
+        <div className={"row justify-center mb-6 mt-7"} style={{maxWidth: 1525}}>
+        <Carousel className="carousel" style={{paddingRight: 0}}>
+          {winners.sort(function(a, b){return 0.5 - Math.random()}).map((winner, index) => (
+              <Carousel.Item className="citem" key={index}>
+                <div className="container">
+                  <div className="row justify-center">
+                    <div className="col-md-5 col-sm-5 images winners_img">
+                      <img src={winner.img} alt={winner.team_name}/>
+                    </div>
+                    <div className={"data col-md-3 col-sm-5 text-center " + (!checker ? 'mt-5' : 'ml-6')}>
+                      <Heading fontSize={"2xl"} className="title-text">
+                        {winner.team_name}
+                      </Heading>
+                      <div className="splitter"/>
+                      <Heading fontSize={"1xl"} className="title-text">Team Members :</Heading>
+                      <Text color={"gray.400"} fontSize={"m"}>
+                        {winner.Team_Members_1} <br/>
+                        {winner.Team_Members_2} <br/>
+                        {winner.Team_Members_3} <br/>
+                        {winner.Team_Members_4} <br/>
+                        {winner.Team_Members_5} <br/>
+                      </Text>
+                      <br/>
+                      {/*<Heading fontSize={"1xl"} className="title-text">Prize Category : </Heading>*/}
+                      {/*<Text color={"gray.400"} fontSize={"m"}>{winner.prize_category}<br/></Text>*/}
+                    </div>
                   </div>
-                </Carousel.Item>
+                </div>
+              </Carousel.Item>
           ))}
         </Carousel>
-
-        <div className="hack-flex-container">
-          {/* <div className="child">
-            <h1>RULES</h1>
-            <li>Max 5 members in a team.</li>
-            <li>All coding should be done only during the event.</li>
-            <li>Students from all departments can participate.</li>
-            <li>
-              Top 15 teams in the idea submission round are selected to
-              participate in the finals.
-            </li>
-          </div> */}
-          <div className="child">
-            <h1>BENEFITS</h1>
-            <li>Swags and merit certificates for all finalists.</li>
-            <li>Exciting prizes for winners.</li>
-            <li>3 beginner friendly workshops.</li>
-            <li>
-              Mentorship and support throughout the event from industry
-              professionals.
-            </li>
-          </div>
         </div>
 
+        {/*<div className="hack-flex-container">*/}
+        {/*  /!* <div className="child">*/}
+        {/*    <h1>RULES</h1>*/}
+        {/*    <li>Max 5 members in a team.</li>*/}
+        {/*    <li>All coding should be done only during the event.</li>*/}
+        {/*    <li>Students from all departments can participate.</li>*/}
+        {/*    <li>*/}
+        {/*      Top 15 teams in the idea submission round are selected to*/}
+        {/*      participate in the finals.*/}
+        {/*    </li>*/}
+        {/*  </div> *!/*/}
+        {/*  <div className="child">*/}
+        {/*    <h1>BENEFITS</h1>*/}
+        {/*    <li>Swags and merit certificates for all finalists.</li>*/}
+        {/*    <li>Exciting prizes for winners.</li>*/}
+        {/*    <li>3 beginner friendly workshops.</li>*/}
+        {/*    <li>*/}
+        {/*      Mentorship and support throughout the event from industry*/}
+        {/*      professionals.*/}
+        {/*    </li>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+
         <Sponsors />
-        <Box marginTop={10} marginBottom={10} p={4}>
+        <Box marginTop={14} p={4}>
           <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
             <Heading fontSize={"3xl"} className="title-text">
               FAQs

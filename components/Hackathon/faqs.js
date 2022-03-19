@@ -9,11 +9,11 @@ export const faqs = [
     question: "How much does it cost to join in Hack @ SKCET?",
     ans: "It is absolutely free.",
   },
-  {
-    id: 2,
-    question: "When will be the next hackathon?",
-    ans: "We are planning to conduct hackathon during our next semester (odd).",
-  },
+  // {
+  //   id: 2,
+  //   question: "When will be the next hackathon?",
+  //   ans: "We are planning to conduct hackathon during our next semester (odd).",
+  // },
   {
     id: 3,
     question: "Who all can participate in the hackathon?",
@@ -22,6 +22,6 @@ export const faqs = [
   {
     id: 4,
     question: "How can I get updates about future hackathons?",
-    ans: "Join our discord server or follow us on instagram to get future updates. (Link in below)",
+    ans: "Join our discord server or follow us on instagram to get future updates. (Links below)",
   },
 ];

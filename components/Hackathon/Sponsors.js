@@ -13,12 +13,12 @@ export default function Sponsors() {
   const { colorMode } = useColorMode();
 
   return (
-    <Box marginTop={10} marginBottom={10} p={4}>
+    <Box marginTop={10} p={4}>
       <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
         <Heading fontSize={"3xl"}>Sponsors</Heading>
       </Stack>
 
-      <Container paddingTop={10} maxW={"xl"} mt={10}>
+      <Container maxW={"xl"} mt={5}>
         <SimpleGrid columns={3} spacing={70}>
           <HStack align={"center"}>
             {" "}

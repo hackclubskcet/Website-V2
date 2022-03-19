@@ -43,14 +43,11 @@ export default function Hero(props) {
               Hack @ SKCET
             </Heading>
             <Text fontSize={["3xl"]} color="white" fontWeight="black">
+              A 2 day in-person hackathon organized by Hack Club SKCET.
+            </Text>
+            <Text fontSize={["3xl"]} color="white" fontWeight="black">
               Held on February 26,27 and 28 (2022)
             </Text>
-            <Text
-              className="timer"
-              fontSize={["2xl"]}
-              color="white"
-              fontWeight="black"
-            ></Text>
             <Spacer />
 
             </Stack>
