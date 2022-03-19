@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.3.0",
     "@hackclub/banner": "^1.0.1",
     "@hackclub/icons": "0.0.9",
+    "@splidejs/react-splide": "^0.6.20",
     "@supabase/supabase-js": "^1.22.5",
     "classnames": "2.2.6",
     "date-fns": "2.16.1",

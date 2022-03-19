@@ -42,12 +42,6 @@
   visibility: visible;
   width: 100%;
 }
-.navbar a:hover,
-.navbar .active,
-.navbar .active:focus,
-.navbar button:hover > a {
-  /* color: #fff; */
-}
 
 /* .title-text{
     text-shadow: 2px 2px 2px #f82249;
@@ -152,4 +146,13 @@
 
 .light {
   filter: invert(1);
+}
+
+/* events */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
 }

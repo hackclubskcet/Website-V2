@@ -1,43 +1,42 @@
 import React from "react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
+import EventCard from "./EventCard";
+import { events } from "./eventsdata";
 import {
-  chakra,
-  Box,
-  Image,
-  Flex,
-  useColorModeValue,
-  Link,
-  Stack,
   Heading,
+  Box,
+  Stack,
   Container,
-  HStack,
-  SimpleGrid,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 const Events = () => {
+  const checker = useDisclosure();
   return (
     <div>
-      <Container paddingBottom={20} maxW={"6xl"} mt={10} textAlign="center">
-        <Heading paddingBottom={10} fontSize={"3xl"}>
-          Upcoming Events
-        </Heading>
-        <Heading color={"#ec3750"} paddingBottom={10} fontSize={"l"}>
-          Coming soon. Stay tuned...
-        </Heading>
-        {/* <SimpleGrid columns={[1, null, 2]} spacing={70} textAlign="center">
-          <Image
-            src="https://raw.githubusercontent.com/hackclubskcet/Club-Website/master/images/HackFromHomewater.png"
-            alt="Segun Adebayo"
-          />
-          <Image
-            src="https://raw.githubusercontent.com/hackclubskcet/Club-Website/master/images/HackFromHomewater.png"
-            alt="Segun Adebayo"
-          />
-          <Image
-            src="https://raw.githubusercontent.com/hackclubskcet/Club-Website/master/images/HackFromHomewater.png"
-            alt="Segun Adebayo"
-          />
-        </SimpleGrid> */}
-      </Container>
+      <Box marginTop={10} marginBottom={10} p={4}>
+        <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
+          <Heading fontSize={"3xl"} className="title-text">
+            Events
+          </Heading>
+        </Stack>
+      </Box>
+
+      <Splide
+        options={{
+          type: "loop",
+          perPage: checker.onOpen ? 1 : 3,
+        }}
+      >
+        {events.map((event) => (
+          <SplideSlide key={event.id}>
+            <div className="flex-center">
+              <EventCard data={event} />{" "}
+            </div>
+          </SplideSlide>
+        ))}
+      </Splide>
     </div>
   );
 };
