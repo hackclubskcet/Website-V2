@@ -3,9 +3,6 @@ import {
   chakra,
   HStack,
   Link as ChakraLink,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
   Box,
   Flex,
   IconButton,
@@ -15,30 +12,9 @@ import {
   VStack,
   Button,
   useColorMode,
-  SimpleGrid,
-  Stack,
-  Container,
 } from "@chakra-ui/react";
-import Banner from "@hackclub/banner";
 import Link from "next/link";
 
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-} from "@chakra-ui/react";
-
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
 
 import { useViewportScroll } from "framer-motion";
 
@@ -48,7 +24,6 @@ import {
   AiFillCalendar,
   AiFillTrophy,
 } from "react-icons/ai";
-import { BsFillCameraVideoFill } from "react-icons/bs";
 import {
   FaInfoCircle,
   FaMoon,
@@ -90,7 +65,7 @@ export default function Navbar(props) {
         alignItems="start"
         rounded="lg"
         _hover={{ bg: hbg }}
-      ></ChakraLink>
+      />
     );
   };
 
@@ -115,7 +90,7 @@ export default function Navbar(props) {
               zIndex: `${mobileNav.isOpen ? "0" : "1"}`,
             }}
             width={"200px"}
-          ></img>
+          />
         </a>
       </Link>
       <VStack
@@ -164,10 +139,10 @@ export default function Navbar(props) {
             </Button>
           </a>
         </Link>
-        <Link href="/hackathon">
+        <Link href="/hack@skcet">
           <a>
             <Button w="full" variant="ghost" leftIcon={<AiFillTrophy />}>
-              hack@skcet
+              Hack@SKCET
             </Button>
           </a>
         </Link>
@@ -293,7 +268,7 @@ export default function Navbar(props) {
                     </Button>
                   </a>
                 </Link>
-                <Link href="/hackathon">
+                <Link href="/hack@skcet">
                   <a>
                     <Button
                       bg={bg}
@@ -304,7 +279,7 @@ export default function Navbar(props) {
                       _hover={{ color: cl }}
                       _focus={{ boxShadow: "none" }}
                     >
-                      <a>Hack@skcet</a>
+                      <a>Hack@SKCET</a>
                     </Button>
                   </a>
                 </Link>

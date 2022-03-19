@@ -25,21 +25,21 @@ import {
 import Footer from "../components/Footer/Footer";
 import MembersMarquee from "../components/MembersMarquee/MembersMarquee";
 import MembersSection from "../components/Members/Members";
-import {useLayoutEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
 import {data} from "autoprefixer";
 
 export default function MembersScreen(props) {
   const [loggedIn, setLoggedIn] = useState(props.loggedIn)
   const [dataFetched, setDataFetched] = useState(false)
-  const [members, setMembers] = useState(null)
-  const [coreTeam, setCoreTeam] = useState(null)
+  const [members, setMembers] = useState([])
+  const [coreTeam, setCoreTeam] = useState([])
   const [operationsTeam, setOperationsTeam] = useState(null)
   const [designTeam, setDesignTeam] = useState(null)
   const [outReachTeam, setOutReachTeam] = useState(null)
   const [techTeam, setTechTeam] = useState(null)
 
-  useLayoutEffect (() => {
+  useEffect(() => {
     async function fetchData(priority) {
       const {data, error} = await supabase
           .from('profiles')
@@ -50,7 +50,7 @@ export default function MembersScreen(props) {
       if (error) {
         throw error
       } else {
-        if (priority === 0){
+        if (priority === 0) {
           setMembers(data)
         } else if (priority === 1) {
           setCoreTeam(data)
@@ -66,14 +66,24 @@ export default function MembersScreen(props) {
       }
     }
 
+    async function fetch_members() {
+      const {data, error} = await supabase
+          .from('profiles')
+          .select('name, department, year, avatar_url')
+          .neq('priority', 1)
+          .order('updated_at')
+
+      setMembers(data);
+    }
+
     if (!dataFetched) {
-      setDataFetched(true)
-      fetchData(0)
-      fetchData(1)
-      fetchData(2)
-      fetchData(3)
-      fetchData(4)
-      fetchData(5)
+      // fetchData(0)
+      fetchData(1).then(() => fetch_members().then(() => setDataFetched(true)))
+
+      // fetchData(2)
+      // fetchData(3)
+      // fetchData(4)
+      // fetchData(5)
     }
 
   }, [dataFetched, loggedIn])

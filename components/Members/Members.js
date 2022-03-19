@@ -53,7 +53,7 @@ const TeamCard = (props) => {
             fontSize={{ base: "9px", md: "12px", lg: "16px" }}
             color={useColorModeValue("white", "gray.800")}
           >
-            {props.department.toUpperCase()} {props.year}
+           {props.year}
           </chakra.span>
         </Box>
       </Box>
@@ -101,7 +101,7 @@ const MemberCard = (props) => {
             fontSize={{ base: "9px", md: "12px", lg: "16px" }}
             color={useColorModeValue("white", "gray.800")}
           >
-            {props.department.toUpperCase()}{props.isNotMobile ? <br/> : ' '}{props.year}
+           {props.year}
           </chakra.span>
         </Box>
       </Box>
@@ -133,100 +133,100 @@ const MembersSection = (props) => {
           textAlign="center"
         >
           {props.teamMembers.map((member, index) => (
-              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
+              <TeamCard name={member.name} key={index} year={member.year}
                         avatar={member.avatar_url} />
           ))}
         </SimpleGrid>
 
         <Divider />
 
-        { /*OPERATIONS TEAM */}
-        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
-          Operations Team
-        </Heading>
-        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
-        {/*  The most active contributors of Hack Club SKCET*/}
-        {/*</Text>*/}
+        {/*{ /*OPERATIONS TEAM *!/*/}
+        {/*<Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>*/}
+        {/*  Operations Team*/}
+        {/*</Heading>*/}
+        {/*/!*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*!/*/}
+        {/*/!*  The most active contributors of Hack Club SKCET*!/*/}
+        {/*/!*</Text>*!/*/}
 
-        <SimpleGrid
-            paddingBottom="10"
-            columns={[3, 4, 5]}
-            spacing={{ base: "10", md: "40", lg: "70" }}
-            textAlign="center"
-        >
-          {props.operationsTeam?.map((member, index) => (
-              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
-                        avatar={member.avatar_url} />
-          ))}
-        </SimpleGrid>
+        {/*<SimpleGrid*/}
+        {/*    paddingBottom="10"*/}
+        {/*    columns={[3, 4, 5]}*/}
+        {/*    spacing={{ base: "10", md: "40", lg: "70" }}*/}
+        {/*    textAlign="center"*/}
+        {/*>*/}
+        {/*  {props.operationsTeam?.map((member, index) => (*/}
+        {/*      <TeamCard name={member.name} key={index} year={member.year} department={member.department}*/}
+        {/*                avatar={member.avatar_url} />*/}
+        {/*  ))}*/}
+        {/*</SimpleGrid>*/}
 
-        <Divider />
+        {/*<Divider />*/}
 
-        { /*Design TEAM */}
-        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
-          Design Team
-        </Heading>
-        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
-        {/*  The most active contributors of Hack Club SKCET*/}
-        {/*</Text>*/}
+        {/*{ /*Design TEAM *!/*/}
+        {/*<Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>*/}
+        {/*  Design Team*/}
+        {/*</Heading>*/}
+        {/*/!*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*!/*/}
+        {/*/!*  The most active contributors of Hack Club SKCET*!/*/}
+        {/*/!*</Text>*!/*/}
 
-        <SimpleGrid
-            paddingBottom="10"
-            columns={[3, 4, 5]}
-            spacing={{ base: "10", md: "40", lg: "70" }}
-            textAlign="center"
-        >
-          {props.designTeam?.map((member, index) => (
-              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
-                        avatar={member.avatar_url} />
-          ))}
-        </SimpleGrid>
+        {/*<SimpleGrid*/}
+        {/*    paddingBottom="10"*/}
+        {/*    columns={[3, 4, 5]}*/}
+        {/*    spacing={{ base: "10", md: "40", lg: "70" }}*/}
+        {/*    textAlign="center"*/}
+        {/*>*/}
+        {/*  {props.designTeam?.map((member, index) => (*/}
+        {/*      <TeamCard name={member.name} key={index} year={member.year} department={member.department}*/}
+        {/*                avatar={member.avatar_url} />*/}
+        {/*  ))}*/}
+        {/*</SimpleGrid>*/}
 
-        <Divider />
+        {/*<Divider />*/}
 
-        { /*Outreach TEAM */}
-        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
-          Outreach Team
-        </Heading>
-        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
-        {/*  The most active contributors of Hack Club SKCET*/}
-        {/*</Text>*/}
+        {/*{ /*Outreach TEAM *!/*/}
+        {/*<Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>*/}
+        {/*  Outreach Team*/}
+        {/*</Heading>*/}
+        {/*/!*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*!/*/}
+        {/*/!*  The most active contributors of Hack Club SKCET*!/*/}
+        {/*/!*</Text>*!/*/}
 
-        <SimpleGrid
-            paddingBottom="10"
-            columns={[3, 4, 5]}
-            spacing={{ base: "10", md: "40", lg: "70" }}
-            textAlign="center"
-        >
-          {props.outReachTeam?.map((member, index) => (
-              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
-                        avatar={member.avatar_url} />
-          ))}
-        </SimpleGrid>
+        {/*<SimpleGrid*/}
+        {/*    paddingBottom="10"*/}
+        {/*    columns={[3, 4, 5]}*/}
+        {/*    spacing={{ base: "10", md: "40", lg: "70" }}*/}
+        {/*    textAlign="center"*/}
+        {/*>*/}
+        {/*  {props.outReachTeam?.map((member, index) => (*/}
+        {/*      <TeamCard name={member.name} key={index} year={member.year} department={member.department}*/}
+        {/*                avatar={member.avatar_url} />*/}
+        {/*  ))}*/}
+        {/*</SimpleGrid>*/}
 
-        <Divider />
+        {/*<Divider />*/}
 
-        { /*Tech TEAM */}
-        <Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>
-          Tech Team
-        </Heading>
-        {/*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*/}
-        {/*  The most active contributors of Hack Club SKCET*/}
-        {/*</Text>*/}
+        {/*{ /*Tech TEAM *!/*/}
+        {/*<Heading color={"#ec3750"} paddingBottom={5} paddingTop={10} fontSize={"xl"}>*/}
+        {/*  Tech Team*/}
+        {/*</Heading>*/}
+        {/*/!*<Text color={"grey"} paddingBottom={10} fontSize={"s"}>*!/*/}
+        {/*/!*  The most active contributors of Hack Club SKCET*!/*/}
+        {/*/!*</Text>*!/*/}
 
-        <SimpleGrid
-            paddingBottom="10"
-            columns={[3, 4, 5]}
-            spacing={{ base: "10", md: "40", lg: "70" }}
-            textAlign="center"
-        >
-          {props.techTeam?.map((member, index) => (
-              <TeamCard name={member.name} key={index} year={member.year} department={member.department}
-                        avatar={member.avatar_url} />
-          ))}
-        </SimpleGrid>
+        {/*<SimpleGrid*/}
+        {/*    paddingBottom="10"*/}
+        {/*    columns={[3, 4, 5]}*/}
+        {/*    spacing={{ base: "10", md: "40", lg: "70" }}*/}
+        {/*    textAlign="center"*/}
+        {/*>*/}
+        {/*  {props.techTeam?.map((member, index) => (*/}
+        {/*      <TeamCard name={member.name} key={index} year={member.year} department={member.department}*/}
+        {/*                avatar={member.avatar_url} />*/}
+        {/*  ))}*/}
+        {/*</SimpleGrid>*/}
 
-        <Divider />
+        {/*<Divider />*/}
 
         <Heading
           color={"#ec3750"}
@@ -247,7 +247,7 @@ const MembersSection = (props) => {
           textAlign="center"
         >
           {props.members.map((member, index) => (
-                <MemberCard name={member.name} year={member.year} key={index} department={member.department}
+                <MemberCard name={member.name} year={member.year} key={index}
                             avatar={member.avatar_url.toLowerCase()} isNotMobile={isNotMobile}/>)
           )}
         </SimpleGrid>

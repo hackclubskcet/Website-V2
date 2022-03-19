@@ -21,7 +21,7 @@ import { winners } from "../components/Hackathon/winners";
 import Sponsors from "../components/Hackathon/Sponsors";
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
-export default function Hackathon(props) {
+export default function HackSkcet(props) {
   
   const [checker] = useMediaQuery("(max-width: 768px)");
 
