@@ -14,6 +14,7 @@
 
 /* Your own custom utilities */
 
+
 .navbar a,
 .navbar a:focus {
   display: flex;
@@ -155,4 +156,32 @@
   justify-content: center;
   width: 100%;
   padding: 20px;
+}
+
+.carousel-item{
+  height: 20%;
+} 
+.carousel-item img{
+  height: 20%;
+}
+.carousel .winners_img img{
+  width:100%;
+  height:100%;
+  padding-bottom: 50px;
+  padding-left:10px;
+}
+.carousel .data{
+  padding-bottom:30px;
+  padding-left: 25px;
+}
+.carousel .title-text{
+  padding-top:5px;
+  padding-bottom:5px;
+}
+.carousel{
+  padding-bottom: 20px;
+}
+
+.splitter{
+  padding-bottom: 5px;
 }

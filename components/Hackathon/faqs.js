@@ -9,14 +9,19 @@ export const faqs = [
     question: "How much does it cost to join in Hack @ SKCET?",
     ans: "It is absolutely free.",
   },
-  {
-    id: 2,
-    question: "What is the team size?",
-    ans: "A maximum of 5 members in a team.",
-  },
+  // {
+  //   id: 2,
+  //   question: "When will be the next hackathon?",
+  //   ans: "We are planning to conduct hackathon during our next semester (odd).",
+  // },
   {
     id: 3,
     question: "Who all can participate in the hackathon?",
     ans: "Either you are a beginner or a skilled coder you can participate in the hackathon and learn with us!",
+  },
+  {
+    id: 4,
+    question: "How can I get updates about future hackathons?",
+    ans: "Join our discord server or follow us on instagram to get future updates. (Links below)",
   },
 ];
