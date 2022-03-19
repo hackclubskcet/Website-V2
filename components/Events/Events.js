@@ -3,16 +3,17 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import EventCard from "./EventCard";
 import { events } from "./eventsdata";
+
 import {
   Heading,
   Box,
   Stack,
   Container,
-  useDisclosure,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 const Events = () => {
-  const checker = useDisclosure();
+  const [checker] = useMediaQuery("(max-width: 768px)");
   return (
     <div>
       <Box marginTop={10} marginBottom={10} p={4}>
@@ -26,7 +27,7 @@ const Events = () => {
       <Splide
         options={{
           type: "loop",
-          perPage: checker.onOpen ? 1 : 3,
+          perPage: checker ? 1 : 3,
         }}
       >
         {events.map((event) => (
