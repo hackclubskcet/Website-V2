@@ -126,8 +126,8 @@ export default function HackSkcet(props) {
                         {winner.Team_Members_5} <br />
                       </Text>
                       <br />
-                      {/*<Heading fontSize={"1xl"} className="title-text">Prize Category : </Heading>*/}
-                      {/*<Text color={"gray.400"} fontSize={"m"}>{winner.prize_category}<br/></Text>*/}
+                      <Heading fontSize={"1xl"} className="title-text">Prize Category : </Heading>
+                      <Text color={"gray.400"} fontSize={"m"}>{winner.prize_category}<br/></Text>
                     </div>
                   </div>
                 </div>
