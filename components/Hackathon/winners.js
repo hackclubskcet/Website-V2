@@ -28,7 +28,7 @@ export const winners = [
     prize_category: "EDUCATIONAL GAMES",
     Team_Members_1: "Prithika Andrea Angelina",
     Team_Members_2: "Madhumitha R",
-    Team_Members_3: "Prathiba S",
+    Team_Members_3: "Pratiba S",
     Team_Members_4: "Monisha K",
     Team_Members_5: "Priyadharshini U",
   },
@@ -84,7 +84,7 @@ export const winners = [
     Team_Members_1: "Rishikesh S",
     Team_Members_2: "Sriram M",
     Team_Members_3: "Shyam J",
-    Team_Members_4: "Suraj V",
+    Team_Members_4: "Suraj S",
     Team_Members_5: "Tharun Deeksith K",
   },
   {
@@ -99,4 +99,3 @@ export const winners = [
     Team_Members_5: "Harini P",
   },
 ];
-  
