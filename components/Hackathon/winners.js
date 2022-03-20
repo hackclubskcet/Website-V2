@@ -96,6 +96,6 @@ export const winners = [
     Team_Members_2: "Almitha Dency J",
     Team_Members_3: "Archana M",
     Team_Members_4: "Arthi S",
-    Team_Members_5: "Harini P",
+    Team_Members_5: "",
   },
 ];
