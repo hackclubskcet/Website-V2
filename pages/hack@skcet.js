@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from "react";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/provider";
 import {
@@ -8,7 +8,8 @@ import {
   Text,
   Container,
   HStack,
-  VStack, useMediaQuery,
+  VStack,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import { Carousel } from "react-bootstrap";
@@ -19,12 +20,10 @@ import { faqs } from "../components/Hackathon/faqs";
 import { galleries } from "../components/Hackathon/gallery";
 import { winners } from "../components/Hackathon/winners";
 import Sponsors from "../components/Hackathon/Sponsors";
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 export default function HackSkcet(props) {
-  
   const [checker] = useMediaQuery("(max-width: 768px)");
-
 
   return (
     <>
@@ -59,21 +58,32 @@ export default function HackSkcet(props) {
           </Stack>
         </Box>
 
-        <div className={"row justify-center mt-1 " + (checker ? 'px-3' : '')} style={{maxWidth: 1520, maxHeight: (checker ? 268 : 700)}}>
-          <Carousel fade className="carousel" style={{maxWidth: 1100, paddingRight: 0}}>
-          {galleries.map((image, index) => (
-              <Carousel.Item className="citem" key={index} style={{ maxHeight: (checker ? 268 : 700)}}>
+        <div
+          className={"row justify-center mt-1 " + (checker ? "px-3" : "")}
+          style={{ maxWidth: 1520, maxHeight: checker ? 268 : 700 }}
+        >
+          <Carousel
+            fade
+            className="carousel"
+            style={{ maxWidth: 1100, paddingRight: 0 }}
+          >
+            {galleries.map((image, index) => (
+              <Carousel.Item
+                className="citem"
+                key={index}
+                style={{ maxHeight: checker ? 268 : 700 }}
+              >
                 <img
-                    width={1300}
-                    height={600}
-                    className="carousel-pics d-block w-100"
-                    src={image}
-                    alt="slide"
+                  width={1300}
+                  height={600}
+                  className="carousel-pics d-block w-100"
+                  src={image}
+                  alt="slide"
                 />
               </Carousel.Item>
-          ))}
-        </Carousel
-        ></div>
+            ))}
+          </Carousel>
+        </div>
 
         <Box marginTop={16} marginBotton={10} p={4}>
           <Stack spacing={4} as={Container} maxW={"5xl"} textAlign={"center"}>
@@ -83,37 +93,47 @@ export default function HackSkcet(props) {
           </Stack>
         </Box>
 
-        <div className={"row justify-center mb-6 mt-7"} style={{maxWidth: 1525}}>
-        <Carousel className="carousel" style={{paddingRight: 0}}>
-          {winners.sort(function(a, b){return 0.5 - Math.random()}).map((winner, index) => (
+        <div
+          className={"row justify-center mb-6 mt-7"}
+          style={{ maxWidth: 1525 }}
+        >
+          <Carousel className="carousel" style={{ paddingRight: 0 }}>
+            {winners.map((winner, index) => (
               <Carousel.Item className="citem" key={index}>
                 <div className="container">
                   <div className="row justify-center">
                     <div className="col-md-5 col-sm-5 images winners_img">
-                      <img src={winner.img} alt={winner.team_name}/>
+                      <img src={winner.img} alt={winner.team_name} />
                     </div>
-                    <div className={"data col-md-3 col-sm-5 text-center " + (!checker ? 'mt-5' : 'ml-6')}>
+                    <div
+                      className={
+                        "data col-md-3 col-sm-5 text-center " +
+                        (!checker ? "mt-5" : "ml-6")
+                      }
+                    >
                       <Heading fontSize={"2xl"} className="title-text">
                         {winner.team_name}
                       </Heading>
-                      <div className="splitter"/>
-                      <Heading fontSize={"1xl"} className="title-text">Team Members :</Heading>
+                      <div className="splitter" />
+                      <Heading fontSize={"1xl"} className="title-text">
+                        Team Members :
+                      </Heading>
                       <Text color={"gray.400"} fontSize={"m"}>
-                        {winner.Team_Members_1} <br/>
-                        {winner.Team_Members_2} <br/>
-                        {winner.Team_Members_3} <br/>
-                        {winner.Team_Members_4} <br/>
-                        {winner.Team_Members_5} <br/>
+                        {winner.Team_Members_1} <br />
+                        {winner.Team_Members_2} <br />
+                        {winner.Team_Members_3} <br />
+                        {winner.Team_Members_4} <br />
+                        {winner.Team_Members_5} <br />
                       </Text>
-                      <br/>
+                      <br />
                       {/*<Heading fontSize={"1xl"} className="title-text">Prize Category : </Heading>*/}
                       {/*<Text color={"gray.400"} fontSize={"m"}>{winner.prize_category}<br/></Text>*/}
                     </div>
                   </div>
                 </div>
               </Carousel.Item>
-          ))}
-        </Carousel>
+            ))}
+          </Carousel>
         </div>
 
         {/*<div className="hack-flex-container">*/}
