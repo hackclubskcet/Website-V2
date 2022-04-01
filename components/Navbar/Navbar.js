@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
-
 import { useViewportScroll } from "framer-motion";
 
 import {
@@ -35,6 +34,7 @@ import {
   FaUserPlus,
 } from "react-icons/fa";
 import { Logo } from "@choc-ui/logo";
+import Banner from "@hackclub/banner";
 
 export default function Navbar(props) {
   const { toggleColorMode: toggleMode } = useColorMode();
@@ -73,23 +73,14 @@ export default function Navbar(props) {
     <Box minW={"100%"}>
       <Link href="/">
         <a>
-          {/*<Banner*/}
-          {/*    year={2021}*/}
-          {/*    href="/"*/}
-          {/*    style={mobileNav.isOpen ? { width: "125px" } : { width: "200px" }}*/}
-          {/*/>*/}
-
-          <img
-            src="https://assets.hackclub.com/banners/2022.svg"
-            alt="Hack Club"
-            style={{
-              position: "absolute",
-              top: "10px",
-              left: "0px",
-              border: "0px",
-              zIndex: `${mobileNav.isOpen ? "0" : "1"}`,
-            }}
-            width={"200px"}
+          <Banner
+            year={2022}
+            href="/"
+            style={
+              mobileNav.isOpen
+                ? { width: "125px", zIndex: "0" }
+                : { width: "200px", zIndex: "1" }
+            }
           />
         </a>
       </Link>
